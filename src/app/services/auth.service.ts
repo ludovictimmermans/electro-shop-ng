@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, map, Observable, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {AuthDTO} from "./models/auth.model";
+import {AuthDTO} from "../shared/models/auth.model";
 
 const AUTH_KEY = 'connectedUser';
 
