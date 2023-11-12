@@ -1,0 +1,24 @@
+<ng-container>
+  <p-card class="flex justify-content-center" header="Welcome" subheader="Sign in to continue"
+          [style]="{ width: '360px' }">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <ng-template pTemplate="header">
+        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png"/>
+      </ng-template>
+
+      <div class="flex justify-content-center flex-column gap-2">
+        <label>Username</label>
+        <input pInputText type="text"  formControlName="username"/>
+      </div>
+      <div class="flex justify-content-center flex-column gap-2">
+        <label>Password</label>
+        <p-password formControlName="password" [feedback]="false"></p-password>
+      </div>
+      <ng-template pTemplate="footer">
+        <p-button label="Save" icon="pi pi-check"></p-button>
+        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary"
+                  [style]="{ 'margin-left': '.5em' }"></p-button>
+      </ng-template>
+    </form>
+  </p-card>
+</ng-container>
