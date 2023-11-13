@@ -4,18 +4,32 @@ import { ManagerComponent } from './manager.component';
 import {ManagerRoutingModule} from "./manager-routing.module";
 import { ListCategoryComponent } from './category/list-category/list-category.component';
 import {TableModule} from "primeng/table";
+import {ButtonModule} from "primeng/button";
+import { UpdateCategoryComponent } from './category/update-category/update-category.component';
+import {CardModule} from "primeng/card";
+import {InputTextModule} from "primeng/inputtext";
+import {PasswordModule} from "primeng/password";
+import {ReactiveFormsModule} from "@angular/forms";
+import { AddCategoryComponent } from './category/add-category/add-category.component';
 
-const PRIME_IMPORTS = [TableModule,];
+const PRIME_IMPORTS = [TableModule,ButtonModule];
 
 @NgModule({
   declarations: [
     ManagerComponent,
-    ListCategoryComponent
+    ListCategoryComponent,
+    UpdateCategoryComponent,
+    AddCategoryComponent
   ],
   imports: [
     CommonModule,
     ManagerRoutingModule,
-    ...PRIME_IMPORTS
+    ...PRIME_IMPORTS,
+    ButtonModule,
+    CardModule,
+    InputTextModule,
+    PasswordModule,
+    ReactiveFormsModule
   ]
 })
 export class ManagerModule { }

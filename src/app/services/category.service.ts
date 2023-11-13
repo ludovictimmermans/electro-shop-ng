@@ -15,4 +15,26 @@ export class CategoryService {
   getAll():Observable<Category[]>{
         return this.client.get<Category[]>(this.BASE_URL);
   }
+
+  getOne(categoryId: number) {
+    return this.client.get<Category>(this.BASE_URL+'/'+categoryId);
+  }
+
+  add(category: Category) {
+    return this.client.post<Category>(this.BASE_URL,category);
+  }
+
+  update(category:Category){
+    return this.client.put<Category>(this.BASE_URL+'/'+category.id,category);
+  }
+
+  delete(id: number) {
+    return this.client.delete<Category>(this.BASE_URL+'/'+id);
+  }
+
+
+
+
+
+
 }
