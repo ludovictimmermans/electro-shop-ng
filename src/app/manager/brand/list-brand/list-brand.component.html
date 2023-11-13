@@ -1,44 +1,44 @@
-<h3 class="pl-3">Catégories</h3>
+<h3 class="pl-3">Marques</h3>
 <div class="flex justify-content-between pl-3">
   <div class="justify-content-start">
-    <p>Créez et gérer vos catégories des produits </p>
+    <p>Créez et gérer vos marques des produits </p>
   </div>
   <div class="justify-content-center pb-3">
     <button pButton
             type="button"
-            label="Ajouter catégorie"
+            label="Ajouter marque"
             icon="pi pi-plus"
             class="p-button-success"
             size="small"
-            routerLink="/manager/category/add/"
-            >
+            routerLink="/manager/brand/add/"
+    >
     </button>
   </div>
 </div>
 
 
-<ng-container *ngIf="categories$ | async as categories;else loading">
-  <p-table [value]="categories">
+<ng-container *ngIf="brands$ | async as brands;else loading">
+  <p-table [value]="brands">
     <ng-template pTemplate="header">
       <tr>
         <th>#</th>
         <th>Name</th>
-        <th>Description</th>
+        <th>Lien image</th>
         <th>Modifier</th>
         <th>Supprimer</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-category>
+    <ng-template pTemplate="body" let-brand>
       <tr>
-        <td>{{category.id}}</td>
-        <td>{{category.name}}</td>
-        <td>{{category.description}}</td>
+        <td>{{brand.id}}</td>
+        <td>{{brand.name}}</td>
+        <td>{{brand.img}}</td>
         <td>
           <button pButton type="button" icon="pi pi-pencil"
-                  routerLink="/manager/category/update/{{category.id}}"></button>
+                  routerLink="/manager/brand/update/{{brand.id}}"></button>
         </td>
         <td>
-          <button pButton type="button" icon="pi pi-times" class="p-button-danger" (click)="delete(category.id)">
+          <button pButton type="button" icon="pi pi-times" class="p-button-danger" (click)="delete(brand.id)">
           </button>
         </td>
       </tr>

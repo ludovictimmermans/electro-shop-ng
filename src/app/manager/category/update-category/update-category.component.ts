@@ -5,7 +5,6 @@ import {CategoryService} from "../../../services/category.service";
 import {Observable, of, tap} from "rxjs";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {CATEGORY_UPDATE_FORM} from "./updateCategory.form";
-import {CategoryResolver} from "../../../core/category.resolver";
 
 @Component({
   selector: 'app-update-category',

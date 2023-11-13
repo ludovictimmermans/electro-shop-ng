@@ -11,6 +11,9 @@ import {InputTextModule} from "primeng/inputtext";
 import {PasswordModule} from "primeng/password";
 import {ReactiveFormsModule} from "@angular/forms";
 import { AddCategoryComponent } from './category/add-category/add-category.component';
+import { ListBrandComponent } from './brand/list-brand/list-brand.component';
+import { AddBrandComponent } from './brand/add-brand/add-brand.component';
+import { UpdateBrandComponent } from './brand/update-brand/update-brand.component';
 
 const PRIME_IMPORTS = [TableModule,ButtonModule];
 
@@ -19,7 +22,10 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     ManagerComponent,
     ListCategoryComponent,
     UpdateCategoryComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    ListBrandComponent,
+    AddBrandComponent,
+    UpdateBrandComponent
   ],
   imports: [
     CommonModule,
