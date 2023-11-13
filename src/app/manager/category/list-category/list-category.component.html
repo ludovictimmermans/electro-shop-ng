@@ -1,17 +1,19 @@
 <h3 class="pl-3">Catégories</h3>
-<div class="flex flex-row pl-3">
-  <div class="flex justify-content-start">
+<div class="flex justify-content-between pl-3">
+  <div class="justify-content-start">
     <p>Créez et gérer vos catégories de produit </p>
   </div>
-  <div class="flex flex-row-reverse">
+  <div class="justify-content-center pb-3">
     <button pButton
             type="button"
-            icon="pi pi-times"
-            class="p-button-success "
-            (click)="add()">Ajouter catégorie
+            label="Ajouter catégorie"
+            icon="pi pi-plus"
+            class="p-button-success"
+            size="small"
+            routerLink="/manager/category/add/"
+            >
     </button>
   </div>
-
 </div>
 
 

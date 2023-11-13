@@ -26,7 +26,4 @@ export class ListCategoryComponent{
     this.categories$ = this.$categoryServ.getAll();
   }
 
-  add() {
-
-  }
 }

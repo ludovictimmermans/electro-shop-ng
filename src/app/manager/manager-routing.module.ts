@@ -4,6 +4,7 @@ import {ManagerComponent} from "./manager.component";
 import {ListCategoryComponent} from "./category/list-category/list-category.component";
 import {CategoryResolver} from "../core/category.resolver";
 import {UpdateCategoryComponent} from "./category/update-category/update-category.component";
+import {AddCategoryComponent} from "./category/add-category/add-category.component";
 
 const routes : Routes = [
   {
@@ -11,7 +12,8 @@ const routes : Routes = [
     component: ManagerComponent,
     children:[
       {path:'category/list',component:ListCategoryComponent,/*resolve:{categories : CategoryResolver}*/},
-      {path:'category/update/:id',component:UpdateCategoryComponent,resolve:{categories : CategoryResolver}}
+      {path:'category/update/:id',component:UpdateCategoryComponent,resolve:{categories : CategoryResolver}},
+      {path:'category/add',component:AddCategoryComponent}
     ]
   }
 ];
