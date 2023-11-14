@@ -14,6 +14,7 @@ import { AddCategoryComponent } from './category/add-category/add-category.compo
 import { ListBrandComponent } from './brand/list-brand/list-brand.component';
 import { AddBrandComponent } from './brand/add-brand/add-brand.component';
 import { UpdateBrandComponent } from './brand/update-brand/update-brand.component';
+import { ListProductComponent } from './product/list-product/list-product.component';
 
 const PRIME_IMPORTS = [TableModule,ButtonModule];
 
@@ -25,7 +26,8 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     AddCategoryComponent,
     ListBrandComponent,
     AddBrandComponent,
-    UpdateBrandComponent
+    UpdateBrandComponent,
+    ListProductComponent
   ],
   imports: [
     CommonModule,

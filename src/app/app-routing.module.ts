@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch:'full' },
   { path: 'home', component: HomeComponent },
   { path: 'manager',loadChildren: () => import ('./manager/manager.module').then(r => r.ManagerModule)},
+  { path: 'customer',loadChildren: () => import ('./customer/customer.module').then(r => r.CustomerModule)},
   { path: 'login', component: LoginComponent },
   { path: '404', component: Page404Component },
   { path: '**', redirectTo: '404' },
