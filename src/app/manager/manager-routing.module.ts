@@ -8,6 +8,9 @@ import {AddCategoryComponent} from "./category/add-category/add-category.compone
 import {AddBrandComponent} from "./brand/add-brand/add-brand.component";
 import {UpdateBrandComponent} from "./brand/update-brand/update-brand.component";
 import {ListBrandComponent} from "./brand/list-brand/list-brand.component";
+import {ListProductComponent} from "./product/list-product/list-product.component";
+import {AddProductComponent} from "./product/add-product/add-product.component";
+import {UpdateProductComponent} from "./product/update-product/update-product.component";
 
 const routes : Routes = [
   {
@@ -19,7 +22,10 @@ const routes : Routes = [
       {path:'category/add',component:AddCategoryComponent},
       {path:'brand/list',component:ListBrandComponent},
       {path:'brand/update/:id',component:UpdateBrandComponent},
-      {path:'brand/add',component:AddBrandComponent}
+      {path:'brand/add',component:AddBrandComponent},
+      {path:'product/list',component:ListProductComponent},
+      {path:'product/add',component:AddProductComponent},
+      {path:'product/update/:id',component:UpdateProductComponent}
     ]
   }
 ];

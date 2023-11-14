@@ -15,6 +15,11 @@ import { ListBrandComponent } from './brand/list-brand/list-brand.component';
 import { AddBrandComponent } from './brand/add-brand/add-brand.component';
 import { UpdateBrandComponent } from './brand/update-brand/update-brand.component';
 import { ListProductComponent } from './product/list-product/list-product.component';
+import { AddProductComponent } from './product/add-product/add-product.component';
+import { UpdateProductComponent } from './product/update-product/update-product.component';
+import {AutoCompleteModule} from "primeng/autocomplete";
+import {DropdownModule} from "primeng/dropdown";
+import {InputNumberModule} from "primeng/inputnumber";
 
 const PRIME_IMPORTS = [TableModule,ButtonModule];
 
@@ -27,7 +32,9 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     ListBrandComponent,
     AddBrandComponent,
     UpdateBrandComponent,
-    ListProductComponent
+    ListProductComponent,
+    AddProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +44,10 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     CardModule,
     InputTextModule,
     PasswordModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AutoCompleteModule,
+    DropdownModule,
+    InputNumberModule
   ]
 })
 export class ManagerModule { }
