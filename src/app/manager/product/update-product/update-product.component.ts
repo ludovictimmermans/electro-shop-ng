@@ -21,6 +21,7 @@ export class UpdateProductComponent {
   categories$: Observable<Category[]>;
   brand$:Observable<Brand[]>;
   private productId:number;
+  selectedCat: any;
 
 
 

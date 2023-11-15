@@ -26,20 +26,22 @@
         <div class="field">
           <div class="flex flex-column">
             <label>Price</label>
-            <p-inputNumber formControlName="price" mode="currency" inputId="currency-germany" currency="EUR"> </p-inputNumber>
+            <p-inputNumber formControlName="price" mode="currency" inputId="currency-germany"
+                           currency="EUR"></p-inputNumber>
           </div>
         </div>
         <div class="field">
           <div class="flex flex-column">
             <label>Quantité</label>
-            <p-inputNumber formControlName="quantity" inputId="integeronly" > </p-inputNumber>
+            <p-inputNumber formControlName="quantity" inputId="integeronly"></p-inputNumber>
           </div>
         </div>
         <div class="field" *ngIf="categories$ | async as categories; else loading">
           <div class="flex flex-column">
             <label>Catégorie</label>
-            <p-dropdown [options]="categories" formControlName="categoryId" optionValue="id"
-                        placeholder="Choissisez une catégorie" [editable]="true" optionLabel="name" ></p-dropdown>
+            <p-dropdown [options]="categories" [(ngModel)]="selectedCat" formControlName="categoryId" optionValue="id"
+                        placeholder="Choissisez une catégorie" [editable]="true" optionLabel="name">
+            </p-dropdown>
           </div>
         </div>
         <div class="field" *ngIf="brand$ | async as brands; else loading">

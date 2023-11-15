@@ -16,11 +16,16 @@ import {CardModule} from "primeng/card";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {InputTextModule} from "primeng/inputtext";
+import {HomeComponent} from "./layout/home/home.component";
+import {DataViewModule} from "primeng/dataview";
+import {RatingModule} from "primeng/rating";
+import {TagModule} from "primeng/tag";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    HomeComponent,
     FooterComponent,
     Page404Component,
     LoginComponent
@@ -37,7 +42,10 @@ import {InputTextModule} from "primeng/inputtext";
     FormsModule,
     CheckboxModule,
     CardModule,
-    InputTextModule
+    InputTextModule,
+    DataViewModule,
+    RatingModule,
+    TagModule
   ],
   providers: [],
   bootstrap: [AppComponent]

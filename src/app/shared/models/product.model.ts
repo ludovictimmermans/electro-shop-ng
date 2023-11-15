@@ -10,3 +10,7 @@ export interface Product{
   brandId: number,
   categoryId:number
 }
+
+export interface CartItem extends Product {
+  qtt: number
+}
