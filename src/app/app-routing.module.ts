@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'manager',loadChildren: () => import ('./manager/manager.module').then(r => r.ManagerModule)},
   { path: 'customer',loadChildren: () => import ('./customer/customer.module').then(r => r.CustomerModule)},
+  { path: 'shopping',loadChildren: () => import ('./shopping/shopping.module').then(r => r.ShoppingModule)},
   { path: 'login', component: LoginComponent },
   { path: '404', component: Page404Component },
   { path: '**', redirectTo: '404' },

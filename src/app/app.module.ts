@@ -20,6 +20,7 @@ import {HomeComponent} from "./layout/home/home.component";
 import {DataViewModule} from "primeng/dataview";
 import {RatingModule} from "primeng/rating";
 import {TagModule} from "primeng/tag";
+import { ShoppingComponent } from './shopping/shopping.component';
 
 @NgModule({
   declarations: [

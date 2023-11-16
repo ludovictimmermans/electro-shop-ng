@@ -21,7 +21,6 @@ export class UpdateProductComponent{
   categories$: Observable<Category[]>;
   brand$:Observable<Brand[]>;
   private productId:number;
-  selectedCat: any={label: 'PC', value: 2 };
 
 
 
@@ -38,13 +37,13 @@ export class UpdateProductComponent{
     this.brand$=$brandServ.getAll();
     this.productId = route.snapshot.params['id'];
     this.products$ = $productService.getOne(this.productId).pipe(
-      tap(data => this.form.patchValue({
+      tap((data:any) => this.form.patchValue({
         name: data.name,
         description: data.description,
         price: data.price,
         quantity: data.quantity,
-        categoryId: data.categoryId,
-        brandId: data.brandId
+        categoryId: data.category.id,
+        brandId: data.brand.id
       }))
     );
   }
