@@ -7,13 +7,15 @@ import {RouterLink, RouterOutlet} from "@angular/router";
 import { CustomerComponent } from './customer.component';
 import {CustomerRoutingModule} from "./customer-routing.module";
 import {PasswordModule} from "primeng/password";
+import { UpdateCustomerComponent } from './update-customer/update-customer.component';
 
 
 
 @NgModule({
   declarations: [
     CustomerComponent,
-    AddCustomerComponent
+    AddCustomerComponent,
+    UpdateCustomerComponent
 
   ],
   imports: [

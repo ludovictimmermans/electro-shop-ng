@@ -15,13 +15,13 @@ import {PRODUCT_UPDATE_FORM} from "./updateProduct.form";
   templateUrl: './update-product.component.html',
   styleUrls: ['./update-product.component.scss']
 })
-export class UpdateProductComponent {
+export class UpdateProductComponent{
   form!: FormGroup;
   products$!:Observable<Product>
   categories$: Observable<Category[]>;
   brand$:Observable<Brand[]>;
   private productId:number;
-  selectedCat: any;
+  selectedCat: any={label: 'PC', value: 2 };
 
 
 

@@ -39,8 +39,10 @@
         <div class="field" *ngIf="categories$ | async as categories; else loading">
           <div class="flex flex-column">
             <label>Catégorie</label>
-            <p-dropdown [options]="categories" [(ngModel)]="selectedCat" formControlName="categoryId" optionValue="id"
-                        placeholder="Choissisez une catégorie" [editable]="true" optionLabel="name">
+            <p-dropdown [options]="categories" selectedOption formControlName="categoryId" optionValue="id" inputId="{{product.categoryId}}"
+                        placeholder="Choissisez une catégorie" [editable]="true" optionLabel="name"
+
+            >
             </p-dropdown>
           </div>
         </div>
