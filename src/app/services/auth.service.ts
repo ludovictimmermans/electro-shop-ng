@@ -43,6 +43,7 @@ export class AuthService {
   private set connectedUser(user: AuthDTO | null){
     if( user )
       localStorage.setItem(AUTH_KEY, JSON.stringify(user));
+
     else
       localStorage.removeItem(AUTH_KEY);
 
@@ -67,5 +68,9 @@ export class AuthService {
 
   get token(): string | null {
     return this.connectedUser ? this.connectedUser.token : null;
+  }
+
+  get role(): string | null {
+    return this.connectedUser ? this.connectedUser.roles[0] : null;
   }
 }

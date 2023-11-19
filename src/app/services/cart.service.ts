@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Product} from "../shared/models/product.model";
 import {CartItem} from "../shared/models/cart.model";
-
+import {HttpClient} from "@angular/common/http";
+import {Order} from "../shared/models/order.model";
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +10,9 @@ export class CartService {
 
   cart: CartItem[] = []
 
-  constructor() { }
+  private readonly BASE_URL = 'http://localhost:8080/order'
+
+  constructor(private client: HttpClient) { }
 
   AddToCart(produit: Product){
     const existingProduct = this.cart.filter(e => e.id == produit.id)[0];
@@ -41,6 +44,18 @@ export class CartService {
     let sum = 0;
     this.cart.forEach(item => sum += item.price * item.qtt)
     return sum;
+  }
+
+  orderCart(){
+    let products: Map<number,number>=new Map<number, number>();
+    this.cart.forEach(
+      p => products.set(p.id,p.qtt)
+    )
+    const order : Order = {
+      products : products
+    }
+
+    return this.client.post<Map<number,number>>(this.BASE_URL,order);
   }
 
 }

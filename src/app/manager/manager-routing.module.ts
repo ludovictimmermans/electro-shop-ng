@@ -17,7 +17,7 @@ const routes : Routes = [
     path:'',
     component: ManagerComponent,
     children:[
-      {path:'category/list',component:ListCategoryComponent,/*resolve:{categories : CategoryResolver}*/},
+      {path:'category/list',component:ListCategoryComponent},
       {path:'category/update/:id',component:UpdateCategoryComponent,resolve:{categories : CategoryResolver}},
       {path:'category/add',component:AddCategoryComponent},
       {path:'brand/list',component:ListBrandComponent},

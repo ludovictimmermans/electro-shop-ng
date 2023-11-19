@@ -27,4 +27,10 @@ export class ShoppingCartComponent {
   removeOne(item: CartItem){
     this.$cartServ.removeFromCart(item, 1);
   }
+
+    protected readonly parseInt = parseInt;
+
+  makeOrder() {
+    this.$cartServ.orderCart();
+  }
 }

@@ -22,7 +22,7 @@ export class CustomerService {
   }
 
   add(customer: Customer) {
-    return this.client.post<Customer>(this.BASE_URL+ '/' + customer.id, customer);
+    return this.client.post<Customer>(this.BASE_URL, customer);
   }
 
   update(customer: Customer) {

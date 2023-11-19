@@ -6,6 +6,7 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {FormsModule} from "@angular/forms";
 import {ShoppingRoutingModule} from "./shopping-routing.module";
 import {ShoppingComponent} from "./shopping.component";
+import {ButtonModule} from "primeng/button";
 
 
 
@@ -14,12 +15,13 @@ import {ShoppingComponent} from "./shopping.component";
     ShoppingComponent,
     ShoppingCartComponent
   ],
-  imports: [
-    CommonModule,
-    ShoppingRoutingModule,
-    DataViewModule,
-    InputNumberModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        ShoppingRoutingModule,
+        DataViewModule,
+        InputNumberModule,
+        FormsModule,
+        ButtonModule
+    ]
 })
 export class ShoppingModule { }

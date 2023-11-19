@@ -13,14 +13,14 @@ import {PasswordModule} from "primeng/password";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CheckboxModule} from "primeng/checkbox";
 import {CardModule} from "primeng/card";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {InputTextModule} from "primeng/inputtext";
 import {HomeComponent} from "./layout/home/home.component";
 import {DataViewModule} from "primeng/dataview";
 import {RatingModule} from "primeng/rating";
 import {TagModule} from "primeng/tag";
-import { ShoppingComponent } from './shopping/shopping.component';
+import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -48,7 +48,9 @@ import { ShoppingComponent } from './shopping/shopping.component';
     RatingModule,
     TagModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
