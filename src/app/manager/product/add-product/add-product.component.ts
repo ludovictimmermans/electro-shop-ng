@@ -41,13 +41,12 @@ export class AddProductComponent {
         name:this.form.value.name,
         description:this.form.value.description,
         price:this.form.value.price,
-        quantity:this.form.value.quantity,
+        stock:this.form.value.quantity,
         categoryId:this.form.value.categoryId,
         brandId:this.form.value.brandId
       };
       console.log("valid et preparé")
-      this.$productServ.add(product).subscribe();
-      this.router.navigateByUrl("manager/product/list")
+      this.$productServ.add(product).subscribe(()=> this.router.navigateByUrl("manager/product/list"));
     }
   }
 

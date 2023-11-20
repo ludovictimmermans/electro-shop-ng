@@ -31,6 +31,6 @@ export class ShoppingCartComponent {
     protected readonly parseInt = parseInt;
 
   makeOrder() {
-    this.$cartServ.orderCart();
+    this.$cartServ.orderCart().subscribe();
   }
 }

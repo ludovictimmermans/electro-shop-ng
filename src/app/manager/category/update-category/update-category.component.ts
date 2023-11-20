@@ -41,8 +41,8 @@ export class UpdateCategoryComponent {
         name:this.form.value.name,
         description:this.form.value.description
       };
-      this.$categoryServ.update(category).subscribe();
-      this.router.navigateByUrl("manager/category/list")
+      this.$categoryServ.update(category).subscribe(() => this.router.navigateByUrl("manager/category/list"));
+
     }
   }
 }

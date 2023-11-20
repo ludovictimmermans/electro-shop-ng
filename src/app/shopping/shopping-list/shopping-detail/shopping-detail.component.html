@@ -1,0 +1,24 @@
+<ng-container class="align-content-center" *ngIf="product$ | async as product">
+  <div class="grid nested-grid">
+    <div class="col-8">
+      <h3>{{product.name}}</h3>
+      <img src="https://image.coolblue.be/max/500x500/products/1958481"/>
+    </div>
+    <div class="col-4">
+      <div class="grid flex align-content-end">
+        <div class="col-12">
+          <h3>{{product.price | currency: 'EUR'}}</h3>
+        </div>
+        <div class="col-12 ">
+          <button pButton class="p-button-success" (click)="add(product)">J'achète</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid nested-grid">
+    <div class="col-8">
+      <h4>Description :</h4>
+      <p>{{product.description}}</p>
+    </div>
+  </div>
+</ng-container>

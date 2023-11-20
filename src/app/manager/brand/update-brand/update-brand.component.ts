@@ -41,8 +41,8 @@ export class UpdateBrandComponent {
         name:this.form.value.name,
         img:this.form.value.img
       };
-      this.$brandServ.update(brand).subscribe();
-      this.router.navigateByUrl("manager/brand/list")
+      this.$brandServ.update(brand).subscribe(()=>this.router.navigateByUrl("manager/brand/list"));
+
     }
   }
 }

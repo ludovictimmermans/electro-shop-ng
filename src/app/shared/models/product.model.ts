@@ -6,7 +6,7 @@ export interface Product{
   name:string,
   description:string,
   price:number,
-  quantity:number,
+  stock:number,
   brandId: number,
   categoryId:number
 }

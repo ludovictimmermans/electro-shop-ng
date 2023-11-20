@@ -8,7 +8,7 @@
     <ng-template #connect>
       <p-button routerLink="/login">Se connecter</p-button>
     </ng-template>
-    <p-button class="p-menuitem" routerLink="/shopping/cart"><i class="pi pi-shopping-cart"></i></p-button>
+    <p-button *ngIf="role=='CUSTOMER'" class="p-menuitem" routerLink="/shopping/cart"><i class="pi pi-shopping-cart"></i></p-button>
   </ng-template>
 </p-menubar>
 

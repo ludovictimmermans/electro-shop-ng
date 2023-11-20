@@ -29,8 +29,8 @@ export class AddBrandComponent {
         name:this.form.value.name,
         img:this.form.value.img
       };
-      this.$brandServ.add(brand).subscribe();
-      this.router.navigateByUrl("manager/brand/list")
+      this.$brandServ.add(brand).subscribe(()=>this.router.navigateByUrl("manager/brand/list"));
+
     }
   }
 }

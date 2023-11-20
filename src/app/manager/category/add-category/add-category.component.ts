@@ -29,8 +29,8 @@ export class AddCategoryComponent {
         name:this.form.value.name,
         description:this.form.value.description
       };
-      this.$categoryServ.add(category).subscribe();
-      this.router.navigateByUrl("manager/category/list")
+      this.$categoryServ.add(category).subscribe(()=>this.router.navigateByUrl("manager/category/list"));
+
     }
   }
 

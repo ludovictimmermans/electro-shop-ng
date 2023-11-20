@@ -55,12 +55,12 @@ export class UpdateProductComponent{
         name:this.form.value.name,
         description:this.form.value.description,
         price: this.form.value.price,
-        quantity: this.form.value.quantity,
+        stock: this.form.value.quantity,
         categoryId: this.form.value.categoryId,
         brandId: this.form.value.brandId
       };
-      this.$productService.update(product).subscribe();
-      this.router.navigateByUrl("manager/product/list")
+      this.$productService.update(product).subscribe(() =>this.router.navigateByUrl("manager/product/list"));
+
     }
   }
 }

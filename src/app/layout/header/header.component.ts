@@ -54,6 +54,10 @@ export class HeaderComponent {
     return this.$authServ.isConnected;
   }
 
+  get role(){
+    return this.$authServ.role;
+  }
+
   disconnect(){
     this.$authServ.disconnect();
   }

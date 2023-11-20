@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, map, Observable, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {AuthDTO} from "../shared/models/auth.model";
+import {Router} from "@angular/router";
 
 const AUTH_KEY = 'connectedUser';
 
@@ -11,7 +12,7 @@ const AUTH_KEY = 'connectedUser';
 export class AuthService {
   private _connectedUser$ = new BehaviorSubject<AuthDTO | null>( this.connectedUser );
 
-  constructor(private client: HttpClient) {}
+  constructor(private client: HttpClient,private router:Router) {}
 
   connect(username: string, password: string){
     return this.client.post<AuthDTO>('http://localhost:8080/auth/login', {username, password}).pipe(
@@ -25,6 +26,7 @@ export class AuthService {
   disconnect(){
     if( this.isConnected ) {
       this.connectedUser = null;
+      this.router.navigateByUrl("");
     }
   }
 

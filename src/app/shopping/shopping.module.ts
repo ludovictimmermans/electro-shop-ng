@@ -7,21 +7,32 @@ import {FormsModule} from "@angular/forms";
 import {ShoppingRoutingModule} from "./shopping-routing.module";
 import {ShoppingComponent} from "./shopping.component";
 import {ButtonModule} from "primeng/button";
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import {RatingModule} from "primeng/rating";
+import {TagModule} from "primeng/tag";
+import {ShoppingDetailComponent} from "./shopping-list/shopping-detail/shopping-detail.component";
 
 
 
 @NgModule({
   declarations: [
     ShoppingComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ShoppingListComponent,
+    ShoppingDetailComponent
   ],
-    imports: [
-        CommonModule,
-        ShoppingRoutingModule,
-        DataViewModule,
-        InputNumberModule,
-        FormsModule,
-        ButtonModule
-    ]
+  exports: [
+    ShoppingListComponent
+  ],
+  imports: [
+    CommonModule,
+    ShoppingRoutingModule,
+    DataViewModule,
+    InputNumberModule,
+    FormsModule,
+    ButtonModule,
+    RatingModule,
+    TagModule
+  ]
 })
 export class ShoppingModule { }
