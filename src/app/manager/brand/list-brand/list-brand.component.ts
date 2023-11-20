@@ -20,6 +20,7 @@ export class ListBrandComponent {
   delete(id:number) {
     // attention au timing, etre sur de l'ordre d'execution
     this.$brandServ.delete(id).subscribe(() => this.loadBrand());
+
   }
 
   loadBrand(){

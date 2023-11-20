@@ -11,6 +11,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import {RatingModule} from "primeng/rating";
 import {TagModule} from "primeng/tag";
 import {ShoppingDetailComponent} from "./shopping-list/shopping-detail/shopping-detail.component";
+import { ReviewComponent } from './review/review.component';
 
 
 
@@ -19,7 +20,8 @@ import {ShoppingDetailComponent} from "./shopping-list/shopping-detail/shopping-
     ShoppingComponent,
     ShoppingCartComponent,
     ShoppingListComponent,
-    ShoppingDetailComponent
+    ShoppingDetailComponent,
+    ReviewComponent
   ],
   exports: [
     ShoppingListComponent
