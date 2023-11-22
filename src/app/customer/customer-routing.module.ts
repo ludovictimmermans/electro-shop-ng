@@ -3,6 +3,7 @@ import {NgModule} from "@angular/core";
 import {AddCustomerComponent} from "./add-customer/add-customer.component";
 import {CustomerComponent} from "./customer.component";
 import {UpdateCustomerComponent} from "./update-customer/update-customer.component";
+import {UpdatePwdComponent} from "./update-pwd/update-pwd.component";
 
 const routes : Routes = [
     {
@@ -11,7 +12,7 @@ const routes : Routes = [
       children:[
         {path:'add',component:AddCustomerComponent},
         {path:'update/:id',component:UpdateCustomerComponent},
-
+        {path:'pwd/:id',component: UpdatePwdComponent}
       ]
     }
   ];

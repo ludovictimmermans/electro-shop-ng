@@ -1,0 +1,40 @@
+<h3 class="pl-3">Infos personnels</h3>
+<div class="flex justify-content-between pl-3">
+  <div class="justify-content-start">
+    <p>Modifier votre mot de passe</p>
+  </div>
+</div>
+<ng-container>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="col-12 pl-3">
+      <div class="p-fluid">
+        <div class="field col-6 md:col-6">
+          <label>Ancien mot de passe</label>
+          <p-password type="password"
+                      size="small"
+                      formControlName="oldPwd"
+          ></p-password>
+        </div>
+        <div class="field col-6 md:col-6">
+          <label>Nouveau mot de passe</label>
+          <p-password type="password"
+                      size="small"
+                      formControlName="newPwd"
+          ></p-password>
+        </div>
+        <div class="field col-6 md:col-6">
+          <label>Mot de passe</label>
+          <p-password type="password"
+                      size="small"
+                      formControlName="confirmPwd"
+          ></p-password>
+        </div>
+        <div class="flex col-6 md:col-6 justify-content-center">
+          <button pButton type="submit" class="ml-6">Modifier</button>
+          <button pButton type="button" class="p-button-secondary" routerLink="">Annuler
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-container>

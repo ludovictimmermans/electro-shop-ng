@@ -5,11 +5,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Brand} from "../../../shared/models/brand.model";
 import {BrandService} from "../../../services/brand.service";
 import {BRAND_UPDATE_FORM} from "./updateBrand.form";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-update-brand',
   templateUrl: './update-brand.component.html',
-  styleUrls: ['./update-brand.component.scss']
+  styleUrls: ['./update-brand.component.scss'],
 })
 export class UpdateBrandComponent {
   form!:FormGroup;
@@ -41,7 +42,10 @@ export class UpdateBrandComponent {
         name:this.form.value.name,
         img:this.form.value.img
       };
-      this.$brandServ.update(brand).subscribe(()=>this.router.navigateByUrl("manager/brand/list"));
+      this.$brandServ.update(brand).subscribe(()=>{
+        this.router.navigateByUrl("manager/brand/list");
+
+      });
 
     }
   }

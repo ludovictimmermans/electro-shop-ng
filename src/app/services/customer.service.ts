@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Customer} from "../shared/models/customer.model";
+import {PwdForm} from "../shared/models/pwdForm.model";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class CustomerService {
 
   update(customer: Customer) {
     return this.client.put<Customer>(this.BASE_URL + '/' + customer.id, customer);
+  }
+
+  setPassword(username:string,pwd : PwdForm){
+    return this.client.patch('http://localhost:8080/auth/password/'+ username,pwd);
   }
 
 }

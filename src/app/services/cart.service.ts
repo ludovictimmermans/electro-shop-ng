@@ -47,6 +47,10 @@ export class CartService {
     return sum;
   }
 
+  get cartSize(){
+    return this.cart.length;
+  }
+
   orderCart() {
     // let products: Map<number,number>=new Map<number, number>();
     let list: OrderItem[] = [];

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {AuthService} from "../../services/auth.service";
 import {Observable, tap} from "rxjs";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-header',
@@ -44,10 +45,12 @@ export class HeaderComponent {
 
 
   ];
-  username$:Observable<String | null>
+  username$:Observable<String | null>;
+  cartSize:string;
 
-  constructor(private readonly $authServ:AuthService) {
+  constructor(private readonly $authServ:AuthService,private readonly $cartService:CartService) {
     this.username$ = this.$authServ.username$;
+    this.cartSize=($cartService.cartSize).toString();
   }
 
   get isConnected(){

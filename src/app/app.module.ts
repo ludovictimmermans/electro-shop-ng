@@ -22,6 +22,7 @@ import {RatingModule} from "primeng/rating";
 import {TagModule} from "primeng/tag";
 import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
 import {ShoppingModule} from "./shopping/shopping.module";
+import {BadgeModule} from "primeng/badge";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {ShoppingModule} from "./shopping/shopping.module";
         DataViewModule,
         RatingModule,
         TagModule,
-        ShoppingModule
+        ShoppingModule,
+        BadgeModule
     ],
   providers: [
     { provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}

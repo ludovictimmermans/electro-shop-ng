@@ -20,6 +20,7 @@ import { UpdateProductComponent } from './product/update-product/update-product.
 import {AutoCompleteModule} from "primeng/autocomplete";
 import {DropdownModule} from "primeng/dropdown";
 import {InputNumberModule} from "primeng/inputnumber";
+import {ToastModule} from "primeng/toast";
 
 const PRIME_IMPORTS = [TableModule,ButtonModule];
 
@@ -36,18 +37,19 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     AddProductComponent,
     UpdateProductComponent
   ],
-  imports: [
-    CommonModule,
-    ManagerRoutingModule,
-    ...PRIME_IMPORTS,
-    ButtonModule,
-    CardModule,
-    InputTextModule,
-    PasswordModule,
-    ReactiveFormsModule,
-    AutoCompleteModule,
-    DropdownModule,
-    InputNumberModule
-  ]
+    imports: [
+        CommonModule,
+        ManagerRoutingModule,
+        ...PRIME_IMPORTS,
+        ButtonModule,
+        CardModule,
+        InputTextModule,
+        PasswordModule,
+        ReactiveFormsModule,
+        AutoCompleteModule,
+        DropdownModule,
+        InputNumberModule,
+        ToastModule
+    ]
 })
 export class ManagerModule { }

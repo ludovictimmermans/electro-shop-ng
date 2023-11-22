@@ -8,6 +8,7 @@ import { CustomerComponent } from './customer.component';
 import {CustomerRoutingModule} from "./customer-routing.module";
 import {PasswordModule} from "primeng/password";
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import { UpdatePwdComponent } from './update-pwd/update-pwd.component';
 
 
 
@@ -15,7 +16,8 @@ import { UpdateCustomerComponent } from './update-customer/update-customer.compo
   declarations: [
     CustomerComponent,
     AddCustomerComponent,
-    UpdateCustomerComponent
+    UpdateCustomerComponent,
+    UpdatePwdComponent
 
   ],
   imports: [
