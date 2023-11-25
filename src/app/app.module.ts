@@ -23,6 +23,8 @@ import {TagModule} from "primeng/tag";
 import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
 import {ShoppingModule} from "./shopping/shopping.module";
 import {BadgeModule} from "primeng/badge";
+import {MenuModule} from "primeng/menu";
+import {OverlayModule} from "primeng/overlay";
 
 @NgModule({
   declarations: [
@@ -33,25 +35,27 @@ import {BadgeModule} from "primeng/badge";
     Page404Component,
     LoginComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        ButtonModule,
-        MenubarModule,
-        PasswordModule,
-        FormsModule,
-        CheckboxModule,
-        CardModule,
-        InputTextModule,
-        DataViewModule,
-        RatingModule,
-        TagModule,
-        ShoppingModule,
-        BadgeModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    MenubarModule,
+    PasswordModule,
+    FormsModule,
+    CheckboxModule,
+    CardModule,
+    InputTextModule,
+    DataViewModule,
+    RatingModule,
+    TagModule,
+    ShoppingModule,
+    BadgeModule,
+    MenuModule,
+    OverlayModule
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}
   ],

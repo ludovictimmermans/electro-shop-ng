@@ -22,6 +22,10 @@ export class CustomerService {
     return this.client.get<Customer>(this.BASE_URL + '/' + customerId);
   }
 
+  getOneByUsername(username:string){
+    return this.client.get<Customer>(this.BASE_URL+'?username='+username);
+  }
+
   add(customer: Customer) {
     return this.client.post<Customer>(this.BASE_URL, customer);
   }

@@ -1,0 +1,38 @@
+<h3 class="pl-3">Mes commandes</h3>
+<div class="flex justify-content-between pl-3">
+  <div class="justify-content-start">
+    <p> Toutes vos commandes </p>
+  </div>
+</div>
+
+
+<ng-container *ngIf="order$ | async as orders;else loading">
+  <p-table [value]="orders">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Date</th>
+        <th>Heure</th>
+        <th>Statut</th>
+        <th> Montant total</th>
+        <th>Date de Livraison</th>
+        <th>Voir en détail</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order>
+      <tr>
+        <td>{{order.date | date:'dd-MM-YYYY'}}</td>
+        <td>{{order.date | date: 'HH:MM'}}</td>
+        <td>{{order.status}}</td>
+        <td>{{order.amount | currency:'EUR'}}</td>
+        <td>{{order.delivery | date:'dd-MM-YYYY'}}</td>
+        <td><button pButton type="button" icon="pi pi-search-plus"
+                    routerLink="/customer/order/{{order.id}}"></button></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-container>
+
+
+<ng-template #loading>
+  loading...
+</ng-template>

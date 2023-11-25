@@ -1,26 +1,32 @@
-<ng-container>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <p-card class="flex justify-content-center" header="Welcome" subheader="Sign in to continue"
-          [style]="{ width: '360px' }">
+<div class="flex">
+  <div class="surface-section w-full md:w-6 p-6 md:p-8">
+    <div class="mb-5"><img id="j_idt77:blockViewerForm:j_idt79"
+                           src="./assets/img/logo.png"
+                           class="mb-3" alt="Image" height="50" ismap="false">
+      <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
+      <span class="text-600 font-medium mr-2">Don't have an account?</span>
+      <a class="font-medium no-underline text-blue-500 cursor-pointer">Create today!</a>
+    </div>
+    <div>
+      <label class="block text-900 font-medium mb-2">Email</label><input
+      type="text"
+      class="p-input p-inputtext p-widget p-state-default p-corner-all w-full mb-3"
+      placeholder="Email addres">
 
-      <ng-template pTemplate="header">
-        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png"/>
-      </ng-template>
+      <label class="block text-900 font-medium mb-2">Password</label><input
+      type="password"
+      class="p-input p-inputtext ui-widget ui-state-default ui-corner-all w-full mb-3" placeholder="Password">
 
-      <div class="flex justify-content-center flex-column gap-2">
-        <label>Username</label>
-        <input pInputText type="text"  formControlName="username"/>
+      <div class="flex align-items-center justify-content-between mb-6">
+        <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot your
+          password?</a>
       </div>
-      <div class="flex justify-content-center flex-column gap-2">
-        <label>Password</label>
-        <p-password formControlName="password" [feedback]="false"></p-password>
-      </div>
-      <ng-template pTemplate="footer">
-        <button pButton type="submit" class="ml-6">Connexion</button>
-        <button pButton type="button" class="p-button-secondary" routerLink="">Annuler
-        </button>
-      </ng-template>
-
-  </p-card>
-  </form>
-</ng-container>
+      <button id="j_idt77:blockViewerForm:j_idt84" name="j_idt77:blockViewerForm:j_idt84"
+              class="p-button p-widget ui-state-default ui-corner-all ui-button-text-icon-left w-full" type="button">
+        <span class="ui-button-icon-left ui-icon ui-c pi pi-user"></span><span
+        class="ui-button-text ui-c">Sign In</span></button>
+    </div>
+  </div>
+  <div class="hidden md:block w-6 bg-no-repeat bg-cover"
+       style="background: url('https://www.home-designing.com/wp-content/uploads/2011/11/computer-store-interior-design.jpg')"></div>
+</div>

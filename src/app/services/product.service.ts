@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../shared/models/product.model";
+import {Review} from "../shared/models/review.model";
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,8 @@ export class ProductService {
     return this.client.delete<Product>(this.BASE_URL+'/'+id);
   }
 
-
-
-
-
+  review(review:Review){
+    return this.client.post<Review>('http://localhost:8080/review/'+review.productId,review);
+  }
 
 }

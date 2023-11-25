@@ -42,11 +42,26 @@ export class HeaderComponent {
         }
       ]
     }
+  ];
+  profileLinks: MenuItem[] = [
+    {
+      label: 'Gerer mon compte',
+      routerLink: 'customer/update/'
+    },
+    {
+      label: 'Changer de mot de passe',
+      routerLink: 'customer/pwd/'
+    },
+    {
+      label: 'Mes commandes',
+      routerLink: 'customer/order/'
+    }
 
 
   ];
   username$:Observable<String | null>;
   cartSize:string;
+  overlayVisible: boolean=false;
 
   constructor(private readonly $authServ:AuthService,private readonly $cartService:CartService) {
     this.username$ = this.$authServ.username$;
@@ -63,5 +78,9 @@ export class HeaderComponent {
 
   disconnect(){
     this.$authServ.disconnect();
+  }
+
+  toggle(){
+    this.overlayVisible=!this.overlayVisible;
   }
 }
