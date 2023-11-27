@@ -17,6 +17,10 @@ export class ProductService {
         return this.client.get<Product[]>(this.BASE_URL);
   }
 
+  getAllByCategory(category:string):Observable<Product[]>{
+    return this.client.get<Product[]>(this.BASE_URL+'/filter?category='+category);
+  }
+
   getOne(productId: number) {
     return this.client.get<Product>(this.BASE_URL+'/'+productId);
   }

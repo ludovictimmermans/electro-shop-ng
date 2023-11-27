@@ -1,0 +1,93 @@
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+  <div class="flex justify-content-between flex-wrap">
+    <div class="flex align-items-center mb-4 md:mb-0">
+      <div class="text-900 font-bold text-3xl">Category Title</div>
+      <p-badge class="p-element ml-3 bg-secundary text-gray-900 p-0 border-circle" value="76">
+        <span class="ml-3 bg-gray-200 text-gray-900 p-0 border-circle p-badge p-component ng-star-inserted"></span>
+        <!---->
+      </p-badge>
+    </div>
+    <div>
+      <button pButton type="button"
+              class="p-element p-button-outlined p-button-secondary w-7rem p-2 p-button p-component"
+              (click)="toggle()"
+      >
+        <span class="p-button-icon p-button-icon-right pi pi-sort-alt" aria-hidden="true"></span>
+        <span class="p-button-label">Sort By</span>
+      </button>
+      <p-overlay [(visible)]="overlayVisible"
+                 [responsive]="{ breakpoint: '640px', direction: 'bottom', contentStyleClass: 'h-20rem' }"
+                 contentStyleClass="p-4 surface-overlay shadow-2 border-round">
+        <ng-template pTemplate="content" let-option>
+          <ul class="list-none py-0 pr-0 lg:pl-0 pl-5 m-0 text-700 hidden lg:block">
+            <li class="mb-3 cursor-pointer">
+              <a class="linkNoStyle text-700 hover:text-900">Prix croissant</a>
+            </li>
+            <li class="mb-3 cursor-pointer">
+              <a class="linkNoStyle text-700 hover:text-900">Prix décroissant</a>
+            </li>
+            <li class="mb-3 cursor-pointer">
+              <a class="linkNoStyle text-700 hover:text-900">Note</a>
+            </li>
+          </ul>
+        </ng-template>
+      </p-overlay>
+    </div>
+  </div>
+  <p-divider class="p-element w-full border-gray-200">
+    <div role="separator"
+         class="w-full border-gray-200 p-divider p-component p-divider-horizontal p-divider-solid p-divider-left">
+      <div class="p-divider-content"></div>
+    </div>
+  </p-divider>
+  <div class="grid grid-nogutter align-items-center">
+    <p-multiSelect [options]="brands" [(ngModel)]="selectedBrands" placeholder="Brand" optionLabel="name" styleClass="w-full"
+                   selectedItemsLabel="{0} brands selected"
+                   class="p-element p-inputwrapper flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900 ng-pristine ng-valid ng-touched">
+      <div class="w-full p-multiselect p-component">
+        <div class="p-hidden-accessible"><input type="text" readonly="readonly" aria-haspopup="listbox" role="listbox"
+                                                aria-expanded="false"></div>
+        <div class="p-element p-multiselect-label-container">
+          <div class="p-multiselect-label p-placeholder">Brand<!----><!----><!----><!----><!----><!----></div><!---->
+        </div>
+        <div class="p-multiselect-trigger"><!---->
+          <i class="p-element p-icon-wrapper ng-star-inserted">
+          </i><!----><!----><!----><!----></div>
+        <p-overlay class="p-element ng-tns-c13-9 ng-star-inserted">
+          <div class="ng-tns-c13-9 p-overlay p-component ng-star-inserted"
+               style="min-width: 254px; transform-origin: center top; top: 47px; left: 0px;"><!----></div><!---->
+        </p-overlay>
+      </div>
+    </p-multiSelect>
+    <input pInputText inputmode="decimal" class="p-inputtext p-component p-element w-full mr-3 p-inputnumber-input p-filled flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900" placeholder="min" min="0" aria-valuenow="20">
+    <input pInputText inputmode="decimal" class="p-inputtext p-component p-element w-full mr-3 p-inputnumber-input p-filled flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900" placeholder="max" min="10" aria-valuenow="20">
+    <button pButton="" label="Filtrer"
+            class="p-element p-button-rounded bg-gray-900 text-white px-5 lg:mr-4 sm w-full lg:w-auto border-none p-button p-component"
+            (click)="filter()">
+
+    </button>
+    <button pButton="" label="Reset"
+            class="p-element p-button-rounded bg-white text-black-alpha-90 hover:bg-gray-900 hover:text-white px-5 lg:mr-4 sm w-full lg:w-auto border-none p-button p-component"
+
+    >
+    </button>
+  </div>
+<ng-container *ngIf="products$ |async as products">
+  <div class="grid -mt-3 -ml-3 -mr-3 ">
+    <div class="col-12 md:col-6 lg:col-3 mb-5 md:mb-0" *ngFor="let product of products">
+      <div class="mb-3 relative"><img
+        src="https://www.omen.com/content/dam/sites/omen/worldwide/desktops/omen-25l/about@2x.png"
+        class="w-full">
+        <button type="button" pRipple
+                class="p-ripple p-element border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
+                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);"><i
+          class="pi pi-shopping-cart mr-3 text-base"></i><span class="text-base">Add to Cart</span><span
+          class="p-ink"></span></button>
+      </div>
+      <div class="flex flex-column align-items-center"><span
+        class="text-xl text-900 font-medium mb-3">{{product.name}}</span><span
+        class="text-xl text-900 mb-3">{{product.price | currency:'EUR'}}</span>
+      </div>
+    </div>
+  </div>
+</ng-container>

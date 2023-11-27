@@ -11,6 +11,19 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import {RatingModule} from "primeng/rating";
 import {TagModule} from "primeng/tag";
 import {ShoppingDetailComponent} from "./shopping-list/shopping-detail/shopping-detail.component";
+import { ShoppingCategoryListComponent } from './shopping-category-list/shopping-category-list.component';
+import {BadgeModule} from "primeng/badge";
+import {MenuModule} from "primeng/menu";
+import {DividerModule} from "primeng/divider";
+import {OverlayModule} from "primeng/overlay";
+import { MultiSelectModule } from 'primeng/multiselect';
+import {ToggleButtonModule} from "primeng/togglebutton";
+import {RippleModule} from "primeng/ripple";
+import {StyleClassModule} from "primeng/styleclass";
+import {SliderModule} from "primeng/slider";
+import {InputTextModule} from "primeng/inputtext";
+import {GalleriaModule} from "primeng/galleria";
+import {CheckboxModule} from "primeng/checkbox";
 
 
 
@@ -19,7 +32,8 @@ import {ShoppingDetailComponent} from "./shopping-list/shopping-detail/shopping-
     ShoppingComponent,
     ShoppingCartComponent,
     ShoppingListComponent,
-    ShoppingDetailComponent
+    ShoppingDetailComponent,
+    ShoppingCategoryListComponent
   ],
   exports: [
     ShoppingListComponent
@@ -32,7 +46,19 @@ import {ShoppingDetailComponent} from "./shopping-list/shopping-detail/shopping-
     FormsModule,
     ButtonModule,
     RatingModule,
-    TagModule
+    TagModule,
+    BadgeModule,
+    MenuModule,
+    DividerModule,
+    OverlayModule,
+    MultiSelectModule,
+    ToggleButtonModule,
+    RippleModule,
+    StyleClassModule,
+    SliderModule,
+    InputTextModule,
+    GalleriaModule,
+    CheckboxModule
   ]
 })
 export class ShoppingModule { }

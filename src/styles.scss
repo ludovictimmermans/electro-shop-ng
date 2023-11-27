@@ -3,3 +3,18 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.linkNoStyle{
+  text-decoration: none;
+  color : gray;
+}
+.linkNoStyle :visited{
+  text-decoration: none;
+}
+.linkNoStyle :active{
+  text-decoration: none;
+}
+.linkNoStyle :hover{
+  color:black;
+}
+

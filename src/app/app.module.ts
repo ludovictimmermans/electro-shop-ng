@@ -25,6 +25,7 @@ import {ShoppingModule} from "./shopping/shopping.module";
 import {BadgeModule} from "primeng/badge";
 import {MenuModule} from "primeng/menu";
 import {OverlayModule} from "primeng/overlay";
+import {DividerModule} from "primeng/divider";
 
 @NgModule({
   declarations: [
@@ -35,27 +36,28 @@ import {OverlayModule} from "primeng/overlay";
     Page404Component,
     LoginComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    ButtonModule,
-    MenubarModule,
-    PasswordModule,
-    FormsModule,
-    CheckboxModule,
-    CardModule,
-    InputTextModule,
-    DataViewModule,
-    RatingModule,
-    TagModule,
-    ShoppingModule,
-    BadgeModule,
-    MenuModule,
-    OverlayModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        ButtonModule,
+        MenubarModule,
+        PasswordModule,
+        FormsModule,
+        CheckboxModule,
+        CardModule,
+        InputTextModule,
+        DataViewModule,
+        RatingModule,
+        TagModule,
+        ShoppingModule,
+        BadgeModule,
+        MenuModule,
+        OverlayModule,
+        DividerModule
+    ],
   providers: [
     { provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}
   ],

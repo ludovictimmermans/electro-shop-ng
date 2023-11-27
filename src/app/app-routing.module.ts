@@ -17,11 +17,7 @@ const routes: Routes = [
   },
   {path: 'customer', loadChildren: () => import ('./customer/customer.module').then(r => r.CustomerModule)},
   {
-    path: 'shopping', loadChildren: () => import ('./shopping/shopping.module').then(r => r.ShoppingModule),
-    canActivate: [AuthGuard],
-    data: {
-      role: 'CUSTOMER'
-    }
+    path: 'shopping', loadChildren: () => import ('./shopping/shopping.module').then(r => r.ShoppingModule)
   },
   {path: 'login', component: LoginComponent},
   {path: '404', component: Page404Component},
