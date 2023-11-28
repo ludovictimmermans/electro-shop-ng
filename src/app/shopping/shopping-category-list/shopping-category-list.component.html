@@ -41,14 +41,15 @@
     </div>
   </p-divider>
   <div class="grid grid-nogutter align-items-center">
-    <p-multiSelect [options]="brands" [(ngModel)]="selectedBrands" placeholder="Brand" optionLabel="name" styleClass="w-full"
+    <p-multiSelect [options]="brands" [(ngModel)]="selectedBrands" placeholder="Brand" optionLabel="name"
+                   styleClass="w-full"
                    selectedItemsLabel="{0} brands selected"
                    class="p-element p-inputwrapper flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900 ng-pristine ng-valid ng-touched">
       <div class="w-full p-multiselect p-component">
         <div class="p-hidden-accessible"><input type="text" readonly="readonly" aria-haspopup="listbox" role="listbox"
                                                 aria-expanded="false"></div>
         <div class="p-element p-multiselect-label-container">
-          <div class="p-multiselect-label p-placeholder">Brand<!----><!----><!----><!----><!----><!----></div><!---->
+          <div class="p-multiselect-label p-placeholder">Marque<!----><!----><!----><!----><!----><!----></div><!---->
         </div>
         <div class="p-multiselect-trigger"><!---->
           <i class="p-element p-icon-wrapper ng-star-inserted">
@@ -59,35 +60,44 @@
         </p-overlay>
       </div>
     </p-multiSelect>
-    <input pInputText inputmode="decimal" class="p-inputtext p-component p-element w-full mr-3 p-inputnumber-input p-filled flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900" placeholder="min" min="0" aria-valuenow="20">
-    <input pInputText inputmode="decimal" class="p-inputtext p-component p-element w-full mr-3 p-inputnumber-input p-filled flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900" placeholder="max" min="10" aria-valuenow="20">
+    <span class="p-float-label">
+      <p-inputNumber formControlName="price" [min]="0" mode="currency" inputId="currency-germany" currency="EUR"
+                     class="flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900"> </p-inputNumber>
+      <label htmlFor="number-input" class="mb-1">Prix Minimum</label>
+    </span>
+    <span class="p-float-label">
+      <p-inputNumber formControlName="price" [min]="0" mode="currency" inputId="currency-germany" currency="EUR"
+                     class="flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900"> </p-inputNumber>
+      <label htmlFor="number-input" class="mb-1">Prix Minimum</label>
+    </span>
+    <p-checkbox class="flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900 p-checkbox-icon" name="groupname" value="1" label="En stock" [(ngModel)]="available"></p-checkbox>
     <button pButton="" label="Filtrer"
-            class="p-element p-button-rounded bg-gray-900 text-white px-5 lg:mr-4 sm w-full lg:w-auto border-none p-button p-component"
+            class="p-element p-button-rounded bg-gray-900 text-white mb-3 lg:mt-0 mr-0 lg:mr-4 w-full lg:w-auto border-none p-button p-component"
             (click)="filter()">
 
     </button>
     <button pButton="" label="Reset"
-            class="p-element p-button-rounded bg-white text-black-alpha-90 hover:bg-gray-900 hover:text-white px-5 lg:mr-4 sm w-full lg:w-auto border-none p-button p-component"
+            class="p-element p-button-rounded bg-white text-black-alpha-90 hover:bg-gray-900 hover:text-white mb-3 lg:mt-0 mr-0 lg:mr-4 w-full lg:w-auto border-none p-button p-component"
 
     >
     </button>
   </div>
-<ng-container *ngIf="products$ |async as products">
-  <div class="grid -mt-3 -ml-3 -mr-3 ">
-    <div class="col-12 md:col-6 lg:col-3 mb-5 md:mb-0" *ngFor="let product of products">
-      <div class="mb-3 relative"><img
-        src="https://www.omen.com/content/dam/sites/omen/worldwide/desktops/omen-25l/about@2x.png"
-        class="w-full">
-        <button type="button" pRipple
-                class="p-ripple p-element border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
-                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);"><i
-          class="pi pi-shopping-cart mr-3 text-base"></i><span class="text-base">Add to Cart</span><span
-          class="p-ink"></span></button>
-      </div>
-      <div class="flex flex-column align-items-center"><span
-        class="text-xl text-900 font-medium mb-3">{{product.name}}</span><span
-        class="text-xl text-900 mb-3">{{product.price | currency:'EUR'}}</span>
+  <ng-container *ngIf="products$ |async as products">
+    <div class="grid -mt-3 -ml-3 -mr-3 ">
+      <div class="col-12 md:col-6 lg:col-2 mb-5 md:mb-0" *ngFor="let product of products">
+        <div class="mb-3 relative"><img
+          src="https://image.coolblue.be/max/2048x1536/products/1985981"
+          class="w-full">
+          <button type="button" pRipple
+                  class="p-ripple p-element border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
+                  style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);"><i
+            class="pi pi-shopping-cart mr-3 text-base"></i><span class="text-base">Add to Cart</span><span
+            class="p-ink"></span></button>
+        </div>
+        <div class="flex flex-column align-items-center"><span
+          class="text-xl text-900 font-medium mb-3">{{product.name}}</span><span
+          class="text-xl text-900 mb-3">{{product.price | currency:'EUR'}}</span>
+        </div>
       </div>
     </div>
-  </div>
-</ng-container>
+  </ng-container>

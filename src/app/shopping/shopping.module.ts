@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import {DataViewModule} from "primeng/dataview";
 import {InputNumberModule} from "primeng/inputnumber";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ShoppingRoutingModule} from "./shopping-routing.module";
 import {ShoppingComponent} from "./shopping.component";
 import {ButtonModule} from "primeng/button";
@@ -38,27 +38,28 @@ import {CheckboxModule} from "primeng/checkbox";
   exports: [
     ShoppingListComponent
   ],
-  imports: [
-    CommonModule,
-    ShoppingRoutingModule,
-    DataViewModule,
-    InputNumberModule,
-    FormsModule,
-    ButtonModule,
-    RatingModule,
-    TagModule,
-    BadgeModule,
-    MenuModule,
-    DividerModule,
-    OverlayModule,
-    MultiSelectModule,
-    ToggleButtonModule,
-    RippleModule,
-    StyleClassModule,
-    SliderModule,
-    InputTextModule,
-    GalleriaModule,
-    CheckboxModule
-  ]
+    imports: [
+        CommonModule,
+        ShoppingRoutingModule,
+        DataViewModule,
+        InputNumberModule,
+        FormsModule,
+        ButtonModule,
+        RatingModule,
+        TagModule,
+        BadgeModule,
+        MenuModule,
+        DividerModule,
+        OverlayModule,
+        MultiSelectModule,
+        ToggleButtonModule,
+        RippleModule,
+        StyleClassModule,
+        SliderModule,
+        InputTextModule,
+        GalleriaModule,
+        CheckboxModule,
+        ReactiveFormsModule
+    ]
 })
 export class ShoppingModule { }
