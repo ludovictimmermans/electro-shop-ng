@@ -24,6 +24,8 @@ import {SliderModule} from "primeng/slider";
 import {InputTextModule} from "primeng/inputtext";
 import {GalleriaModule} from "primeng/galleria";
 import {CheckboxModule} from "primeng/checkbox";
+import {DropdownModule} from "primeng/dropdown";
+import {AutoFocusModule} from "primeng/autofocus";
 
 
 
@@ -38,28 +40,30 @@ import {CheckboxModule} from "primeng/checkbox";
   exports: [
     ShoppingListComponent
   ],
-    imports: [
-        CommonModule,
-        ShoppingRoutingModule,
-        DataViewModule,
-        InputNumberModule,
-        FormsModule,
-        ButtonModule,
-        RatingModule,
-        TagModule,
-        BadgeModule,
-        MenuModule,
-        DividerModule,
-        OverlayModule,
-        MultiSelectModule,
-        ToggleButtonModule,
-        RippleModule,
-        StyleClassModule,
-        SliderModule,
-        InputTextModule,
-        GalleriaModule,
-        CheckboxModule,
-        ReactiveFormsModule
-    ]
+  imports: [
+    CommonModule,
+    ShoppingRoutingModule,
+    DataViewModule,
+    InputNumberModule,
+    FormsModule,
+    ButtonModule,
+    RatingModule,
+    TagModule,
+    BadgeModule,
+    MenuModule,
+    DividerModule,
+    OverlayModule,
+    MultiSelectModule,
+    ToggleButtonModule,
+    RippleModule,
+    StyleClassModule,
+    SliderModule,
+    InputTextModule,
+    GalleriaModule,
+    CheckboxModule,
+    ReactiveFormsModule,
+    DropdownModule,
+    AutoFocusModule
+  ]
 })
 export class ShoppingModule { }

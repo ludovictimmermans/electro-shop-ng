@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpRequest} from "@angular/common/http";
+import {HttpClient, HttpParams, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../shared/models/product.model";
 import {Review} from "../shared/models/review.model";
 import {Filter} from "../shared/models/filter.model";
+import {Brand} from "../shared/models/brand.model";
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +19,31 @@ export class ProductService {
         return this.client.get<Product[]>(this.BASE_URL);
   }
 
-  getAllFiltered(filter?:Filter):Observable<Product[]>{
-    const req = new HttpRequest("GET", this.BASE_URL+'/filter',filter, {})
-    this.client.request<Product[]>(req)
-    return this.client.get<Product[]>(this.BASE_URL+'/filter',);
+  getAllFiltered(category?:string,brands?:string[],min?:number,max?:number,available?:boolean):Observable<Product[]>{
+    // const req = new HttpRequest("GET", this.BASE_URL+'/filter',filter, {})
+    // this.client.request<Product[]>(req)
+    let params = new HttpParams();
+    if(category)
+      params=params.append("category",category);
+    if(min!=null || min!=undefined)
+      params=params.append("min",min);
+    if(max)
+      params=params.append("max",max);
+    if(brands!=null || brands!=undefined) {
+      brands.forEach(b => params = params.append("brands", b) );
+    }
+    if(available)
+      params=params.append("available",available);
+
+    // if(available!=undefined || available!=null)
+    //   params=params.append("available",available);
+    return this.client.get<Product[]>(this.BASE_URL+'/filter', { params: params });
   }
 
   getOne(productId: number) {
     return this.client.get<Product>(this.BASE_URL+'/'+productId);
   }
+
 
   add(product: Product) {
     return this.client.post<Product>(this.BASE_URL,product);

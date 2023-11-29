@@ -13,7 +13,7 @@ const routes : Routes = [
       children:[
          {path:'cart',component:ShoppingCartComponent},
          {path:'product/:id',component:ShoppingDetailComponent},
-         {path:'category',component:ShoppingCategoryListComponent,resolve:{brands : BrandResolver}}
+         {path:':name',component:ShoppingCategoryListComponent,resolve:{brands : BrandResolver}}
 
 
         // {path:'update/:id',component:UpdateCustomerComponent,canActivate: [AuthGuard],

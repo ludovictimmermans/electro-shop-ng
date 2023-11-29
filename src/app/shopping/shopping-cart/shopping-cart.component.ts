@@ -9,15 +9,21 @@ import {CartItem} from "../../shared/models/cart.model";
 })
 export class ShoppingCartComponent {
   cart: CartItem[];
+  delivery:Date=new Date();
 
   constructor(
     private readonly $cartServ: CartService
   ) {
     this.cart = $cartServ.cart;
+    this.delivery.setDate(this.delivery.getDate()+3);
   }
 
   get total() {
     return this.$cartServ.total;
+  }
+
+  get TVA(){
+    return (this.total/100)*21
   }
 
   removeAll(item: CartItem){
@@ -33,4 +39,6 @@ export class ShoppingCartComponent {
   makeOrder() {
     this.$cartServ.orderCart().subscribe();
   }
+
+  protected readonly Date = Date;
 }

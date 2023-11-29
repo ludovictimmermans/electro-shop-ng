@@ -6,8 +6,8 @@ import {HomeComponent} from "./layout/home/home.component";
 import {AuthGuard} from "./guard/auth.guard";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent},
+  {path: 'home', redirectTo: '', pathMatch: 'full'},
   {
     path: 'manager', loadChildren: () => import ('./manager/manager.module').then(r => r.ManagerModule),
     canActivate: [AuthGuard],

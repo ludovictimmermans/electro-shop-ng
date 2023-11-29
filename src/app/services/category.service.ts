@@ -20,6 +20,10 @@ export class CategoryService {
     return this.client.get<Category>(this.BASE_URL+'/'+categoryId);
   }
 
+  getOneByName(name: string) {
+    return this.client.get<Category>(this.BASE_URL+'/search?name='+name);
+  }
+
   add(category: Category) {
     return this.client.post<Category>(this.BASE_URL,category);
   }

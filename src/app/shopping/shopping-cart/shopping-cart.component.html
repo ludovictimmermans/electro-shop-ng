@@ -1,37 +1,118 @@
+<!--<p-dataView #dv [value]="cart">-->
 
-<p-dataView #dv [value]="cart">
+<!--  <ng-template let-product pTemplate="listItem">-->
+<!--    <div class="col-12">-->
+<!--      <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">-->
+<!--        <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" [src]="product.img"-->
+<!--             [alt]="product.name"/>-->
+<!--        <div-->
+<!--          class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">-->
+<!--          <div class="flex flex-column align-items-center sm:align-items-start gap-3">-->
+<!--            <div class="text-2xl font-bold text-900">{{ product.name }}</div>-->
+<!--            <div class="flex align-items-center gap-3">-->
+<!--              <div>-->
+<!--                <p-inputNumber [(ngModel)]="product.qtt" [showButtons]="true" [max]="product.quantity" [min]="0"-->
+<!--                               buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"-->
+<!--                               decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"-->
+<!--                               incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">-->
 
-  <ng-template let-product pTemplate="listItem">
-    <div class="col-12">
-      <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
-        <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" [src]="product.img" [alt]="product.name" />
-        <div class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
-          <div class="flex flex-column align-items-center sm:align-items-start gap-3">
-            <div class="text-2xl font-bold text-900">{{ product.name }}</div>
-            <div class="flex align-items-center gap-3">
-              <div>
-                <p-inputNumber [(ngModel)]="product.qtt" [showButtons]="true" [max]="product.quantity" [min]="0" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
-                               decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
-              </div>
-              <div>
-                <button pButton type="button" class="p-button p-button-danger" icon="pi pi-trash" (click)="removeAll(product)"></button>
-              </div>
+<!--                </p-inputNumber>-->
+<!--              </div>-->
+<!--              <div>-->
+<!--                <button pButton type="button" class="p-button p-button-danger" icon="pi pi-trash"-->
+<!--                        (click)="removeAll(product)"></button>-->
+<!--              </div>-->
 
 
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">-->
+<!--            <span class="text-2xl font-semibold">{{ product.price |currency:'EUR' }}</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </ng-template>-->
+<!--</p-dataView>-->
+<!--<div class="flex justify-content-end" *ngIf="cart.length>0">-->
+<!--  <p> TOTAL : {{ total | currency:'EUR' }}</p>-->
+<!--</div>-->
+
+<!--<div class="flex justify-content-end" *ngIf="cart.length>0">-->
+<!--  <button pButton class="p-button-success" (click)="makeOrder()">Payer</button>-->
+<!--</div>-->
+
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+  <div class="flex flex-column align-content-center -mt-5 p-8 bg-no-repeat bg-center bg-cover" style="background: url('https://img.freepik.com/photos-premium/panier-violet-ai-generative-fond-violet-boutique-minimaliste-ligne_93150-15871.jpg?w=1380');" >
+    <div class="text-white text-4xl mb-2 py-6 font-medium ">Votre panier</div>
+  </div>
+  <ng-container *ngIf="cart.length>0" >
+  <ul class="list-none p-0 m-0" *ngFor="let product of cart" >
+    <li class="flex flex-column md:flex-row py-6 border-top-1 border-bottom-1 surface-border md:align-items-center">
+      <img src="https://www.omen.com/content/dam/sites/omen/worldwide/desktops/omen-25l/about@2x.png"
+           class="w-12rem flex-shrink-0 mx-auto md:mx-0">
+      <div class="flex-auto py-5 md:pl-5">
+        <div
+          class="flex flex-wrap align-items-start sm:align-items-center sm:flex-row sm:justify-content-between surface-border pb-6">
+          <div class="w-full sm:w-6 flex flex-column"><span
+            class="text-900 text-xl font-medium mb-3">{{product.name}}</span></div>
+          <div class="w-full sm:w-6 flex align-items-start justify-content-between mt-3 sm:mt-0">
+            <div>
+              <p-inputNumber [(ngModel)]="product.qtt" [showButtons]="true" [max]="product.stock" [min]="0"
+                             buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
+                             decrementButtonClass="p-button-secondary bg-black-alpha-90 " incrementButtonClass="p-button-secondary bg-black-alpha-90"
+                             incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+
+              </p-inputNumber>
+            </div>
+            <div class="flex flex-column sm:align-items-end"><span class="text-900 text-2xl font-medium mb-2 sm:mb-3">
+              {{product.qtt*product.price | currency : 'EUR'}}
+            </span><a
+              tabindex="0"
+              class="cursor-pointer text-purple-600 font-medium hover:text-primary-700 transition-colors transition-duration-300"
+              (click)="removeAll(product)">Supprimer</a>
             </div>
           </div>
-          <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-            <span class="text-2xl font-semibold">{{ product.price |currency:'EUR' }}</span>
-          </div>
+        </div>
+        <div class="flex flex-column">
+          <span class="inline-flex align-items-center mb-3">
+            <i class="pi pi-envelope text-600 mr-2"></i>
+            <span class="text-600 mr-2">Commandez aujourd'hui.</span>
+          </span>
+          <span class="inline-flex align-items-center mb-3">
+            <i class="pi pi-send text-600 mr-2"></i>
+            <span class="text-600 mr-2">Livré le <span class="font-bold">{{delivery| date : 'MMM d'}}</span>
+            </span>
+          </span>
+          <span class="flex align-items-center">
+            <i class="pi pi-exclamation-triangle text-600 mr-2"></i>
+            <span class="text-600">Plus que {{product.stock}} disponible.
+            </span>
+          </span>
         </div>
       </div>
-    </div>
-  </ng-template>
-</p-dataView>
-<div class="flex justify-content-end" *ngIf="cart.length>0">
-  <p> TOTAL : {{ total | currency:'EUR' }}</p>
-</div>
-
-<div class="flex justify-content-end" *ngIf="cart.length>0">
-  <button pButton class="p-button-success" (click)="makeOrder()">Payer</button>
+    </li>
+  </ul>
+  </ng-container>
+  <div class="flex">
+    <div class="w-12rem hidden md:block"></div>
+    <ul class="list-none py-0 pr-0 pl-0 md:pl-5 mt-6 mx-0 mb-0 flex-auto">
+      <li class="flex justify-content-between mb-4"><span class="text-xl text-900">Sous-total</span><span
+        class="text-xl text-900">{{total-TVA | currency:'EUR'}}</span></li>
+      <li class="flex justify-content-between mb-4"><span class="text-xl text-900">Livraison</span><span
+        class="text-xl text-900">Gratuit</span></li>
+      <li class="flex justify-content-between mb-4"><span class="text-xl text-900">TVA</span><span
+        class="text-xl text-900">{{TVA | currency:'EUR'}}</span></li>
+      <li class="flex justify-content-between border-top-1 surface-border mb-4 pt-4"><span
+        class="text-xl text-900 font-bold text-3xl">Total</span><span
+        class="text-xl text-900 font-bold text-3xl">{{ total | currency:'EUR' }}</span></li>
+      <li class="flex justify-content-end">
+        <button pButton pRipple label="Commandez"
+                class="p-element p-ripple p-button p-component bg-black-alpha-90"
+                (click)="makeOrder()">
+        </button>
+      </li>
+    </ul>
+  </div>
 </div>
