@@ -72,7 +72,7 @@
                      class="flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900"> </p-inputNumber>
       <label htmlFor="number-input" class="mb-1">Prix Maximum</label>
     </span>
-    <p-checkbox class="flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900 p-checkbox-icon" name="groupname" value="1" label="En stock" [(ngModel)]="available"></p-checkbox>
+    <p-checkbox class="flex-auto lg:flex-1 mb-3 lg:mt-0 w-full mr-0 lg:mr-4 text-900 p-checkbox-icon" name="groupname" value="1" label="En stock" [(ngModel)]="available" [binary]="true"></p-checkbox>
     <button pButton="" label="Filtrer"
             class="p-element p-button-rounded bg-gray-900 text-white mb-3 lg:mt-0 mr-0 lg:mr-4 w-full lg:w-auto border-none p-button p-component"
             (click)="filter()">

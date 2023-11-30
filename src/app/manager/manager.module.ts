@@ -21,6 +21,9 @@ import {AutoCompleteModule} from "primeng/autocomplete";
 import {DropdownModule} from "primeng/dropdown";
 import {InputNumberModule} from "primeng/inputnumber";
 import {ToastModule} from "primeng/toast";
+import { PrepareOrderComponent } from './order/prepare-order/prepare-order.component';
+import { DeliveryOrderComponent } from './order/delivery-order/delivery-order.component';
+import { DetailPreparationComponent } from './order/prepare-order/detail-preparation/detail-preparation.component';
 
 const PRIME_IMPORTS = [TableModule,ButtonModule];
 
@@ -35,7 +38,10 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     UpdateBrandComponent,
     ListProductComponent,
     AddProductComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    PrepareOrderComponent,
+    DeliveryOrderComponent,
+    DetailPreparationComponent
   ],
     imports: [
         CommonModule,

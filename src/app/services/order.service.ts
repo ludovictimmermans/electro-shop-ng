@@ -15,12 +15,28 @@ export class OrderService {
     return this.client.get<Order[]>(this.BASE_URL);
   }
 
+  getAllForPreparation(){
+    return this.client.get<Order[]>(this.BASE_URL+'/in/preparation')
+  }
+
+  getAllForDelivery(){
+    return this.client.get<Order[]>(this.BASE_URL+'/in/delivery')
+  }
+
   getOne(orderId: number) {
     return this.client.get<Order>(this.BASE_URL+'/'+orderId);
   }
 
   add(order: Order) {
     return this.client.post<Order>(this.BASE_URL,order);
+  }
+
+  nextStatus(order:Order){
+    return this.client.patch<Order>(this.BASE_URL+'/'+order.id+'/status',order);
+  }
+
+  delay(order:Order){
+    return this.client.patch<Order>(this.BASE_URL+'/'+order.id+'/delay',order)
   }
 
   delete(id: number) {

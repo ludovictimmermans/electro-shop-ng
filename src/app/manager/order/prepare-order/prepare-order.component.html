@@ -1,0 +1,36 @@
+<h3 class="pl-3">Commande</h3>
+<div class="flex justify-content-between pl-3">
+  <div class="justify-content-start">
+    <p>Tous les commandes à etre préparés </p>
+  </div>
+</div>
+
+
+<ng-container *ngIf="order$ | async as orders;else loading">
+  <p-table [value]="orders">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Preparer</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order>
+      <tr>
+        <td>{{order.id}}</td>
+        <td>{{order.delivery}}</td>
+        <td>{{order.status}}</td>
+        <td>
+          <button pButton type="button" icon="pi pi-pencil"
+                  routerLink="/manager/order/preparation/{{order.id}}"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-container>
+
+
+<ng-template #loading>
+  loading...
+</ng-template>

@@ -58,7 +58,7 @@ export class CartService {
 
       p => {
         console.log(p.id);
-        list.push(new OrderItem(p.id,p.qtt));
+        list.push(new OrderItem(p,p.qtt));
       }
     );
     console.log(list);

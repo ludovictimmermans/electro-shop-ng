@@ -1,11 +1,11 @@
-import {Validators} from "@angular/forms";
+import {Product} from "./product.model";
 
 export class OrderItem{
-  productId:number;
+  product:Product;
   quantity:number;
 
-  constructor(productId: number, quantity: number) {
-    this.productId = productId;
+  constructor(product:Product, quantity: number) {
+    this.product=product;
     this.quantity = quantity;
   }
 }

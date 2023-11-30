@@ -1,0 +1,31 @@
+<ng-container *ngIf="order$ | async as order">
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+  <div class="text-900 font-bold text-4xl my-2">Commande en prearation</div>
+  <div style="height: 3px; background: linear-gradient(90deg, #000000 0%, rgba(33, 150, 243, 0) 50%);"></div>
+  <div class="flex flex-column sm:flex-row sm:align-items-center sm:justify-content-between py-5">
+    <div class="mb-3 sm:mb-0"><span class="font-medium text-xl text-900 mr-2">Order number:</span><span
+      class="font-medium text-xl text-blue-500">{{order.id}}</span>
+    </div>
+  </div>
+  <ng-container *ngIf=order.products!=undefined>
+  <div class="border-round surface-border border-1">
+    <ul class="list-none p-0 m-0" *ngFor="let line of order.products">
+      <li class="p-3 border-bottom-1 surface-border flex align-items-start sm:align-items-center"><img
+        src="https://image.coolblue.be/max/500x500/products/1958481"
+        class="w-3rem sm:w-8rem flex-shrink-0 mr-3 shadow-2">
+        <div class="flex flex-column"><span class="text-900 font-medium text-xl mb-2">{{line.product.name}}</span></div>
+        <span class="text-900 font-medium text-lg ml-auto">Qunatité : {{line.quantity}}</span>
+      </li>
+    </ul>
+  </div>
+  </ng-container>
+  <div class="flex flex-wrap mt-5 pb-3">
+    <div class="w-full lg:w-6 pl-3">
+    </div>
+    <div class="w-full lg:w-6 pl-3 lg:pl-0 lg:pr-3 flex justify-content-end align-items-end mt-5 lg:mt-0">
+      <p-button class="bg-green-500" (click)="changeStatus(order)">Commande prête</p-button>
+      <p-button class="p-button-danger">Annuler</p-button>
+    </div>
+  </div>
+</div>
+</ng-container>
