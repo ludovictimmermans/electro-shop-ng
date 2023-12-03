@@ -1,86 +1,72 @@
-<h3 class="pl-3">Bienvenue</h3>
-<div class="flex justify-content-between pl-3">
-  <div class="justify-content-start">
-    <p>Créez un compte</p>
-  </div>
-</div>
-<ng-container class="">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="col-12 pl-3">
-      <div class="p-fluid p-formgrid grid">
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+  <div class="grid">
+    <div class="col-12 lg:col-2">
+      <div class="text-900 font-medium text-xl mb-3">Bienvenue</div>
+      <p class="m-0 p-0 text-600 line-height-3 mr-3">Créez un compte en complétant vos informations personnelle.</p>
+    </div>
+    <div class="col-12 lg:col-10">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="grid formgrid p-fluid">
+        <div class="field mb-4 col-12">
+          <label class="font-medium text-900">Nom d'utilisteur</label>
+          <input type="text" class="p-inputtext p-component p-element" formControlName="username">
+        </div>
         <div class="field col-12 md:col-6">
           <label>Nom</label>
-          <input type="text"
-                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                 formControlName="lastname"
-          >
+          <input type="text" class="p-inputtext p-component p-element" formControlName="lastname">
         </div>
         <div class="field col-12 md:col-6">
           <label>Prénom</label>
-          <input type="text"
-                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                 formControlName="firstname"
-          >
-        </div>
-        <div class="field col-6 ">
-          <label>Nom d'utilisteur</label>
-          <input type="text"
-                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                 formControlName="username"
-          >
-        </div>
-        <div class="field col-6 md:col-6">
-          <label>Mot de passe</label>
-          <p-password type="password"
-                 size="small"
-                 formControlName="password"
-          ></p-password>
+          <input type="text" class="p-inputtext p-component p-element" formControlName="firstname">
         </div>
         <div class="field col-12 md:col-6">
+          <label>Mot de passe</label>
+          <p-password type="password" size="small" formControlName="password">
+
+          </p-password>
+        </div>
+        <div class="field mb-4 col-12">
           <label>Email</label>
-          <input type="text"
-                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                 formControlName="email"
-          >
+          <input type="text" class="p-inputtext p-component p-element" formControlName="email">
         </div>
         <div class="field col-12 md:col-6">
           <label>Numéro de téléphone</label>
-          <input
-                placeholder="0499/999999"
-                pattern="[0-9]{4}/[0-9]{6}"
-                type="text"
-                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                formControlName="phoneNumber"
+          <input placeholder="0499/999999" pattern="[0-9]{4}/[0-9]{6}"
+            type="text"
+            class="p-inputtext p-component p-element"
+            formControlName="phoneNumber"
           >
         </div>
         <div class="field col-12 ">
           <label>Adresse</label>
           <input type="text"
-                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 class="p-inputtext p-component p-element"
                  formControlName="address"
           >
         </div>
         <div class="field col-12 md:col-6">
           <label>Ville</label>
           <input type="text"
-                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 class="p-inputtext p-component p-element"
                  formControlName="city"
           >
         </div>
         <div class="field col-12 md:col-6">
           <label>Code postal</label>
           <input type="text"
-                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 class="p-inputtext p-component p-element"
                  formControlName="zipCode"
           >
         </div>
 
-        <div class="flex justify-content-end">
-          <button pButton type="submit" class="ml-6">Valider</button>
-          <button pButton type="button" class="p-button-secondary" routerLink="">Annuler
-          </button>
+        <div class="col-12 flex align-content-center justify-content-end">
+          <button pButton="" pRipple="" label="Validez" type="submit"
+                  class="p-element p-ripple w-auto mt-3 mr-3  p-button p-component bg-black-alpha-90"></button>
+          <button pButton="" pRipple="" label="Annuler" type="button"
+                  class="p-element p-ripple w-auto mt-3  p-button p-component  bg-gray-600" routerLink=""></button>
         </div>
       </div>
+      </form>
     </div>
-  </form>
-</ng-container>
+  </div>
+</div>

@@ -14,6 +14,7 @@ import {UpdateProductComponent} from "./product/update-product/update-product.co
 import {PrepareOrderComponent} from "./order/prepare-order/prepare-order.component";
 import {DetailPreparationComponent} from "./order/prepare-order/detail-preparation/detail-preparation.component";
 import {DeliveryOrderComponent} from "./order/delivery-order/delivery-order.component";
+import {StatisticsComponent} from "./statistics/statistics.component";
 
 const routes : Routes = [
   {
@@ -31,7 +32,8 @@ const routes : Routes = [
       {path:'product/update/:id',component:UpdateProductComponent},
       {path:'order/preparation',component:PrepareOrderComponent},
       {path:'order/preparation/:id',component:DetailPreparationComponent},
-      {path:'order/delivery',component:DeliveryOrderComponent}
+      {path:'order/delivery',component:DeliveryOrderComponent},
+      {path:'statistic',component:StatisticsComponent}
     ]
   }
 ];

@@ -1,4 +1,9 @@
 <app-header></app-header>
+
+<ng-container *ngIf="connectedUser$ | async as user">
+  <app-sidebar *ngIf="user.roles[0]==='ADMIN'"></app-sidebar>
+</ng-container>
+
 <main>
   <router-outlet></router-outlet>
 </main>

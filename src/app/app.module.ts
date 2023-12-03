@@ -26,6 +26,12 @@ import {BadgeModule} from "primeng/badge";
 import {MenuModule} from "primeng/menu";
 import {OverlayModule} from "primeng/overlay";
 import {DividerModule} from "primeng/divider";
+import {ToastModule} from "primeng/toast";
+import {MessagesModule} from "primeng/messages";
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import {SidebarModule} from "primeng/sidebar";
+import {RippleModule} from "primeng/ripple";
+import {StyleClassModule} from "primeng/styleclass";
 
 @NgModule({
   declarations: [
@@ -34,33 +40,39 @@ import {DividerModule} from "primeng/divider";
     HomeComponent,
     FooterComponent,
     Page404Component,
-    LoginComponent
+    LoginComponent,
+    SidebarComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        ButtonModule,
-        MenubarModule,
-        PasswordModule,
-        FormsModule,
-        CheckboxModule,
-        CardModule,
-        InputTextModule,
-        DataViewModule,
-        RatingModule,
-        TagModule,
-        ShoppingModule,
-        BadgeModule,
-        MenuModule,
-        OverlayModule,
-        DividerModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    MenubarModule,
+    PasswordModule,
+    FormsModule,
+    CheckboxModule,
+    CardModule,
+    InputTextModule,
+    DataViewModule,
+    RatingModule,
+    TagModule,
+    ShoppingModule,
+    BadgeModule,
+    MenuModule,
+    OverlayModule,
+    DividerModule,
+    ToastModule,
+    MessagesModule,
+    SidebarModule,
+    RippleModule,
+    StyleClassModule
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

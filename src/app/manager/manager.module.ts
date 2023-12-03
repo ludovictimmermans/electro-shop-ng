@@ -24,6 +24,11 @@ import {ToastModule} from "primeng/toast";
 import { PrepareOrderComponent } from './order/prepare-order/prepare-order.component';
 import { DeliveryOrderComponent } from './order/delivery-order/delivery-order.component';
 import { DetailPreparationComponent } from './order/prepare-order/detail-preparation/detail-preparation.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import {MenuModule} from "primeng/menu";
+import {RippleModule} from "primeng/ripple";
+import {ChartModule} from "primeng/chart";
+import { BasicChartComponent } from './statistics/basic-chart/basic-chart.component';
 
 const PRIME_IMPORTS = [TableModule,ButtonModule];
 
@@ -41,21 +46,26 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     UpdateProductComponent,
     PrepareOrderComponent,
     DeliveryOrderComponent,
-    DetailPreparationComponent
+    DetailPreparationComponent,
+    StatisticsComponent,
+    BasicChartComponent
   ],
-    imports: [
-        CommonModule,
-        ManagerRoutingModule,
-        ...PRIME_IMPORTS,
-        ButtonModule,
-        CardModule,
-        InputTextModule,
-        PasswordModule,
-        ReactiveFormsModule,
-        AutoCompleteModule,
-        DropdownModule,
-        InputNumberModule,
-        ToastModule
-    ]
+  imports: [
+    CommonModule,
+    ManagerRoutingModule,
+    ...PRIME_IMPORTS,
+    ButtonModule,
+    CardModule,
+    InputTextModule,
+    PasswordModule,
+    ReactiveFormsModule,
+    AutoCompleteModule,
+    DropdownModule,
+    InputNumberModule,
+    ToastModule,
+    MenuModule,
+    RippleModule,
+    ChartModule
+  ]
 })
 export class ManagerModule { }

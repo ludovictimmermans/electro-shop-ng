@@ -3,8 +3,6 @@ import {HttpClient, HttpParams, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../shared/models/product.model";
 import {Review} from "../shared/models/review.model";
-import {Filter} from "../shared/models/filter.model";
-import {Brand} from "../shared/models/brand.model";
 
 @Injectable({
   providedIn: 'root'
