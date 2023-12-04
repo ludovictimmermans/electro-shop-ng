@@ -29,7 +29,6 @@ export class UpdateCustomerComponent {
         this.form.patchValue({
           lastname: data.lastname,
           firstname: data.firstname,
-          username: data.username,
           email: data.email,
           phoneNumber: data.phoneNumber,
           address: data.address.slice(0, data.address.indexOf(',')),
@@ -46,7 +45,6 @@ export class UpdateCustomerComponent {
         id: this.customerId,
         lastname: this.form.value.lastname,
         firstname: this.form.value.firstname,
-        username: this.form.value.username,
         email: this.form.value.email,
         phoneNumber: this.form.value.phoneNumber,
         address: this.form.value.address + ", " + this.form.value.zipCode + " " + this.form.value.city

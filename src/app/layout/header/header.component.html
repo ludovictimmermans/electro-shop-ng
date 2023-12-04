@@ -12,44 +12,45 @@
   </a>
 </div>
 </ng-container>
-<div class="surface-overlay px-3 sm:px-6 flex align-items-stretch relative" style="min-height: 80px; border-bottom: 1px rgba(0,0,0,0.1) solid">
+<div class="surface-overlay px-3 sm:px-6 flex align-items-stretch relative border-nav" style="min-height: 80px">
   <a class="cursor-pointer flex align-items-center lg:hidden text-700 mr-3 sm:mr-5" data-pb-styleclass="{selector:'#nav-1', enterClass:'hidden',leaveToClass:'hidden',hideOnOutsideClick:true}">
     <i class="pi pi-bars text-4xl"></i>
   </a>
-  <div class="flex align-items-center justify-content-center"><img id="j_idt107:blockViewerForm:j_idt109" src="./assets/img/logo.png" class="lg:mr-2 h-2rem sm:h-3rem" alt="Image" ismap="false">
-  <h2 class="mr-5">UNKNOWN</h2>
+  <div class="flex align-items-center justify-content-center">
+    <a class="flex align-items-center justify-content-center" routerLink="">
+      <img src="./assets/img/logo.png" class="lg:mr-2 h-2rem sm:h-3rem" alt="Image" ismap="false">
+      <h2 class="mr-5">UNKNOWN</h2>
+    </a>
   </div>
-  <div id="nav-1" class="surface-overlay hidden lg:flex absolute lg:static left-0 top-100 z-1 shadow-2 lg:shadow-none w-full lg:w-auto py-3 lg:py-0">
+  <div class="surface-overlay hidden lg:flex absolute lg:static left-0 top-100 z-1 shadow-2 lg:shadow-none w-full lg:w-auto py-3 lg:py-0" >
     <ul class="list-none p-0 m-0 flex flex-column lg:flex-row">
-      <li class="flex flex-column lg:flex-row">
-        <a class="inline-flex align-items-center cursor-pointer border-right-2 lg:border-right-none lg:border-bottom-2 border-transparent  hover:border-primary py-3 lg:py-0 px-6 lg:px-3 text-700 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto" data-pb-styleclass="{selector:'@next', enterClass:'hidden', leaveToClass:'hidden', hideOnOutsideClick:true}">
-          <span>Catégories</span>
-        </a>
-        <div class="surface-overlay shadow-none lg:shadow-2 hidden lg:absolute w-full left-0 top-100 pl-8 pr-6 lg:px-6 py-0 lg:py-6">
-          <div class="flex flex-column lg:flex-row lg:justify-content-between">
-            <a class="font-medium text-700 text-lg cursor-pointer block lg:hidden mb-3 select-none">Clothing</a>
-            <p-overlay [(visible)]="overlayVisible" [responsive]="{ breakpoint: '640px', direction: 'bottom', contentStyleClass: 'h-20rem' }" contentStyleClass="p-4 surface-overlay shadow-2 border-round" >
-              <ng-template pTemplate="content"  let-option>
-                <ul class="list-none py-0 pr-0 lg:pl-0 pl-5 m-0 text-700 hidden lg:block">
-                  <li class="font-bold mb-5 text-xl text-900 hidden lg:block">Mon Compte</li>
-                  <li class="mb-3 cursor-pointer">
-                    <a class="linkNoStyle text-700 hover:text-900" routerLink="/customer/update/1">Modifier infos personnels</a>
-                  </li>
-                  <li class="mb-3 cursor-pointer">
-                    <a class="linkNoStyle text-700 hover:text-900" routerLink="/customer/pwd/1">Modifier mot de passe</a>
-                  </li>
-                  <li class="mb-3 cursor-pointer">
-                    <a class="linkNoStyle text-700 hover:text-900" routerLink="/customer/order">Mes commandes</a>
-                  </li>
-                  <li class="mb-3 cursor-pointer">
-                    <a class="linkNoStyle text-700 hover:text-900" (click)="disconnect()">Déconnexion</a>
-                  </li>
-                </ul>
-              </ng-template>
-            </p-overlay>
-          </div>
+      <li *ngIf="role=='CUSTOMER'">
+        <div class="py-3 lg:py-3 px-6 lg:px-4 text-700 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto">
+          <button class="bg-white text-600 select-none" #btn type="button" pButton icon="pi pi-bars" label="Catégories" (click)="menu.toggle($event)"></button>
+          <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
         </div>
       </li>
+      <li class="py-3 lg:py-3 text-700 select-none text-xl lg:text-base font-medium lg:font-base " *ngIf="role=='ADMIN'">
+
+          <button class="bg-white text-600 select-none" #btn type="button" pButton icon="pi pi-angle-down" label="Gérer" (click)="menu.toggle($event)"></button>
+          <p-tieredMenu #menu [model]="adminItems" [popup]="true"></p-tieredMenu>
+
+      </li>
+      <li *ngIf="role=='ADMIN'">
+        <div class="py-3 lg:py-3 px-6 lg:px-2 text-700 select-none   ">
+          <button class="bg-white text-600 select-none" #btn type="button" pButton icon="pi pi-angle-down" label="Commande" (click)="menu.toggle($event)"></button>
+          <p-tieredMenu #menu [model]="orderItem" [popup]="true"></p-tieredMenu>
+        </div>
+
+      </li>
+      <li *ngIf="role=='ADMIN'">
+        <div class="py-3 lg:py-3 px-6 lg:px-2 text-700 select-none   ">
+          <button class="bg-white text-600 select-none" #btn type="button" pButton icon="pi pi-angle-down" label="Statistique" (click)="menu.toggle($event)"></button>
+          <p-tieredMenu #menu [model]="stat" [popup]="true"></p-tieredMenu>
+        </div>
+
+      </li>
+
     </ul>
   </div>
   <div class="flex ml-auto">
@@ -75,7 +76,7 @@
                   <li class="mb-3 cursor-pointer">
                     <a class="linkNoStyle text-700 hover:text-900" routerLink="/customer/pwd/1">Modifier mot de passe</a>
                   </li>
-                  <li class="mb-3 cursor-pointer">
+                  <li class="mb-3 cursor-pointer" *ngIf="role=='CUSTOMER'">
                     <a class="linkNoStyle text-700 hover:text-900" routerLink="/customer/order">Mes commandes</a>
                   </li>
                   <li class="mb-3 cursor-pointer">
@@ -86,7 +87,7 @@
         </p-overlay>
 
       </li>
-      <li class="flex">
+      <li class="flex" *ngIf="role=='CUSTOMER'">
         <a class="linkNoStyle text-900 font-medium inline-flex align-items-center cursor-pointer px-2 sm:px-3 hover:text-primary" routerLink="/shopping/cart">
           <i class="pi pi-shopping-cart text-xl"></i>
         </a>

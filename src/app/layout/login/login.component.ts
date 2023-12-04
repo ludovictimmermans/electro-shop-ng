@@ -31,7 +31,7 @@ export class LoginComponent {
         next: () => {
 
           if(this.$authServ.connectedUser?.roles[0]=="ADMIN"){
-            this.router.navigateByUrl("/admin");
+            this.router.navigateByUrl("manager/statistic");
           }else{this.router.navigateByUrl('/home');}
 
         },

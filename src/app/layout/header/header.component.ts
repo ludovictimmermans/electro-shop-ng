@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {AuthService} from "../../services/auth.service";
-import {Observable, tap} from "rxjs";
+import {map, Observable, tap} from "rxjs";
 import {CartService} from "../../services/cart.service";
+import {Category} from "../../shared/models/category.model";
+import {CategoryService} from "../../services/category.service";
 
 @Component({
   selector: 'app-header',
@@ -10,61 +12,55 @@ import {CartService} from "../../services/cart.service";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  links: MenuItem[] = [
+  items: MenuItem[] = [
+    ];
+  adminItems: MenuItem[] = [
     {
-      label: 'home',
-      routerLink: 'home'
+      label: 'Marque',
+      routerLink: 'manager/brand/list'
     },
     {
-      label: 'Brand',
-      items: [
-        {
-          label:'list',
-          routerLink:'/manager/brand/list'
-        }
-      ]
+      label: 'Catégories',
+      routerLink: 'manager/category/list'
     },
     {
-      label: 'Category',
-      items: [
-        {
-          label:'list',
-          routerLink:'/manager/category/list'
-        }
-      ]
-    },
-    {
-      label: 'Product',
-      items: [
-        {
-          label:'list',
-          routerLink:'/manager/product/list'
-        }
-      ]
+      label: 'Produits',
+      routerLink: 'manager/product/list'
     }
   ];
-  profileLinks: MenuItem[] = [
-    {
-      label: 'Gerer mon compte',
-      routerLink: 'customer/update/'
-    },
-    {
-      label: 'Changer de mot de passe',
-      routerLink: 'customer/pwd/'
-    },
-    {
-      label: 'Mes commandes',
-      routerLink: 'customer/order/'
-    }
-
+  stat:MenuItem[] = [{
+    label: 'Voir',
+    routerLink: 'manager/statistic'
+  }
 
   ];
+
+  orderItem:MenuItem[] = [{
+    label: 'Préparation',
+    routerLink: 'manager/order/preparation'
+  },
+    {
+      label: 'Livraison',
+      routerLink: 'manager/order/delivery'
+    }
+
+  ];
+  categories$:Observable<Category[]>;
   username$:Observable<String | null>;
   cartSize:string;
   overlayVisible: boolean=false;
 
-  constructor(private readonly $authServ:AuthService,private readonly $cartService:CartService) {
+  constructor(private readonly $authServ:AuthService,private readonly $cartService:CartService,private readonly $cartegoryserv:CategoryService) {
     this.username$ = this.$authServ.username$;
+    this.categories$=this.$cartegoryserv.getAll();
+    this.categories$.subscribe(list => {
+      list.forEach( c=> this.items.push(
+        {
+          label: c.name,
+          routerLink: 'shopping/'+c.name.replace(" ","-")
+        }
+      ))
+    } )
     this.cartSize=($cartService.cartSize).toString();
   }
 
