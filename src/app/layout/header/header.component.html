@@ -24,7 +24,7 @@
   </div>
   <div class="surface-overlay hidden lg:flex absolute lg:static left-0 top-100 z-1 shadow-2 lg:shadow-none w-full lg:w-auto py-3 lg:py-0" >
     <ul class="list-none p-0 m-0 flex flex-column lg:flex-row">
-      <li *ngIf="role=='CUSTOMER'">
+      <li *ngIf="role=='CUSTOMER' || role!='ADMIN'">
         <div class="py-3 lg:py-3 px-6 lg:px-4 text-700 select-none text-xl lg:text-base font-medium lg:font-base w-full lg:w-auto">
           <button class="bg-white text-600 select-none" #btn type="button" pButton icon="pi pi-bars" label="Catégories" (click)="menu.toggle($event)"></button>
           <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>

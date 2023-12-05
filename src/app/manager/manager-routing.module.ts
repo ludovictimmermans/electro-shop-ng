@@ -23,7 +23,7 @@ const routes : Routes = [
     children:[
       {path:'category/list',component:ListCategoryComponent},
       {path:'category/update/:id',component:UpdateCategoryComponent,resolve:{categories : CategoryResolver}},
-      {path:'category/add',component:AddCategoryComponent},
+      //{path:'category/add',component:AddCategoryComponent},
       {path:'brand/list',component:ListBrandComponent},
       {path:'brand/update/:id',component:UpdateBrandComponent},
       {path:'brand/add',component:AddBrandComponent},

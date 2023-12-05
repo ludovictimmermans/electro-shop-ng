@@ -11,7 +11,7 @@
             icon="pi pi-plus"
             class="p-button-success"
             size="small"
-            (click)="show()">
+            (click)="showAdd()">
       <!--            routerLink="/manager/brand/add/"-->
 
     </button>
@@ -37,7 +37,7 @@
         <td>{{brand.img}}</td>
         <td>
           <button pButton type="button" icon="pi pi-pencil"
-                  routerLink="/manager/brand/update/{{brand.id}}"></button>
+                  (click)="showUpdate(brand)"></button>
         </td>
         <td>
           <button pButton type="button" icon="pi pi-times" class="p-button-danger" (click)="delete(brand.id)">

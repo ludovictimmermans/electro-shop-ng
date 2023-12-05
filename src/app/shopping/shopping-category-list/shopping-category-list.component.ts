@@ -30,9 +30,10 @@ export class ShoppingCategoryListComponent implements OnInit {
               private readonly $categoryServ:CategoryService,
               private route: ActivatedRoute) {
     let name=this.route.snapshot.params["name"];
-    console.log(name)
+    console.log(this.route.snapshot.url.toString());
     this.category$ = this.$categoryServ.getOneByName(name).pipe(
-      tap(this.products$ = this.$productServ.getAllFiltered("Ordinateur portable")))
+      tap(
+    this.products$ = this.$productServ.getAllFiltered("Ordinateur portable")))
   }
 
   ngOnInit(): void {

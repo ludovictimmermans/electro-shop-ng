@@ -9,7 +9,7 @@ import { UpdateCategoryComponent } from './category/update-category/update-categ
 import {CardModule} from "primeng/card";
 import {InputTextModule} from "primeng/inputtext";
 import {PasswordModule} from "primeng/password";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { ListBrandComponent } from './brand/list-brand/list-brand.component';
 import { AddBrandComponent } from './brand/add-brand/add-brand.component';
@@ -29,8 +29,11 @@ import {MenuModule} from "primeng/menu";
 import {RippleModule} from "primeng/ripple";
 import {ChartModule} from "primeng/chart";
 import { BasicChartComponent } from './statistics/basic-chart/basic-chart.component';
+import {DialogModule} from "primeng/dialog";
+import {DialogService} from "primeng/dynamicdialog";
 
 const PRIME_IMPORTS = [TableModule,ButtonModule];
+
 
 @NgModule({
   declarations: [
@@ -65,7 +68,10 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     ToastModule,
     MenuModule,
     RippleModule,
-    ChartModule
-  ]
+    ChartModule,
+    DialogModule,
+    FormsModule
+  ],
+  providers:[DialogService]
 })
 export class ManagerModule { }

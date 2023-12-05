@@ -1,19 +1,17 @@
-import { Component } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormGroup, NgModel} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Brand} from "../../../shared/models/brand.model";
 import {BRAND_ADD_FORM} from "./addBrand.form";
 import {BrandService} from "../../../services/brand.service";
-import {MessageService} from "primeng/api";
 import {DynamicDialogRef} from "primeng/dynamicdialog";
+import {Brand} from "../../../shared/models/brand.model";
 
 @Component({
   selector: 'app-add-brand',
   templateUrl: './add-brand.component.html',
   styleUrls: ['./add-brand.component.scss'],
-  providers:[DynamicDialogRef]
 })
-export class AddBrandComponent {
+export class AddBrandComponent{
   form!: FormGroup;
 
   constructor(
@@ -21,13 +19,15 @@ export class AddBrandComponent {
     private readonly $brandServ: BrandService,
     builder: FormBuilder,
     private router:Router,
-    public ref: DynamicDialogRef
+    public ref: DynamicDialogRef,
   ) {
     this.form = builder.group(BRAND_ADD_FORM);
   }
 
+
+
+
   onSubmit() {
-    console.log(this.ref)
 
     if(this.form.valid){
       const brand : Brand = {

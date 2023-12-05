@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Brand} from "../../../shared/models/brand.model";
 import {BrandService} from "../../../services/brand.service";
 import {BRAND_UPDATE_FORM} from "./updateBrand.form";
-import {MessageService} from "primeng/api";
+import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
 
 @Component({
   selector: 'app-update-brand',
@@ -23,10 +23,12 @@ export class UpdateBrandComponent {
     route: ActivatedRoute,
     private readonly $brandServ: BrandService,
     builder: FormBuilder,
-    private router:Router
+    private router:Router,
+    public ref:DynamicDialogRef,
+    public config: DynamicDialogConfig
   ) {
     this.form = builder.group(BRAND_UPDATE_FORM);
-    this.brandId = route.snapshot.params['id'];
+    this.brandId = this.config.data.id;
     this.$brand = $brandServ.getOne(this.brandId).pipe(
       tap( data => this.form.patchValue({
         name: data.name,
@@ -43,8 +45,7 @@ export class UpdateBrandComponent {
         img:this.form.value.img
       };
       this.$brandServ.update(brand).subscribe(()=>{
-        this.router.navigateByUrl("manager/brand/list");
-
+        this.ref.close(brand)
       });
 
     }

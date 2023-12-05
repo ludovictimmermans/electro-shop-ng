@@ -9,7 +9,7 @@ export const AuthGuard: CanActivateFn = (route, state) => {
   if(route.data['role'] === $authService.role)
     return true;
   else{
-    router.navigateByUrl("");
+    //router.navigateByUrl("");
     return false;
 
   }
