@@ -5,11 +5,13 @@ import {Brand} from "../../../shared/models/brand.model";
 import {BRAND_ADD_FORM} from "./addBrand.form";
 import {BrandService} from "../../../services/brand.service";
 import {MessageService} from "primeng/api";
+import {DynamicDialogRef} from "primeng/dynamicdialog";
 
 @Component({
   selector: 'app-add-brand',
   templateUrl: './add-brand.component.html',
   styleUrls: ['./add-brand.component.scss'],
+  providers:[DynamicDialogRef]
 })
 export class AddBrandComponent {
   form!: FormGroup;
@@ -18,20 +20,23 @@ export class AddBrandComponent {
     route: ActivatedRoute,
     private readonly $brandServ: BrandService,
     builder: FormBuilder,
-    private router:Router
+    private router:Router,
+    public ref: DynamicDialogRef
   ) {
     this.form = builder.group(BRAND_ADD_FORM);
   }
 
   onSubmit() {
+    console.log(this.ref)
+
     if(this.form.valid){
       const brand : Brand = {
         id:0,
         name:this.form.value.name,
         img:this.form.value.img
       };
-      this.$brandServ.add(brand).subscribe(()=>{
-        this.router.navigateByUrl("manager/brand/list")
+      this.$brandServ.add(brand).subscribe(()=> {
+        this.ref.close(brand);
       });
 
     }

@@ -2,18 +2,23 @@ import { Component } from '@angular/core';
 import {Observable} from "rxjs";
 import {Brand} from "../../../shared/models/brand.model";
 import {BrandService} from "../../../services/brand.service";
+import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
+import {AddBrandComponent} from "../add-brand/add-brand.component";
+import {MessageService} from "primeng/api";
 
 
 @Component({
   selector: 'app-list-brand',
   templateUrl: './list-brand.component.html',
-  styleUrls: ['./list-brand.component.scss']
+  styleUrls: ['./list-brand.component.scss'],
+  providers: [DialogService,MessageService]
 })
 export class ListBrandComponent {
   brands$: Observable<Brand[]>;
+  ref?: DynamicDialogRef;
 
 
-  constructor(private readonly $brandServ: BrandService) {
+  constructor(private readonly $brandServ: BrandService,public dialogService: DialogService,public messageService: MessageService) {
     this.brands$ = this.$brandServ.getAll();
   }
 
@@ -25,6 +30,20 @@ export class ListBrandComponent {
 
   loadBrand(){
     this.brands$ = this.$brandServ.getAll();
+  }
+
+  show(){
+    this.ref = this.dialogService.open(AddBrandComponent, {
+        header: 'Ajouter une marque',
+        width: '50%',
+        baseZIndex: 10000
+    });
+    this.ref.onClose.subscribe((brand:Brand) => {
+      console.log("test")
+      if (brand) {
+        this.messageService.add({ severity: 'success', summary: 'Marque ajouté', detail: brand.name });
+      }
+    });
   }
 
 }

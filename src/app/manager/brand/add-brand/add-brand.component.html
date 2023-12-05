@@ -1,13 +1,7 @@
-<h3 class="pl-3">Marques</h3>
-<div class="flex justify-content-between pl-3">
-  <div class="justify-content-start">
-    <p>Ajouter une nouvelle marque</p>
-  </div>
-</div>
 <ng-container class="">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="grid pl-3">
-      <div class="col-6">
+      <div class="col-12">
 
         <div class="field">
           <label >Nom</label>
@@ -23,10 +17,8 @@
                  formControlName="img"
           >
         </div>
-        <div class="flex justify-content-end">
-          <button pButton type="submit" class="ml-6">Ajouter</button>
-          <button pButton type="button" class="p-button-secondary" routerLink="/manager/brand/list">Annuler
-          </button>
+        <div class="grid flex justify-content-end">
+          <button pButton type="submit" class="lg:m-2">Ajouter</button>
         </div>
       </div>
     </div>

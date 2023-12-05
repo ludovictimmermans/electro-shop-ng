@@ -4,14 +4,16 @@
     <p>Créez et gérer vos marques des produits </p>
   </div>
   <div class="justify-content-center pb-3">
+    <p-toast></p-toast>
     <button pButton
             type="button"
             label="Ajouter marque"
             icon="pi pi-plus"
             class="p-button-success"
             size="small"
-            routerLink="/manager/brand/add/"
-    >
+            (click)="show()">
+      <!--            routerLink="/manager/brand/add/"-->
+
     </button>
   </div>
 </div>
