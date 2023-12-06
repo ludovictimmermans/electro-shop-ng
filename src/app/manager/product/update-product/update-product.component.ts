@@ -46,7 +46,8 @@ export class UpdateProductComponent{
         price: data.price,
         stock: data.stock,
         categoryId: data.category.id,
-        brandId: data.brand.id
+        brandId: data.brand.id,
+        pictures: data.pictures
       }))
     );
   }
@@ -60,7 +61,8 @@ export class UpdateProductComponent{
         price: this.form.value.price,
         stock: this.form.value.stock,
         categoryId: this.form.value.categoryId,
-        brandId: this.form.value.brandId
+        brandId: this.form.value.brandId,
+        pictures:this.form.value.pictures
       };
       this.$productService.update(product).subscribe({
           next:()=>{

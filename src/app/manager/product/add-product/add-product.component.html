@@ -37,10 +37,29 @@
           <p-inputNumber formControlName="stock" inputId="integeronly" > </p-inputNumber>
 
         </div>
-        <div class="grid flex-column px-2 ">
+        <div class="grid flex-column px-2 mb-3 ">
           <label >Prix</label>
           <p-inputNumber formControlName="price" mode="currency" inputId="currency-germany" currency="EUR" > </p-inputNumber>
 
+        </div>
+        <div class="field">
+          <label >Image</label>
+          <input type="text"
+                 class="mb-2 text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 formControlName="url1"
+          >
+          <input type="text"
+                 class="mb-2 text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 formControlName="url2"
+          >
+          <input type="text"
+                 class="mb-2 text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 formControlName="url3"
+          >
+          <input type="text"
+                 class="mb-2 text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 formControlName="url4"
+          >
         </div>
         <p-messages [(value)]="messages" [enableService]="false" [closable]="true" *ngIf="messages"></p-messages>
         <div class="grid flex justify-content-end">

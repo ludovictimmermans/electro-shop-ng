@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CategoryService} from "../../../services/category.service";
-import {CATEGORY_ADD_FORM} from "../../category/add-category/addCategory.form";
 import {Category} from "../../../shared/models/category.model";
 import {ProductService} from "../../../services/product.service";
 import {PRODUCT_ADD_FORM} from "./addProduct.form";
@@ -40,7 +39,6 @@ export class AddProductComponent {
 
   onSubmit() {
     if(this.form.valid){
-      console.log(this.form.value.stock)
       const product : Product = {
         id:0,
         name:this.form.value.name,
@@ -48,7 +46,13 @@ export class AddProductComponent {
         price:this.form.value.price,
         stock:this.form.value.stock,
         categoryId:this.form.value.categoryId,
-        brandId:this.form.value.brandId
+        brandId:this.form.value.brandId,
+        pictures:[{url: this.form.value.url1},
+          {url: this.form.value.url2},
+          {url: this.form.value.url3},
+          {url: this.form.value.url4}
+        ]
+
       };
       this.$productServ.add(product).subscribe({
         next:()=>{

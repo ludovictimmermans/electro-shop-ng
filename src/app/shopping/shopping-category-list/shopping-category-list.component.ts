@@ -7,6 +7,7 @@ import {Product} from "../../shared/models/product.model";
 import {ProductService} from "../../services/product.service";
 import {Category} from "../../shared/models/category.model";
 import {CategoryService} from "../../services/category.service";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-shopping-category-list',
@@ -23,17 +24,18 @@ export class ShoppingCategoryListComponent implements OnInit {
   available: boolean = false;
   min?: number;
   max?: number;
+  name:string;
 
 
   constructor(private readonly brandServ:BrandService,
               private readonly $productServ:ProductService,
               private readonly $categoryServ:CategoryService,
+              private readonly $cartServ:CartService,
               private route: ActivatedRoute) {
-    let name=this.route.snapshot.params["name"];
-    console.log(this.route.snapshot.url.toString());
-    this.category$ = this.$categoryServ.getOneByName(name).pipe(
+    this.name=this.route.snapshot.params["name"].replace("-"," ");
+    this.category$ = this.$categoryServ.getOneByName(this.name).pipe(
       tap(
-    this.products$ = this.$productServ.getAllFiltered("Ordinateur portable")))
+    this.products$ = this.$productServ.getAllFiltered(this.name)))
   }
 
   ngOnInit(): void {
@@ -46,6 +48,10 @@ export class ShoppingCategoryListComponent implements OnInit {
   }
 
   filter(){
-    this.products$=this.$productServ.getAllFiltered("Ordinateur portable",this.selectedBrands,this.min,this.max,this.available);
+    this.products$=this.$productServ.getAllFiltered(this.name,this.selectedBrands,this.min,this.max,this.available);
+  }
+
+  addCart(product:Product) {
+    this.$cartServ.AddToCart(product);
   }
 }

@@ -6,5 +6,6 @@ export const PRODUCT_UPDATE_FORM = {
   'price': [null, [Validators.required,Validators.min(0)]],
   'stock': [null, [Validators.required,Validators.min(0)]],
   'categoryId': [null, [Validators.required]],
-  'brandId': [null, [Validators.required]]
+  'brandId': [null, [Validators.required]],
+  'pictures': [null]
 }

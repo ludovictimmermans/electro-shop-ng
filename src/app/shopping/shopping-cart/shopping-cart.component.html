@@ -59,7 +59,7 @@
             class="text-900 text-xl font-medium mb-3">{{product.name}}</span></div>
           <div class="w-full sm:w-6 flex align-items-start justify-content-between mt-3 sm:mt-0">
             <div>
-              <p-inputNumber [(ngModel)]="product.qtt" [showButtons]="true" [max]="product.stock" [min]="0"
+              <p-inputNumber [(ngModel)]="product.qtt" [showButtons]="true" [max]="product.stock" [min]="1"
                              buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
                              decrementButtonClass="p-button-secondary bg-black-alpha-90 " incrementButtonClass="p-button-secondary bg-black-alpha-90"
                              incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
@@ -110,7 +110,7 @@
       <li class="flex justify-content-end">
         <button pButton pRipple label="Commandez"
                 class="p-element p-ripple p-button p-component bg-black-alpha-90"
-                (click)="makeOrder()">
+                (click)="makeOrder()" *ngIf="total>0">
         </button>
       </li>
     </ul>

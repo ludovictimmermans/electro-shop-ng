@@ -1,24 +1,49 @@
 <ng-container class="align-content-center" *ngIf="product$ | async as product">
-  <div class="grid nested-grid">
-    <div class="col-8">
-      <h3>{{product.name}}</h3>
-      <img src="https://image.coolblue.be/max/500x500/products/1958481"/>
+  <div class="grid col-12">
+    <div class="col-6">
+      <p-carousel [value]="product.pictures" [numVisible]="1"
+                  [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" class="bg-black-alpha-90">
+        <ng-template let-picture pTemplate="item">
+          <img src="{{picture.url}}">
+        </ng-template>
+      </p-carousel>
     </div>
-    <div class="col-4">
+    <div class="col-6">
       <div class="grid flex align-content-end">
         <div class="col-12">
-          <h3>{{product.price | currency: 'EUR'}}</h3>
+        <h3>{{product.name}}</h3>
         </div>
-        <div class="col-12 ">
-          <button pButton class="p-button-success" (click)="add(product)">J'achète</button>
+
+        <div class="col-12">
+          <h1>{{product.price | currency: 'EUR'}}</h1>
+        </div>
+        <div class="col-12">
+          <button pButton pRipple icon="pi pi-shopping-cart" label="Add to Cart" class="bg-black-alpha-90 p-element p-ripple w-full mb-5 p-button p-component" (click)="add(product)"></button>
         </div>
       </div>
     </div>
+
+
   </div>
+  <div class="col-12 lg:col-6">
+
+    </div>
   <div class="grid nested-grid">
-    <div class="col-8">
-      <h4>Description :</h4>
-      <p>{{product.description}}</p>
+    <div class="col-12">
+      <p-tabView [(activeIndex)]="activeIndex">
+        <p-tabPanel header="Description" headerStyleClass="text-black-alpha-90">
+          <p class="col-8">
+            Passez le gaming à un niveau supérieur grâce à la PlayStation 5 Slim Disc Edition. Cette PlayStation 5 est dotée d'un lecteur de disque, vous pouvez donc lire des films Blu-ray en plus des jeux.
+          </p>
+        </p-tabPanel>
+        <p-tabPanel header="Livraison">
+          <p class="col-8">
+            Imaginez un monde où vos sélections préférées sont soigneusement emballées et livrées directement à votre porte, sans tracas ni attente. C'est exactement ce que nous offrons avec notre service de livraison rapide et fiable.
+
+            Pourquoi choisir UNKNOWN pour vos achats en ligne? Parce que nous comprenons que votre temps est précieux. Notre équipe dévouée s'engage à garantir que vos articles préférés arrivent chez vous rapidement, en parfait état, prêts à être appréciés.
+          </p>
+        </p-tabPanel>
+      </p-tabView>
     </div>
   </div>
 </ng-container>

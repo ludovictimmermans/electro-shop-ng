@@ -26,6 +26,11 @@ import {GalleriaModule} from "primeng/galleria";
 import {CheckboxModule} from "primeng/checkbox";
 import {DropdownModule} from "primeng/dropdown";
 import {AutoFocusModule} from "primeng/autofocus";
+import {TabViewModule} from "primeng/tabview";
+import {ImageModule} from "primeng/image";
+import {TabMenuModule} from "primeng/tabmenu";
+import {AccordionModule} from "primeng/accordion";
+import {CarouselModule} from "primeng/carousel";
 
 
 
@@ -63,7 +68,12 @@ import {AutoFocusModule} from "primeng/autofocus";
     CheckboxModule,
     ReactiveFormsModule,
     DropdownModule,
-    AutoFocusModule
+    AutoFocusModule,
+    TabViewModule,
+    ImageModule,
+    TabMenuModule,
+    AccordionModule,
+    CarouselModule
   ]
 })
 export class ShoppingModule { }
