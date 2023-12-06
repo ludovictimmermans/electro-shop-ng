@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Observable, tap} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
 import {Brand} from "../../../shared/models/brand.model";
 import {BrandService} from "../../../services/brand.service";
 import {BRAND_UPDATE_FORM} from "./updateBrand.form";
@@ -11,8 +10,7 @@ import {MessageService} from "primeng/api";
 @Component({
   selector: 'app-update-brand',
   templateUrl: './update-brand.component.html',
-  styleUrls: ['./update-brand.component.scss'],
-  providers:[MessageService]
+  styleUrls: ['./update-brand.component.scss']
 })
 export class UpdateBrandComponent {
   form!:FormGroup;
@@ -23,7 +21,6 @@ export class UpdateBrandComponent {
 
 
   constructor(
-    route: ActivatedRoute,
     private readonly $brandServ: BrandService,
     builder: FormBuilder,
     private messageService:MessageService,

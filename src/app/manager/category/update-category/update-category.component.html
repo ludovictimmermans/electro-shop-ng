@@ -1,7 +1,7 @@
 <ng-container *ngIf="$category | async as category">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="grid">
-      <div class="col-6">
+      <div class="col-12">
 
         <div class="field">
           <label >Nom</label>
@@ -17,10 +17,9 @@
                  formControlName="description"
           >
         </div>
+        <p-messages [(value)]="messages" [enableService]="false" [closable]="true" *ngIf="messages"></p-messages>
         <div class="flex justify-content-end">
-          <button pButton type="submit" class="ml-6">Valider</button>
-          <button pButton type="button" class="p-button-secondary" routerLink="/manager/category/list">Annuler
-          </button>
+          <button pButton type="submit" class="ml-6">Modifier</button>
         </div>
       </div>
     </div>

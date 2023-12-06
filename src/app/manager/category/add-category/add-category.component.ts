@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
 import {CategoryService} from "../../../services/category.service";
 import {Category} from "../../../shared/models/category.model";
 import {CATEGORY_ADD_FORM} from "./addCategory.form";
-import {MessageService} from "primeng/api";
+import {Message, MessageService} from "primeng/api";
 import {DynamicDialogRef} from "primeng/dynamicdialog";
 
 @Component({
   selector: 'app-add-category',
   templateUrl: './add-category.component.html',
-  styleUrls: ['./add-category.component.scss'],
-  providers:[MessageService]
+  styleUrls: ['./add-category.component.scss']
 })
 export class AddCategoryComponent {
   form!: FormGroup;
+  messages!: Message[];
 
   constructor(
     private readonly $categoryServ: CategoryService,
@@ -38,12 +37,9 @@ export class AddCategoryComponent {
         },
         error:()=>{
           this.form.reset();
-          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: "Ce nom de catégorie existe déja"});
-
+          this.messages=[{ severity: 'error', summary: 'Erreur', detail: "Ce nom de catégorie existe déja"}];
         }
       });
-
     }
   }
-
 }

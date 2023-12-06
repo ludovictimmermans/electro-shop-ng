@@ -4,13 +4,14 @@
     <p>Créez et gérer vos produits </p>
   </div>
   <div class="justify-content-center pb-3">
+    <p-toast></p-toast>
     <button pButton
             type="button"
             label="Ajouter un produit"
             icon="pi pi-plus"
             class="p-button-success"
             size="small"
-            routerLink="/manager/product/add/"
+            (click)="showAdd()"
     >
     </button>
   </div>
@@ -23,11 +24,11 @@
       <tr>
         <th>#</th>
         <th>Name</th>
+        <th>Marque</th>
+        <th>Catégorie</th>
         <th>Description</th>
         <th>price</th>
         <th>Stock</th>
-        <th>Catégorie</th>
-        <th>Marque</th>
         <th>Modifier</th>
         <th>Supprimer</th>
       </tr>
@@ -36,17 +37,29 @@
       <tr>
         <td>{{product.id}}</td>
         <td>{{product.name}}</td>
+        <td><p-image src="{{product.brand.img}}" alt="Image" width="70" [preview]="false"></p-image></td>
+        <td>{{product.category.name}}</td>
         <td>{{product.description}}</td>
         <td>{{product.price | currency:'EUR'}}</td>
         <td>{{product.quantity}}</td>
-        <td>{{product.category.name}}</td>
-        <td>{{product.brand.name}}</td>
+
+
         <td>
           <button pButton type="button" icon="pi pi-pencil"
-                  routerLink="/manager/product/update/{{product.id}}"></button>
+                  (click)="showUpdate(product)"></button>
         </td>
         <td>
-          <button pButton type="button" icon="pi pi-times" class="p-button-danger" (click)="delete(product.id)">
+          <p-toast></p-toast>
+          <p-confirmDialog #cd [style]="{width: '50vw'}">
+            <ng-template pTemplate="header">
+              <h3>Confirmation</h3>
+            </ng-template>
+            <ng-template pTemplate="footer">
+              <button type="button" pButton icon="pi pi-times" label="Non" (click)="cd.reject()"></button>
+              <button type="button" pButton icon="pi pi-check" label="Oui" (click)="cd.accept()"></button>
+            </ng-template>
+          </p-confirmDialog>
+          <button pButton type="button" icon="pi pi-times" class="p-button-danger" (click)="delete(product)">
           </button>
         </td>
       </tr>
@@ -56,5 +69,8 @@
 
 
 <ng-template #loading>
-  loading...
+  <div class="grid justify-content-center">
+    <label>En chargement</label>
+    <p-progressSpinner></p-progressSpinner>
+  </div>
 </ng-template>

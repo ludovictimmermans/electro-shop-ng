@@ -17,7 +17,9 @@
                  formControlName="description"
           >
         </div>
+        <p-messages [(value)]="messages" [enableService]="false" [closable]="true" *ngIf="messages"></p-messages>
         <div class="flex justify-content-end">
+
           <button pButton type="submit" class="ml-6">Ajouter</button>
         </div>
       </div>

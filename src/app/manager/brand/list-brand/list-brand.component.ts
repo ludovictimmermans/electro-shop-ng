@@ -12,7 +12,7 @@ import {UpdateBrandComponent} from "../update-brand/update-brand.component";
   selector: 'app-list-brand',
   templateUrl: './list-brand.component.html',
   styleUrls: ['./list-brand.component.scss'],
-  providers: [ConfirmationService,MessageService]
+  providers: [ConfirmationService]
 })
 export class ListBrandComponent {
   brands$: Observable<Brand[]>;

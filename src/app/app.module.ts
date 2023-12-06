@@ -33,6 +33,7 @@ import {SidebarModule} from "primeng/sidebar";
 import {RippleModule} from "primeng/ripple";
 import {StyleClassModule} from "primeng/styleclass";
 import {TieredMenuModule} from "primeng/tieredmenu";
+import {ProgressSpinnerModule} from "primeng/progressspinner";
 
 @NgModule({
   declarations: [
@@ -44,34 +45,35 @@ import {TieredMenuModule} from "primeng/tieredmenu";
     LoginComponent,
     SidebarComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        ButtonModule,
-        MenubarModule,
-        PasswordModule,
-        FormsModule,
-        CheckboxModule,
-        CardModule,
-        InputTextModule,
-        DataViewModule,
-        RatingModule,
-        TagModule,
-        ShoppingModule,
-        BadgeModule,
-        MenuModule,
-        OverlayModule,
-        DividerModule,
-        ToastModule,
-        MessagesModule,
-        SidebarModule,
-        RippleModule,
-        StyleClassModule,
-        TieredMenuModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    MenubarModule,
+    PasswordModule,
+    FormsModule,
+    CheckboxModule,
+    CardModule,
+    InputTextModule,
+    DataViewModule,
+    RatingModule,
+    TagModule,
+    ShoppingModule,
+    BadgeModule,
+    MenuModule,
+    OverlayModule,
+    DividerModule,
+    ToastModule,
+    MessagesModule,
+    SidebarModule,
+    RippleModule,
+    StyleClassModule,
+    TieredMenuModule,
+    ProgressSpinnerModule
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}
   ],

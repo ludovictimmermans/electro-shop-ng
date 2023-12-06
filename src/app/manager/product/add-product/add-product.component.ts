@@ -10,6 +10,8 @@ import {Product} from "../../../shared/models/product.model";
 import {Observable} from "rxjs";
 import {Brand} from "../../../shared/models/brand.model";
 import {BrandService} from "../../../services/brand.service";
+import {Message, MessageService} from "primeng/api";
+import {DynamicDialogRef} from "primeng/dynamicdialog";
 
 @Component({
   selector: 'app-add-product',
@@ -18,6 +20,7 @@ import {BrandService} from "../../../services/brand.service";
 })
 export class AddProductComponent {
   form!: FormGroup;
+  messages!:Message[];
   categories$: Observable<Category[]>;
   brand$:Observable<Brand[]>;
 
@@ -27,7 +30,8 @@ export class AddProductComponent {
     private readonly $categoryServ: CategoryService,
     private readonly $brandServ: BrandService,
     builder: FormBuilder,
-    private router:Router
+    private messageService: MessageService,
+    public ref:DynamicDialogRef
   ) {
     this.form = builder.group(PRODUCT_ADD_FORM);
     this.categories$=$categoryServ.getAll();
@@ -36,17 +40,24 @@ export class AddProductComponent {
 
   onSubmit() {
     if(this.form.valid){
+      console.log(this.form.value.stock)
       const product : Product = {
         id:0,
         name:this.form.value.name,
         description:this.form.value.description,
         price:this.form.value.price,
-        stock:this.form.value.quantity,
+        stock:this.form.value.stock,
         categoryId:this.form.value.categoryId,
         brandId:this.form.value.brandId
       };
-      console.log("valid et preparé")
-      this.$productServ.add(product).subscribe(()=> this.router.navigateByUrl("manager/product/list"));
+      this.$productServ.add(product).subscribe({
+        next:()=>{
+          this.ref.close(product);
+        },
+        error: () =>{
+          this.messages=[{severity:'error',summary:'Erreur',detail:"Une erreur s'est produite"}]
+        }
+      });
     }
   }
 

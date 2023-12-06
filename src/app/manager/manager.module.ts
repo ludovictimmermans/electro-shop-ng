@@ -34,6 +34,8 @@ import {DialogService} from "primeng/dynamicdialog";
 import {ImageModule} from "primeng/image";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
+import {MessageService} from "primeng/api";
+import {MessagesModule} from "primeng/messages";
 
 const PRIME_IMPORTS = [TableModule,ButtonModule];
 
@@ -76,8 +78,9 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     FormsModule,
     ImageModule,
     ConfirmDialogModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    MessagesModule
   ],
-  providers:[DialogService]
+  providers:[DialogService,MessageService]
 })
 export class ManagerModule { }

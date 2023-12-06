@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import {Component} from "@angular/core";
+import {ConfirmationService, ConfirmEventType, MessageService} from "primeng/api";
 import {Category} from "../../../shared/models/category.model";
 import {Observable} from "rxjs";
-import {CategoryService} from "../../../services/category.service";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
-import {ConfirmationService,ConfirmEventType, MessageService} from "primeng/api";
+import {CategoryService} from "../../../services/category.service";
 import {AddCategoryComponent} from "../add-category/add-category.component";
 import {UpdateCategoryComponent} from "../update-category/update-category.component";
 
@@ -83,5 +83,9 @@ export class ListCategoryComponent{
         this.loadCategory();
       }
     });
+  }
+
+  show() {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
   }
 }

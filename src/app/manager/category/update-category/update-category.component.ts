@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import {Category} from "../../../shared/models/category.model";
-import {ActivatedRoute, Router} from "@angular/router";
 import {CategoryService} from "../../../services/category.service";
 import {Observable, of, tap} from "rxjs";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {CATEGORY_UPDATE_FORM} from "./updateCategory.form";
+import {Message, MessageService} from "primeng/api";
+import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
 
 @Component({
   selector: 'app-update-category',
@@ -16,16 +17,18 @@ export class UpdateCategoryComponent {
 
   $category!: Observable<Category>;
   private categoryId:number;
+  messages!: Message[];
 
 
   constructor(
-    route: ActivatedRoute,
     private readonly $categoryServ: CategoryService,
     builder: FormBuilder,
-    private router:Router
+    private messageService:MessageService,
+    public ref:DynamicDialogRef,
+    public config:DynamicDialogConfig
   ) {
     this.form = builder.group(CATEGORY_UPDATE_FORM);
-    this.categoryId = route.snapshot.params['id'];
+    this.categoryId=this.config.data.id;
      this.$category = $categoryServ.getOne(this.categoryId).pipe(
       tap( data => this.form.patchValue({
         name: data.name,
@@ -41,7 +44,14 @@ export class UpdateCategoryComponent {
         name:this.form.value.name,
         description:this.form.value.description
       };
-      this.$categoryServ.update(category).subscribe(() => this.router.navigateByUrl("manager/category/list"));
+      this.$categoryServ.update(category).subscribe({
+        next:()=> {
+          this.ref.close(category);
+        },
+        error:() =>{
+          this.messages=[{severity:'error',summary:'Erreur',detail:'Les données sont pas valides'}];
+        }
+      });
 
     }
   }

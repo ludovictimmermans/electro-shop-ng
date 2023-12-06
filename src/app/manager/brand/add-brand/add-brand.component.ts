@@ -9,8 +9,7 @@ import {MessageService} from "primeng/api";
 @Component({
   selector: 'app-add-brand',
   templateUrl: './add-brand.component.html',
-  styleUrls: ['./add-brand.component.scss'],
-  providers:[MessageService]
+  styleUrls: ['./add-brand.component.scss']
 })
 export class AddBrandComponent{
   form!: FormGroup;

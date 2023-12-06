@@ -1,63 +1,59 @@
-<h3 class="pl-3">Produits</h3>
-<div class="flex justify-content-between pl-3">
-  <div class="justify-content-start">
-    <p>Ajouter un nouveau produit</p>
-  </div>
-</div>
 <ng-container class="">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="grid pl-3">
-      <div class="col-6">
-
+      <div class="col-12">
         <div class="field">
-          <label>Nom</label>
+          <label >Nom</label>
           <input type="text"
                  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
                  formControlName="name"
           >
         </div>
+        <div class="field" *ngIf="brand$ | async as brands; else loading">
+          <label >Marque</label>
+          <div><p-dropdown [options]="brands" formControlName="brandId" optionValue="id"
+                           placeholder="Choissisez une marque" [editable]="true" optionLabel="name"></p-dropdown>
+
+          </div>
+        </div>
+        <div class="field" *ngIf="categories$ | async as categories; else loading">
+          <label>Catégorie</label>
+          <div>
+            <p-dropdown [options]="categories" formControlName="categoryId" optionValue="id"
+                           placeholder="Choissisez une catégorie" [editable]="true" optionLabel="name">
+
+            </p-dropdown>
+          </div>
+        </div>
         <div class="field">
-          <label>Description</label>
+          <label >Description</label>
           <input type="text"
                  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
                  formControlName="description"
           >
         </div>
-        <div class="field">
-          <div class="flex flex-column">
-          <label>Prix</label>
-          <p-inputNumber formControlName="price" mode="currency" inputId="currency-germany" currency="EUR"> </p-inputNumber>
-          </div>
+        <div class="grid flex-column px-2 mb-3">
+          <label >Quantité</label>
+          <p-inputNumber formControlName="stock" inputId="integeronly" > </p-inputNumber>
+
         </div>
-        <div class="field">
-          <div class="flex flex-column">
-          <label>Quantité</label>
-          <p-inputNumber formControlName="quantity" inputId="integeronly" > </p-inputNumber>
-          </div>
+        <div class="grid flex-column px-2 ">
+          <label >Prix</label>
+          <p-inputNumber formControlName="price" mode="currency" inputId="currency-germany" currency="EUR" > </p-inputNumber>
+
         </div>
-        <div class="field" *ngIf="categories$ | async as categories; else loading">
-          <div class="flex flex-column">
-            <label>Catégorie</label>
-            <p-dropdown [options]="categories" formControlName="categoryId" optionValue="id"
-                        placeholder="Choissisez une catégorie" [editable]="true" optionLabel="name"></p-dropdown>
-          </div>
-        </div>
-        <div class="field" *ngIf="brand$ | async as brands; else loading">
-          <div class="flex flex-column">
-            <label class="">Marque</label>
-            <p-dropdown [options]="brands" formControlName="brandId" optionValue="id"
-                        placeholder="Choissisez une marque" [editable]="true" optionLabel="name"></p-dropdown>
-          </div>
-        </div>
-        <div class="flex justify-content-end">
-          <button pButton type="submit" class="ml-6">Valider</button>
-          <button pButton type="button" class="p-button-secondary" routerLink="/manager/category/list">Annuler
-          </button>
+        <p-messages [(value)]="messages" [enableService]="false" [closable]="true" *ngIf="messages"></p-messages>
+        <div class="grid flex justify-content-end">
+          <button pButton type="submit" class="lg:m-2">Ajouter</button>
         </div>
       </div>
     </div>
   </form>
 </ng-container>
+
 <ng-template #loading>
-  <p>loading...</p>
+  <div class="grid justify-content-center">
+    <label>En chargement</label>
+    <p-progressSpinner></p-progressSpinner>
+  </div>
 </ng-template>
