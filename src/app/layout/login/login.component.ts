@@ -14,7 +14,6 @@ import {MessageService} from "primeng/api";
 export class LoginComponent {
   form : FormGroup;
   invalidCreds: boolean = false;
-  messages: any=" Le nom d'utilisateur ou le mot de passe est incorrect";
 
   constructor(
     builder: FormBuilder,

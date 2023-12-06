@@ -31,6 +31,9 @@ import {ChartModule} from "primeng/chart";
 import { BasicChartComponent } from './statistics/basic-chart/basic-chart.component';
 import {DialogModule} from "primeng/dialog";
 import {DialogService} from "primeng/dynamicdialog";
+import {ImageModule} from "primeng/image";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {ProgressSpinnerModule} from "primeng/progressspinner";
 
 const PRIME_IMPORTS = [TableModule,ButtonModule];
 
@@ -70,7 +73,10 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     RippleModule,
     ChartModule,
     DialogModule,
-    FormsModule
+    FormsModule,
+    ImageModule,
+    ConfirmDialogModule,
+    ProgressSpinnerModule
   ],
   providers:[DialogService]
 })

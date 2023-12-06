@@ -10,12 +10,19 @@
                  formControlName="name"
           >
         </div>
-        <div class="field">
+        <div class="field" >
           <label >Url image</label>
           <input type="text"
                  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                 formControlName="img"
+                 formControlName="img" (change)="imageChange()"
           >
+        </div>
+        <div class="field" *ngIf="preview">
+          <label >Apercu</label>
+          <div>
+            <p-image class="w-full" src="{{preview}}" alt="Image" width="70" [preview]="true"></p-image>
+          </div>
+
         </div>
         <div class="grid flex justify-content-end">
           <button pButton type="submit" class="lg:m-2">Modifier</button>

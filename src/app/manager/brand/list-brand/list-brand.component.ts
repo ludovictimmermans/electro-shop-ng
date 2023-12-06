@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import {Brand} from "../../../shared/models/brand.model";
 import {BrandService} from "../../../services/brand.service";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
-import {MessageService} from "primeng/api";
+import {ConfirmationService, ConfirmEventType, MessageService} from "primeng/api";
 import {AddBrandComponent} from "../add-brand/add-brand.component";
 import {UpdateBrandComponent} from "../update-brand/update-brand.component";
 
@@ -12,20 +12,45 @@ import {UpdateBrandComponent} from "../update-brand/update-brand.component";
   selector: 'app-list-brand',
   templateUrl: './list-brand.component.html',
   styleUrls: ['./list-brand.component.scss'],
-  providers: [MessageService]
+  providers: [ConfirmationService,MessageService]
 })
 export class ListBrandComponent {
   brands$: Observable<Brand[]>;
   ref: DynamicDialogRef | undefined;
 
 
-  constructor(private readonly $brandServ: BrandService,public dialogService: DialogService,public messageService: MessageService) {
+  constructor(private readonly $brandServ: BrandService,
+              public dialogService: DialogService,
+              private confirmationService: ConfirmationService,
+              private messageService: MessageService) {
     this.brands$ = this.$brandServ.getAll();
   }
 
-  delete(id:number) {
-    // attention au timing, etre sur de l'ordre d'execution
-    this.$brandServ.delete(id).subscribe(() => this.loadBrand());
+  delete(brand:Brand) {
+    this.confirmationService.confirm({
+      message: "Etes-vous sûr d'effacer cette marque?",
+      icon: 'pi pi-exclamation-triangle text-red-500',
+      accept: () => {
+        // attention au timing, etre sur de l'ordre d'execution
+        this.$brandServ.delete(brand.id).subscribe({
+          next:() => {
+            this.messageService.add({ severity: 'info', summary: 'Confirmation', detail: 'Vous avez supprimer '+brand.name });
+            this.loadBrand();
+          }
+        }
+      )},
+      reject: (type:ConfirmEventType) => {
+        switch (type) {
+          case ConfirmEventType.REJECT:
+            this.confirmationService.close()
+            break;
+          case ConfirmEventType.CANCEL:
+            this.confirmationService.close()
+            break;
+        }
+      }
+    });
+
 
   }
 
@@ -62,4 +87,5 @@ export class ListBrandComponent {
       }
     });
   }
+
 }

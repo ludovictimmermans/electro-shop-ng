@@ -6,14 +6,17 @@ import {Brand} from "../../../shared/models/brand.model";
 import {BrandService} from "../../../services/brand.service";
 import {BRAND_UPDATE_FORM} from "./updateBrand.form";
 import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-update-brand',
   templateUrl: './update-brand.component.html',
   styleUrls: ['./update-brand.component.scss'],
+  providers:[MessageService]
 })
 export class UpdateBrandComponent {
   form!:FormGroup;
+  preview!:string;
 
   $brand!: Observable<Brand>;
   private brandId:number;
@@ -23,17 +26,20 @@ export class UpdateBrandComponent {
     route: ActivatedRoute,
     private readonly $brandServ: BrandService,
     builder: FormBuilder,
-    private router:Router,
+    private messageService:MessageService,
     public ref:DynamicDialogRef,
     public config: DynamicDialogConfig
   ) {
     this.form = builder.group(BRAND_UPDATE_FORM);
     this.brandId = this.config.data.id;
     this.$brand = $brandServ.getOne(this.brandId).pipe(
-      tap( data => this.form.patchValue({
-        name: data.name,
-        img: data.img
-      }) )
+      tap( data =>{
+        this.form.patchValue({
+          name: data.name,
+          img: data.img
+        });
+        this.preview=data.img;
+      })
     );
   }
 
@@ -44,10 +50,19 @@ export class UpdateBrandComponent {
         name:this.form.value.name,
         img:this.form.value.img
       };
-      this.$brandServ.update(brand).subscribe(()=>{
-        this.ref.close(brand)
+      this.$brandServ.update(brand).subscribe({
+        next:()=>{
+          this.ref.close(brand)
+        },
+        error:() =>{
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: "Les données sont pas valides"});
+        }
       });
 
     }
+  }
+
+  imageChange() {
+    this.preview = this.form.value.img;
   }
 }
