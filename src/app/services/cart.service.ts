@@ -57,17 +57,14 @@ export class CartService {
     this.cart.forEach(
 
       p => {
-        console.log(p.id);
         list.push(new OrderItem(p,p.qtt));
       }
     );
-    console.log(list);
     console.log(JSON.stringify(list));
 
     const order = {
       products: list
     }
     return this.client.post<Map<number, number>>(this.BASE_URL, order);
-
   }
 }
