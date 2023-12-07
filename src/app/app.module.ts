@@ -34,6 +34,7 @@ import {RippleModule} from "primeng/ripple";
 import {StyleClassModule} from "primeng/styleclass";
 import {TieredMenuModule} from "primeng/tieredmenu";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
+import {MessageModule} from "primeng/message";
 
 @NgModule({
   declarations: [
@@ -45,35 +46,36 @@ import {ProgressSpinnerModule} from "primeng/progressspinner";
     LoginComponent,
     SidebarComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    ButtonModule,
-    MenubarModule,
-    PasswordModule,
-    FormsModule,
-    CheckboxModule,
-    CardModule,
-    InputTextModule,
-    DataViewModule,
-    RatingModule,
-    TagModule,
-    ShoppingModule,
-    BadgeModule,
-    MenuModule,
-    OverlayModule,
-    DividerModule,
-    ToastModule,
-    MessagesModule,
-    SidebarModule,
-    RippleModule,
-    StyleClassModule,
-    TieredMenuModule,
-    ProgressSpinnerModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        ButtonModule,
+        MenubarModule,
+        PasswordModule,
+        FormsModule,
+        CheckboxModule,
+        CardModule,
+        InputTextModule,
+        DataViewModule,
+        RatingModule,
+        TagModule,
+        ShoppingModule,
+        BadgeModule,
+        MenuModule,
+        OverlayModule,
+        DividerModule,
+        ToastModule,
+        MessagesModule,
+        SidebarModule,
+        RippleModule,
+        StyleClassModule,
+        TieredMenuModule,
+        ProgressSpinnerModule,
+        MessageModule
+    ],
   providers: [
     { provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}
   ],

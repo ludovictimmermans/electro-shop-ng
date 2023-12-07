@@ -28,7 +28,7 @@ export class LoginComponent {
     if( this.form.valid ){
       this.$authServ.connect( this.form.value.username, this.form.value.password ).subscribe({
         next: () => {
-
+          this.messageService.add({ severity: 'succes', summary: 'Connexion', detail: "Bonjour "+this.form.value.username});
           if(this.$authServ.connectedUser?.roles[0]=="ADMIN"){
             this.router.navigateByUrl("manager/statistic");
           }else{this.router.navigateByUrl('/home');}

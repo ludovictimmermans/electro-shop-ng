@@ -5,6 +5,7 @@ import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 import {ShoppingDetailComponent} from "./shopping-list/shopping-detail/shopping-detail.component";
 import {ShoppingCategoryListComponent} from "./shopping-category-list/shopping-category-list.component";
 import {BrandResolver} from "../core/brand.resolver";
+import {ShoppingCheckoutComponent} from "./shopping-checkout/shopping-checkout.component";
 
 const routes : Routes = [
     {
@@ -12,8 +13,10 @@ const routes : Routes = [
       component: ShoppingComponent,
       children:[
          {path:'cart',component:ShoppingCartComponent},
+         {path:'checkout',component:ShoppingCheckoutComponent},
          {path:'product/:id',component:ShoppingDetailComponent},
-         {path:':name',component:ShoppingCategoryListComponent,resolve:{brands : BrandResolver}}
+         {path:':name',component:ShoppingCategoryListComponent,resolve:{brands : BrandResolver}},
+
 
 
         // {path:'update/:id',component:UpdateCustomerComponent,canActivate: [AuthGuard],

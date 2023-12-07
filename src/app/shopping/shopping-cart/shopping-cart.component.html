@@ -110,7 +110,7 @@
       <li class="flex justify-content-end">
         <button pButton pRipple label="Commandez"
                 class="p-element p-ripple p-button p-component bg-black-alpha-90"
-                (click)="makeOrder()" *ngIf="total>0">
+                routerLink="/shopping/checkout" *ngIf="total>0">
         </button>
       </li>
     </ul>

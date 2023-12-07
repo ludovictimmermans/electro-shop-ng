@@ -36,6 +36,7 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
 import {MessageService} from "primeng/api";
 import {MessagesModule} from "primeng/messages";
+import { PieChartComponent } from './statistics/pie-chart/pie-chart.component';
 
 const PRIME_IMPORTS = [TableModule,ButtonModule];
 
@@ -56,7 +57,8 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     DeliveryOrderComponent,
     DetailPreparationComponent,
     StatisticsComponent,
-    BasicChartComponent
+    BasicChartComponent,
+    PieChartComponent
   ],
   imports: [
     CommonModule,

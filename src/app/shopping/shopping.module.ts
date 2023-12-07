@@ -31,6 +31,7 @@ import {ImageModule} from "primeng/image";
 import {TabMenuModule} from "primeng/tabmenu";
 import {AccordionModule} from "primeng/accordion";
 import {CarouselModule} from "primeng/carousel";
+import { ShoppingCheckoutComponent } from './shopping-checkout/shopping-checkout.component';
 
 
 
@@ -40,7 +41,8 @@ import {CarouselModule} from "primeng/carousel";
     ShoppingCartComponent,
     ShoppingListComponent,
     ShoppingDetailComponent,
-    ShoppingCategoryListComponent
+    ShoppingCategoryListComponent,
+    ShoppingCheckoutComponent
   ],
   exports: [
     ShoppingListComponent

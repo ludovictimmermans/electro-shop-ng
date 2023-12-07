@@ -1,0 +1,162 @@
+<div class="surface-50 px-4 py-8 md:px-6 lg:px-8">
+  <div class="text-900 font-medium text-3xl mb-5 ng-tns-c40-3">Votre commande est presque prête</div>
+  <div class="grid -mr-3 -ml-3 ng-tns-c40-3">
+    <div class="col-12 lg:col-9 p-3 ng-tns-c40-3">
+      <div class="px-0 py-4 lg:px-4 surface-card border-round shadow-2 ng-tns-c40-3">
+        <div class="flex ng-tns-c40-3">
+          <div class="flex flex-column align-items-center ml-3 ng-tns-c40-3" style="width: 2rem;"><span
+            class="bg-green-500 text-0 flex align-items-center justify-content-center border-circle ng-tns-c40-3"
+            style="min-width: 3rem; min-height: 3rem;"><i class="pi pi-directions text-xl ng-tns-c40-3"></i></span>
+            <div class="h-full border-dashed border-1 border-green-500 ng-tns-c40-3" style="min-height: 12rem;"></div>
+          </div>
+          <div class="ml-0 lg:ml-5 p-2 flex-auto ng-tns-c40-3">
+            <div class="mb-3 ng-tns-c40-3"><span class="text-900 text-xl block ml-2 ng-tns-c40-3">Address</span></div>
+            <div class="grid flex-column lg:flex-row ng-tns-c40-3">
+              <div class="col p-3 ng-tns-c40-3">
+                <div
+                  class="flex flex-column border-round border-1 surface-border p-4 cursor-pointer hover:border-primary transition-duration-150 ng-tns-c40-3 border-primary">
+                  <div class="flex justify-content-between mb-3 ng-tns-c40-3"><span
+                    class="text-900 text-xl font-medium ng-tns-c40-3">Home</span><span
+                    class="text-600 font-medium ng-tns-c40-3"><i class="pi pi-pencil mr-2 ng-tns-c40-3"></i>Edit</span>
+                  </div>
+                  <span class="inline-block text-600 mb-3 ng-tns-c40-3">Jacob Obrechtstraat 5, 1071 KC Amsterdam The Netherlands</span><span
+                  class="inline-block text-600 ng-tns-c40-3"><i
+                  class="pi pi-mobile mr-2 ng-tns-c40-3"></i>+123456789</span></div>
+              </div>
+              <div class="col p-3 ng-tns-c40-3">
+                <div
+                  class="flex flex-column border-round border-1 surface-border p-4 cursor-pointer hover:border-primary transition-duration-150 ng-tns-c40-3">
+                  <div class="flex justify-content-between mb-3 ng-tns-c40-3"><span
+                    class="text-900 text-xl font-medium ng-tns-c40-3">Office</span><span
+                    class="text-600 font-medium ng-tns-c40-3"><i class="pi pi-pencil mr-2 ng-tns-c40-3"></i>Edit</span>
+                  </div>
+                  <span class="inline-block text-600 mb-3 ng-tns-c40-3">Jacob Obrechtstraat 5, 1072 KC Amsterdam The Netherlands</span><span
+                  class="inline-block text-600 ng-tns-c40-3"><i
+                  class="pi pi-mobile mr-2 ng-tns-c40-3"></i>+123456789</span></div>
+              </div>
+              <div class="col p-3 ng-tns-c40-3" style="min-height: 10rem; min-width: 10rem;">
+                <div
+                  class="flex h-full flex-column justify-content-center align-items-center py-5 lg:py-0 border-round border-1 surface-border surface-100 cursor-pointer hover:border-primary transition-duration-150 ng-tns-c40-3">
+                  <span
+                    class="text-600 border-circle border-2 w-2rem h-2rem flex align-items-center justify-content-center ng-tns-c40-3"><i
+                    class="pi pi-fw pi-plus ng-tns-c40-3"></i></span><span class="text-600 mt-3 ng-tns-c40-3">Add New Address</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex ng-tns-c40-3">
+          <div class="flex flex-column align-items-center ml-3 ng-tns-c40-3" style="width: 2rem;"><span
+            class="bg-green-500 text-0 flex align-items-center justify-content-center border-circle ng-tns-c40-3"
+            style="min-width: 3rem; min-height: 3rem;"><i class="pi pi-image text-xl ng-tns-c40-3"></i></span>
+            <div class="h-full border-dashed border-1 surface-border ng-tns-c40-3" style="min-height: 12rem;"></div>
+          </div>
+          <div class="ml-0 lg:ml-5 p-2 flex-auto ng-tns-c40-3">
+            <div class="mb-3 ng-tns-c40-3"><span class="text-900 text-xl block ml-2 ng-tns-c40-3">Cart</span></div>
+            <ng-container *ngIf="cart.length>0">
+            <div class="p-2 flex flex-column lg:flex-row flex-wrap lg:align-items-center ng-tns-c40-3" *ngFor="let product of cart"><img
+              src="{{product.pictures[0].url}}" alt="product"
+              style="width:30%">
+              <div class="flex-auto lg:ml-3 ng-tns-c40-3">
+                <div class="flex align-items-center justify-content-between mb-3 ng-tns-c40-3"><span
+                  class="text-900 font-medium ng-tns-c40-3">{{product.name}}</span><span
+                  class="text-900 font-medium ng-tns-c40-3">{{product.price | currency:'EUR'}}</span></div>
+                <div class="text-600 text-sm mb-3 ng-tns-c40-3"></div>
+                <div class="flex flex-auto justify-content-between align-items-center ng-tns-c40-3">
+                  <p-inputNumber buttonLayout="horizontal"
+                                 inputStyleClass="w-2rem text-center p-0 border-none surface-50"
+                                 decrementButtonClass="surface-50 p-button-text text-600 hover:text-primary"
+                                 incrementButtonClass="p-button-text surface-50 text-600 hover:text-primary py-1 px-1"
+                                 incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"
+                                 class="p-element p-inputwrapper border-none border-round ng-tns-c40-3 ng-untouched ng-pristine ng-valid p-inputwrapper-filled">
+                    <span class="p-inputnumber p-component p-inputnumber-buttons-horizontal"><input pInputText=""
+                                                                                                    inputmode="decimal"
+                                                                                                    class="p-inputtext p-component p-element w-2rem text-center p-0 border-none surface-50 p-inputnumber-input p-filled"
+                                                                                                    min="0"><!---->
+                      <!----><button type="button" pButton="" tabindex="-1"
+                                     class="p-element p-button-icon-only p-button-text surface-50 text-600 hover:text-primary py-1 px-1 p-inputnumber-button p-inputnumber-button-up p-button p-component ng-star-inserted"><span
+                        class="pi pi-plus ng-star-inserted"></span><!----><!----></button><!----><button type="button"
+                                                                                                         pButton=""
+                                                                                                         tabindex="-1"
+                                                                                                         class="p-element p-button-icon-only surface-50 p-button-text text-600 hover:text-primary p-inputnumber-button p-inputnumber-button-down p-button p-component ng-star-inserted"><span
+                        class="pi pi-minus ng-star-inserted"></span><!----><!----></button><!----></span>
+                  </p-inputNumber>
+                  <span class="text-600 cursor-pointer ng-tns-c40-3"><i class="pi pi-trash mr-2 ng-tns-c40-3"></i>Delete</span>
+                </div>
+              </div>
+            </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="flex ng-tns-c40-3">
+          <div class="flex flex-column align-items-center ml-3 ng-tns-c40-3" style="width: 2rem;"><span
+            class="bg-gray-200 text-500 flex align-items-center justify-content-center border-circle ng-tns-c40-3"
+            style="min-width: 3rem; min-height: 3rem;"><i class="pi pi-credit-card text-xl ng-tns-c40-3"></i></span>
+          </div>
+          <div class="ml-0 lg:ml-5 p-2 flex-auto ng-tns-c40-3">
+            <div class="mb-3 ng-tns-c40-3"><span class="text-900 text-xl block ml-2 ng-tns-c40-3">Payment Method</span>
+            </div>
+            <div class="grid flex-column lg:flex-row">
+              <div class="col p-3">
+                <div
+                  class="flex flex-column border-round border-1 surface-border p-4 cursor-pointer hover:border-primary transition-duration-150">
+                  <img src="https://www.safeshops.be/app/uploads/2021/06/Bancontact-Original-logo-RGB.png" alt="Bancontact"
+                       class="w-6rem" style="width: 200px;height: 70px" ><span
+                  class="inline-block text-900 text-lg lg:text-xl mt-3 ng-tns-c40-3">**** **** **** 1234</span>
+                  <div class="flex justify-content-between align-items-center mt-3 ng-tns-c40-3"><span
+                    class="inline-block text-600 text-sm ng-tns-c40-3">Nom du propriétaire</span><span
+                    class="inline-block text-600 text-sm text-right ng-tns-c40-3">Date expiration</span></div>
+                  <div class="flex justify-content-between align-items-center mt-3 ng-tns-c40-3"><span
+                    class="inline-block text-900 font-bold ng-tns-c40-3">John Warden</span><span
+                    class="inline-block text-900 font-bold ng-tns-c40-3">12/25</span></div>
+                </div>
+              </div>
+              <div class="col p-3 ">
+                <div
+                  class="flex flex-column border-round border-1 surface-border p-4 cursor-pointer hover:border-primary transition-duration-150">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="MasterCard"
+                       class="w-6rem" style="width: 200px;height: 70px"><span
+                  class="inline-block text-900 text-lg lg:text-xl mt-3 ng-tns-c40-3">**** **** **** 1234</span>
+                  <div class="flex justify-content-between align-items-center mt-3 ng-tns-c40-3"><span
+                    class="inline-block text-600 text-sm ng-tns-c40-3">Nom du propriétaire</span><span
+                    class="inline-block text-600 text-sm text-right ng-tns-c40-3">Date expiration</span></div>
+                  <div class="flex justify-content-between align-items-center mt-3 ng-tns-c40-3"><span
+                    class="inline-block text-900 font-bold ng-tns-c40-3">John Warden</span><span
+                    class="inline-block text-900 font-bold ng-tns-c40-3">06/26</span></div>
+                </div>
+              </div>
+              <div class="col p-3 ng-tns-c40-3" style="min-height: 10rem; min-width: 10rem;">
+                <div
+                  class="flex h-full flex-column justify-content-center align-items-center py-5 lg:py-0 border-round border-1 surface-border surface-100 cursor-pointer hover:border-primary transition-duration-150 ng-tns-c40-3">
+                  <span
+                    class="text-600 border-circle border-2 w-2rem h-2rem flex align-items-center justify-content-center ng-tns-c40-3"><i
+                    class="pi pi-fw pi-plus ng-tns-c40-3"></i></span><span
+                  class="text-600 mt-3 text-center ng-tns-c40-3">Add New Credit Card</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 lg:col-3 p-3 ">
+      <div class="surface-card p-4 border-round shadow-2 ">
+        <div class="border-bottom-1 surface-border pb-4 ng-tns-c40-3"><span class="text-900 text-xl block ng-tns-c40-3">Order Summary</span>
+        </div>
+        <div class="border-bottom-1 surface-border my-3 py-2 ng-tns-c40-3">
+          <div class="flex justify-content-between mb-3 ng-tns-c40-3"><span
+            class="text-900 ng-tns-c40-3">Price</span><span class="text-900 ng-tns-c40-3">{{total | currency:'EUR'}}</span></div>
+          <div class="flex justify-content-between mb-3 ng-tns-c40-3"><span
+            class="text-900 ng-tns-c40-3">Delivery</span><span class="text-green-500 ng-tns-c40-3">Free</span></div>
+        </div>
+        <div class="border-bottom-1 surface-border my-3 py-2 ng-tns-c40-3">
+          <div class="flex justify-content-between mb-3 ng-tns-c40-3"><span class="text-900 font-medium ng-tns-c40-3">Total</span><span
+            class="text-900 font-bold ng-tns-c40-3">{{total | currency:'EUR'}}</span></div>
+        </div>
+        <button pButton="" pRipple="" label="Finaliser commande"
+                class="p-element p-ripple bg-black-alpha-90 border-none  w-full mt-3 p-button p-component"
+                >
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

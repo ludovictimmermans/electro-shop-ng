@@ -34,11 +34,9 @@ export class ShoppingCartComponent {
     this.$cartServ.removeFromCart(item, 1);
   }
 
-    protected readonly parseInt = parseInt;
 
   makeOrder() {
     this.$cartServ.orderCart().subscribe();
   }
 
-  protected readonly Date = Date;
 }
