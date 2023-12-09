@@ -1,4 +1,5 @@
 <ng-container *ngIf="category$ | async as category" >
+  <a (click)="test()">A</a>
 <div class="surface-section px-4 py-8 md:px-6 lg:px-8" >
   <div class="flex justify-content-between flex-wrap">
     <div class="flex align-items-center mb-4 md:mb-0">
@@ -22,13 +23,10 @@
         <ng-template pTemplate="content" let-option>
           <ul class="list-none py-0 pr-0 lg:pl-0 pl-5 m-0 text-700 hidden lg:block">
             <li class="mb-3 cursor-pointer">
-              <a class="linkNoStyle text-700 hover:text-900">Prix croissant</a>
+              <a class="linkNoStyle text-700 hover:text-900" (click)="filterAndSorted('price','ASC')">Prix croissant</a>
             </li>
             <li class="mb-3 cursor-pointer">
-              <a class="linkNoStyle text-700 hover:text-900">Prix décroissant</a>
-            </li>
-            <li class="mb-3 cursor-pointer">
-              <a class="linkNoStyle text-700 hover:text-900">Note</a>
+              <a class="linkNoStyle text-700 hover:text-900" (click)="filterAndSorted('price','DESC')">Prix décroissant</a>
             </li>
           </ul>
         </ng-template>
@@ -41,7 +39,7 @@
       <div class="p-divider-content"></div>
     </div>
   </p-divider>
-  <div class="grid grid-nogutter align-items-center">
+  <div class="grid grid-nogutter align-items-center lg:mb-5">
     <p-multiSelect [options]="brands" [(ngModel)]="selectedBrands" placeholder="Brand" optionLabel="name" optionValue="name"
                    styleClass="w-full"
                    selectedItemsLabel="{0} brands selected"
@@ -80,27 +78,31 @@
     </button>
     <button pButton="" label="Reset"
             class="p-element p-button-rounded bg-white text-black-alpha-90 hover:bg-gray-900 hover:text-white mb-3 lg:mt-0 mr-0 lg:mr-4 w-full lg:w-auto border-none p-button p-component"
-
+            (click)="reset()"
     >
     </button>
   </div>
   <ng-container *ngIf="products$ |async as products">
     <div class="grid -mt-3 -ml-3 -mr-3 ">
       <div class="col-12 md:col-6 lg:col-3 mb-5 md:mb-0" *ngFor="let product of products">
-        <a routerLink="/shopping/product/{{product.id}}"><div class="mb-3 relative"><img
-          src="{{product.pictures[1].url}}"
-          class="w-full" *ngIf="product.pictures">
-          <button type="button" pRipple
+        <div class="mb-3 relative"><img
+          src="{{product.pictures[0].url}}"
+          class="w-full" *ngIf="product.pictures" routerLink="/shopping/product/{{product.id}}">
+          <button *ngIf="product.stock>0" (click)="addCart(product)" type="button" pRipple
                   class="p-ripple p-element border-1 border-white-alpha-20 border-round absolute bg-black-alpha-90 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
-                  style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);"><i
-            class="pi pi-shopping-cart mr-3 text-base" (click)="addCart(product)"></i><span class="text-base">Add to Cart</span><span
+                  style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);" ><i
+            class="pi pi-shopping-cart mr-3 text-base" ></i><span class="text-base" >Add to Cart</span><span
+            class="p-ink"></span></button>
+          <button *ngIf="product.stock==0" type="button" pRipple
+                  class="p-ripple p-element border-1 border-white-alpha-20 border-round absolute bg-black-alpha-90 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold p-disabled"
+                  style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);" ><i
+            class="pi pi-shopping-cart mr-3 text-base" ></i><span class="text-base" >Indisponible</span><span
             class="p-ink"></span></button>
         </div>
         <div class="flex flex-column align-items-center"><span
           class="text-xl text-900 font-medium mb-3">{{product.name}}</span><span
           class="text-xl text-900 mb-3">{{product.price | currency:'EUR'}}</span>
         </div>
-        </a>
       </div>
     </div>
   </ng-container>

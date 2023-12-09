@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {AuthService} from "../../services/auth.service";
-import {map, Observable, tap} from "rxjs";
+import {Observable} from "rxjs";
 import {CartService} from "../../services/cart.service";
 import {Category} from "../../shared/models/category.model";
 import {CategoryService} from "../../services/category.service";

@@ -14,6 +14,7 @@ export class DetailOrderComponent {
   order$!: Observable<Order>;
   orderId: number;
   products!:Product[];
+  total!:number;
 
   constructor(
     private readonly $orderServ: OrderService,
@@ -21,6 +22,12 @@ export class DetailOrderComponent {
   ) {
     this.orderId = route.snapshot.params['id'];
     this.order$ = $orderServ.getOne(this.orderId);
+    this.order$.subscribe({next: o => this.total=o.amount});
+
+  }
+
+  get TVA(){
+    return (this.total/100)*21
   }
 
 

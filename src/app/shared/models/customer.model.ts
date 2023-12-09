@@ -1,3 +1,5 @@
+import {DeliveryAddress} from "./DeliveryAddress.model";
+
 export interface Customer{
   id:number,
   lastname:string,
@@ -8,4 +10,5 @@ export interface Customer{
   phoneNumber:string,
   address:string
   roles?: string[]
+  deliveryAddresses? : DeliveryAddress[];
 }

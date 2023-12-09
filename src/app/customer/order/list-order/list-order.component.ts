@@ -21,4 +21,6 @@ export class ListOrderComponent {
     this.customerId=route.snapshot.params['id'];
     this.order$ = $orderServ.getAllByCustomer(this.customerId);
   }
+
+  protected readonly Date = Date;
 }

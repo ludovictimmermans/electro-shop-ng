@@ -35,6 +35,7 @@ import {StyleClassModule} from "primeng/styleclass";
 import {TieredMenuModule} from "primeng/tieredmenu";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
 import {MessageModule} from "primeng/message";
+import {AvailableDirective} from "./shopping/directives/available.directive";
 
 @NgModule({
   declarations: [
@@ -46,38 +47,40 @@ import {MessageModule} from "primeng/message";
     LoginComponent,
     SidebarComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        ButtonModule,
-        MenubarModule,
-        PasswordModule,
-        FormsModule,
-        CheckboxModule,
-        CardModule,
-        InputTextModule,
-        DataViewModule,
-        RatingModule,
-        TagModule,
-        ShoppingModule,
-        BadgeModule,
-        MenuModule,
-        OverlayModule,
-        DividerModule,
-        ToastModule,
-        MessagesModule,
-        SidebarModule,
-        RippleModule,
-        StyleClassModule,
-        TieredMenuModule,
-        ProgressSpinnerModule,
-        MessageModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    MenubarModule,
+    PasswordModule,
+    FormsModule,
+    CheckboxModule,
+    CardModule,
+    InputTextModule,
+    DataViewModule,
+    RatingModule,
+    TagModule,
+    ShoppingModule,
+    BadgeModule,
+    MenuModule,
+    OverlayModule,
+    DividerModule,
+    ToastModule,
+    MessagesModule,
+    SidebarModule,
+    RippleModule,
+    StyleClassModule,
+    TieredMenuModule,
+    ProgressSpinnerModule,
+    MessageModule
+  ],
   providers: [
-    { provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })

@@ -21,6 +21,10 @@ import {InputTextModule} from "primeng/inputtext";
 import {DropdownModule} from "primeng/dropdown";
 import {CheckboxModule} from "primeng/checkbox";
 import {RippleModule} from "primeng/ripple";
+import {DividerModule} from "primeng/divider";
+import { UpdateAddressComponent } from '../shopping/shopping-checkout/update-address/update-address.component';
+import { AddAddressComponent } from '../shopping/shopping-checkout/add-address/add-address.component';
+import {ImageModule} from "primeng/image";
 
 
 @NgModule({
@@ -31,7 +35,9 @@ import {RippleModule} from "primeng/ripple";
     UpdatePwdComponent,
     ListOrderComponent,
     DetailOrderComponent,
-    ReviewComponent
+    ReviewComponent,
+    UpdateAddressComponent,
+    AddAddressComponent
 
   ],
   imports: [
@@ -51,7 +57,9 @@ import {RippleModule} from "primeng/ripple";
     InputTextModule,
     DropdownModule,
     CheckboxModule,
-    RippleModule
+    RippleModule,
+    DividerModule,
+    ImageModule
   ]
 })
 export class CustomerModule {

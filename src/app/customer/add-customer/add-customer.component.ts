@@ -19,7 +19,6 @@ export class AddCustomerComponent {
     builder: FormBuilder,
     private router:Router
   ) {
-    console.log("customer add component")
     this.form = builder.group(CUSTOMER_ADD_FORM);
   }
 

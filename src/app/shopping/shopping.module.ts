@@ -32,6 +32,11 @@ import {TabMenuModule} from "primeng/tabmenu";
 import {AccordionModule} from "primeng/accordion";
 import {CarouselModule} from "primeng/carousel";
 import { ShoppingCheckoutComponent } from './shopping-checkout/shopping-checkout.component';
+import {AvailableDirective} from "./directives/available.directive";
+import {AvailablePipe} from "./pipe/available.pipe";
+import {DialogService} from "primeng/dynamicdialog";
+import {MessageService} from "primeng/api";
+import {ToastModule} from "primeng/toast";
 
 
 
@@ -42,7 +47,9 @@ import { ShoppingCheckoutComponent } from './shopping-checkout/shopping-checkout
     ShoppingListComponent,
     ShoppingDetailComponent,
     ShoppingCategoryListComponent,
-    ShoppingCheckoutComponent
+    ShoppingCheckoutComponent,
+    AvailableDirective,
+    AvailablePipe
   ],
   exports: [
     ShoppingListComponent
@@ -75,7 +82,9 @@ import { ShoppingCheckoutComponent } from './shopping-checkout/shopping-checkout
     ImageModule,
     TabMenuModule,
     AccordionModule,
-    CarouselModule
-  ]
+    CarouselModule,
+    ToastModule
+  ],
+  providers:[DialogService,MessageService]
 })
 export class ShoppingModule { }

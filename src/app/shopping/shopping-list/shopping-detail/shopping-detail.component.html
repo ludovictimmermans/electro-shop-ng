@@ -2,7 +2,7 @@
   <div class="grid col-12 mt-6">
     <div class="col-6">
       <p-carousel [value]="product.pictures" [numVisible]="1"
-                  [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" class="bg-black-alpha-90 ">
+                  [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" >
         <ng-template let-picture pTemplate="item">
           <img src="{{picture.url}}" style="width: 500px">
         </ng-template>
@@ -13,13 +13,25 @@
         <div class="col-12">
         <h3>{{product.name}}</h3>
         </div>
-
+        <div class="col-12">
+          <p-rating [(ngModel)]="note" [cancel]="false" [readonly]="true" iconOnClass="pi pi-star-fill text-yellow-400"></p-rating>
+        </div>
+        <div class="col-12">
+          <p appAvailable [stock]="product.stock" >{{product.stock | available}}</p>
+        </div>
         <div class="col-12">
           <h1>{{product.price | currency: 'EUR'}}</h1>
         </div>
         <div class="col-12">
-          <button pButton pRipple icon="pi pi-shopping-cart" label="Ajouter au panier" class="bg-black-alpha-90 p-element p-ripple w-full mb-5 p-button p-component" (click)="add(product)"></button>
+          <button pButton pRipple icon="pi pi-shopping-cart" label="Ajouter au panier" class="bg-black-alpha-90 p-element p-ripple w-full mb-5 p-button p-component" (click)="add(product)" *ngIf="product.stock>0"></button>
+          <button pButton pRipple icon="pi pi-shopping-cart" label="Ajouter au panier" class="bg-black-alpha-90 p-element p-ripple w-full mb-5 p-button p-component p-disabled" (click)="add(product)" *ngIf="product.stock==0"></button>
         </div>
+        <div class="col-12">
+          <p><i class="pi pi-check-circle text-green-500"></i>  Vous bénéficiez de <span>2 ans</span> de garantie.</p>
+          <p><i class="pi pi-check-circle text-green-500"></i>  Echange <span>gratuit</span> dans les 30 jours.</p>
+        </div>
+
+
       </div>
     </div>
 
@@ -31,7 +43,7 @@
   <div class="grid nested-grid">
     <div class="col-12">
       <p-tabView [(activeIndex)]="activeIndex">
-        <p-tabPanel header="Description" headerStyleClass="text-black-alpha-90">
+        <p-tabPanel header="Description" headerStyleClass="text-900">
           <p class="col-8">
            {{product.description}}
           </p>

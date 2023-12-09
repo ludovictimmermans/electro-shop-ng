@@ -1,0 +1,48 @@
+<ng-container class="" *ngIf="address$ | async as address">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="grid pl-3">
+      <div class="col-12">
+
+        <div class="field">
+          <label >Nom</label>
+          <input type="text"
+                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 formControlName="name"
+          >
+        </div>
+        <div class="field">
+          <label>Numéro de contact</label>
+          <input placeholder="0499/999999" pattern="[0-9]{4}/[0-9]{6}"
+                 type="text"
+                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 formControlName="phoneNumber"
+          >
+        </div>
+        <div class="field ">
+          <label>Adresse</label>
+          <input type="text"
+                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 formControlName="address"
+          >
+        </div>
+        <div class="field">
+          <label>Ville</label>
+          <input type="text"
+                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 formControlName="city"
+          >
+        </div>
+        <div class="field">
+          <label>Code postal</label>
+          <input type="number" min=1000 max="9999" value="1000"
+                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 formControlName="zipCode"
+          >
+        </div>
+        <div class="grid flex justify-content-end">
+          <button pButton type="submit" class="p-button">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-container>

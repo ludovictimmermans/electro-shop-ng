@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams, HttpRequest} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../shared/models/product.model";
 import {Review} from "../shared/models/review.model";
@@ -17,9 +17,7 @@ export class ProductService {
         return this.client.get<Product[]>(this.BASE_URL);
   }
 
-  getAllFiltered(category?:string,brands?:string[],min?:number,max?:number,available?:boolean):Observable<Product[]>{
-    // const req = new HttpRequest("GET", this.BASE_URL+'/filter',filter, {})
-    // this.client.request<Product[]>(req)
+  getAllFiltered(category?:string,brands?:string[],min?:number,max?:number,available?:boolean,nameSort?:string,direction?:string):Observable<Product[]>{
     let params = new HttpParams();
     if(category)
       params=params.append("category",category);
@@ -32,9 +30,12 @@ export class ProductService {
     }
     if(available)
       params=params.append("available",available);
+    if(nameSort!=null || nameSort!=undefined)
+      params=params.append("nameSort",nameSort);
+    if(direction!=null || direction!=undefined)
+      params=params.append("direction",direction);
 
-    // if(available!=undefined || available!=null)
-    //   params=params.append("available",available);
+
     return this.client.get<Product[]>(this.BASE_URL+'/filter', { params: params });
   }
 

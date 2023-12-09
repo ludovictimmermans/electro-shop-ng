@@ -50,7 +50,7 @@
   <ng-container *ngIf="cart.length>0" >
   <ul class="list-none p-0 m-0" *ngFor="let product of cart" >
     <li class="flex flex-column md:flex-row py-6 border-top-1 border-bottom-1 surface-border md:align-items-center">
-      <img src="https://www.omen.com/content/dam/sites/omen/worldwide/desktops/omen-25l/about@2x.png"
+      <img src="{{product.pictures[0].url}}"
            class="w-12rem flex-shrink-0 mx-auto md:mx-0">
       <div class="flex-auto py-5 md:pl-5">
         <div
