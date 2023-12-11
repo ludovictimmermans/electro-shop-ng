@@ -6,6 +6,7 @@ import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {ConfirmationService, ConfirmEventType, MessageService} from "primeng/api";
 import {AddBrandComponent} from "../add-brand/add-brand.component";
 import {UpdateBrandComponent} from "../update-brand/update-brand.component";
+import {Table} from "primeng/table";
 
 
 @Component({
@@ -17,6 +18,7 @@ import {UpdateBrandComponent} from "../update-brand/update-brand.component";
 export class ListBrandComponent {
   brands$: Observable<Brand[]>;
   ref: DynamicDialogRef | undefined;
+  search: string="";
 
 
   constructor(private readonly $brandServ: BrandService,
@@ -88,4 +90,7 @@ export class ListBrandComponent {
     });
   }
 
+  clear(dt1: Table) {
+    dt1.clear();
+  }
 }

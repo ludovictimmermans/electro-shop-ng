@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-pie-chart',
@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./pie-chart.component.scss']
 })
 export class PieChartComponent {
+  @Input()
+  value:any;
   data: any;
   options: any;
 
@@ -14,12 +16,12 @@ export class PieChartComponent {
     const textColor = documentStyle.getPropertyValue('--text-color');
 
     this.data = {
-      labels: ['A', 'B', 'C'],
+      labels: this.value.ref,
       datasets: [
         {
-          data: [540, 325, 702],
-          backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
-          hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+          data: this.value.value,
+          backgroundColor: ['#00589F', '#016FC4', '#1891C3', '#3AC0DA','#3DC6C3','#50E3C2'],
+          hoverBackgroundColor: ['rgba(0,88,156,0.8)', 'rgba(1,111,196,0.8)', 'rgba(24,145,195,0.8)', 'rgba(58,192,218,0.8)','rgba(61,198,195,0.8)','rgba(80,227,194,0.8)']
         }
       ]
     };

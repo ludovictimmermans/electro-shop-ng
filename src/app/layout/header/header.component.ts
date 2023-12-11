@@ -47,8 +47,8 @@ export class HeaderComponent {
   ];
   categories$:Observable<Category[]>;
   username$:Observable<String | null>;
-  cartSize:string;
   overlayVisible: boolean=false;
+  cartSize!: number;
 
   constructor(private readonly $authServ:AuthService,private readonly $cartService:CartService,private readonly $cartegoryserv:CategoryService) {
     this.username$ = this.$authServ.username$;
@@ -61,7 +61,12 @@ export class HeaderComponent {
         }
       ))
     } )
-    this.cartSize=($cartService.cartSize).toString();
+  }
+
+  ngOnInit(): void {
+    this.$cartService.cartSize.subscribe(size => {
+      this.cartSize = size;
+    });
   }
 
   get isConnected(){

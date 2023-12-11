@@ -4,7 +4,7 @@
       <p-carousel [value]="product.pictures" [numVisible]="1"
                   [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" >
         <ng-template let-picture pTemplate="item">
-          <img src="{{picture.url}}" style="width: 500px">
+          <img src="{{picture.url}}" style="width: 500px;max-height:500px">
         </ng-template>
       </p-carousel>
     </div>

@@ -6,6 +6,7 @@
           <label >Nom</label>
           <input type="text"
                  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 pTooltip="Entrez le nom" [showDelay]="500" tooltipEvent="focus"
                  formControlName="name"
           >
         </div>
@@ -27,10 +28,11 @@
         </div>
         <div class="field">
           <label >Description</label>
-          <input type="text"
-                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                 formControlName="description"
-          >
+          <textarea
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            rows="9" cols="100" pInputTextarea pTooltip="Ajoutez une description" [showDelay]="500" tooltipEvent="focus" formControlName="description">
+
+          </textarea>
         </div>
         <div class="grid flex-column px-2 mb-3">
           <label >Quantité</label>
@@ -46,6 +48,7 @@
           <label >Image</label>
           <input type="text"
                  class="mb-2 text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 pTooltip="Entrez une adresse url" [showDelay]="500" tooltipEvent="focus"
                  formControlName="url1"
           >
           <input type="text"

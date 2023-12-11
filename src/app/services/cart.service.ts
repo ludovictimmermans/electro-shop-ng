@@ -3,6 +3,8 @@ import {Product} from "../shared/models/product.model";
 import {CartItem} from "../shared/models/cart.model";
 import {HttpClient} from "@angular/common/http";
 import {OrderItem} from "../shared/models/orderItem.model";
+import {DeliveryAddress} from "../shared/models/DeliveryAddress.model";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ import {OrderItem} from "../shared/models/orderItem.model";
 export class CartService {
 
   cart: CartItem[] = []
+  size: BehaviorSubject<number>=new BehaviorSubject<number>(0);
 
   private readonly BASE_URL = 'http://localhost:8080/order'
 
@@ -26,6 +29,7 @@ export class CartService {
         qtt: 1
       })
     }
+    this.size.next(this.cart.length)
   }
 
   removeFromCart(produit: Product, qtt?: number) {
@@ -39,6 +43,7 @@ export class CartService {
       const productIndex = this.cart.indexOf(product);
       this.cart.splice(productIndex, 1);
     }
+    this.size.next(this.cart.length)
   }
 
   get total() {
@@ -48,11 +53,10 @@ export class CartService {
   }
 
   get cartSize(){
-    return this.cart.length;
+    return this.size.asObservable();
   }
 
-  orderCart() {
-    // let products: Map<number,number>=new Map<number, number>();
+  orderCart(address:DeliveryAddress) {
     let list: OrderItem[] = [];
     this.cart.forEach(
 
@@ -63,7 +67,8 @@ export class CartService {
     console.log(JSON.stringify(list));
 
     const order = {
-      products: list
+      products: list,
+      address: address
     }
     return this.client.post<Map<number, number>>(this.BASE_URL, order);
   }

@@ -10,6 +10,7 @@ import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {MessageService} from "primeng/api";
 import {UpdateAddressComponent} from "./update-address/update-address.component";
 import {AddAddressComponent} from "./add-address/add-address.component";
+import {AddressService} from "../../services/address.service";
 
 @Component({
   selector: 'app-shopping-checkout',
@@ -18,7 +19,7 @@ import {AddAddressComponent} from "./add-address/add-address.component";
 })
 export class ShoppingCheckoutComponent {
   cart: CartItem[];
-  selectedAddress:string = "";
+  selectedAddress:DeliveryAddress | null=null;
   selectedCard:string="";
   user!:Observable<Customer>;
   username!:string|null;
@@ -27,6 +28,7 @@ export class ShoppingCheckoutComponent {
   constructor(private readonly $cartServ:CartService,
               private readonly $authService:AuthService,
               private readonly $customerServ:CustomerService,
+              private readonly $addressService:AddressService,
               public dialogService:DialogService,
               private messageService : MessageService
               ) {
@@ -53,11 +55,11 @@ export class ShoppingCheckoutComponent {
     return (this.total/100)*21
   }
 
-  changeAddress(name: string) {
-    if(name==this.selectedAddress){
-      this.selectedAddress="";
+  changeAddress(address:DeliveryAddress) {
+    if(address==this.selectedAddress){
+      this.selectedAddress=null;
     }else{
-      this.selectedAddress = name;
+      this.selectedAddress = address;
     }
   }
 
@@ -90,5 +92,9 @@ export class ShoppingCheckoutComponent {
       }
     });
 
+  }
+  makeOrder() {
+    if(this.selectedAddress!=null)
+      this.$cartServ.orderCart(this.selectedAddress).subscribe();
   }
 }

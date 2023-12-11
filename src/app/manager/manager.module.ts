@@ -37,6 +37,7 @@ import {ProgressSpinnerModule} from "primeng/progressspinner";
 import {MessageService} from "primeng/api";
 import {MessagesModule} from "primeng/messages";
 import { PieChartComponent } from './statistics/pie-chart/pie-chart.component';
+import {InputTextareaModule} from "primeng/inputtextarea";
 
 const PRIME_IMPORTS = [TableModule,ButtonModule];
 
@@ -60,29 +61,30 @@ const PRIME_IMPORTS = [TableModule,ButtonModule];
     BasicChartComponent,
     PieChartComponent
   ],
-  imports: [
-    CommonModule,
-    ManagerRoutingModule,
-    ...PRIME_IMPORTS,
-    ButtonModule,
-    CardModule,
-    InputTextModule,
-    PasswordModule,
-    ReactiveFormsModule,
-    AutoCompleteModule,
-    DropdownModule,
-    InputNumberModule,
-    ToastModule,
-    MenuModule,
-    RippleModule,
-    ChartModule,
-    DialogModule,
-    FormsModule,
-    ImageModule,
-    ConfirmDialogModule,
-    ProgressSpinnerModule,
-    MessagesModule
-  ],
+    imports: [
+        CommonModule,
+        ManagerRoutingModule,
+        ...PRIME_IMPORTS,
+        ButtonModule,
+        CardModule,
+        InputTextModule,
+        PasswordModule,
+        ReactiveFormsModule,
+        AutoCompleteModule,
+        DropdownModule,
+        InputNumberModule,
+        ToastModule,
+        MenuModule,
+        RippleModule,
+        ChartModule,
+        DialogModule,
+        FormsModule,
+        ImageModule,
+        ConfirmDialogModule,
+        ProgressSpinnerModule,
+        MessagesModule,
+        InputTextareaModule
+    ],
   providers:[DialogService,MessageService]
 })
 export class ManagerModule { }

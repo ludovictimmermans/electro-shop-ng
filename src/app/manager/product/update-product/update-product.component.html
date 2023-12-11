@@ -27,10 +27,11 @@
         </div>
         <div class="field">
           <label >Description</label>
-          <input type="text"
-                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                 formControlName="description"
-          >
+          <textarea
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            rows="5" cols="80" pInputTextarea pTooltip="Ajoutez une description" [showDelay]="500" tooltipEvent="focus" formControlName="description">
+
+          </textarea>
         </div>
         <div class="grid flex-column px-2 mb-3">
           <label >Quantité</label>

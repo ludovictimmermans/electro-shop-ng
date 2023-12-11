@@ -13,7 +13,6 @@ export class ListOrderComponent {
   order$!: Observable<Order[]>;
   customerId!:number;
 
-
   constructor(
     private readonly $orderServ:OrderService,
     private route:ActivatedRoute
@@ -21,6 +20,7 @@ export class ListOrderComponent {
     this.customerId=route.snapshot.params['id'];
     this.order$ = $orderServ.getAllByCustomer(this.customerId);
   }
+
 
   protected readonly Date = Date;
 }

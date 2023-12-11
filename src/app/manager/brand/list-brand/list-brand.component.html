@@ -20,7 +20,16 @@
 
 
 <ng-container *ngIf="brands$ | async as brands;else loading">
-  <p-table [value]="brands">
+  <p-table [value]="brands" #dt1 [globalFilterFields]="['name']">
+    <ng-template pTemplate="caption">
+      <div class="flex align-content-end">
+        <button pButton label="Reset" class="p-button-outlined text-black-alpha-90" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+        <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [(ngModel)]="search" (input)="dt1.filterGlobal(search, 'contains')" placeholder="Cherchez marque" />
+                </span>
+      </div>
+    </ng-template>
     <ng-template pTemplate="header" class="grid">
       <tr class="col-12">
         <th class="col-1" >#</th>

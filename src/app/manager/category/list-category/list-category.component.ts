@@ -6,6 +6,7 @@ import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {CategoryService} from "../../../services/category.service";
 import {AddCategoryComponent} from "../add-category/add-category.component";
 import {UpdateCategoryComponent} from "../update-category/update-category.component";
+import {Table} from "primeng/table";
 
 @Component({
   selector: 'app-list-category',
@@ -16,6 +17,7 @@ import {UpdateCategoryComponent} from "../update-category/update-category.compon
 export class ListCategoryComponent{
   categories$: Observable<Category[]>;
   ref: DynamicDialogRef | undefined;
+  search: string="";
 
   constructor(private readonly $categoryServ: CategoryService,
               public dialogService: DialogService,
@@ -87,5 +89,9 @@ export class ListCategoryComponent{
 
   show() {
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
+  }
+
+  clear(table: Table) {
+    table.clear();
   }
 }

@@ -1,56 +1,11 @@
-<!--<p-dataView #dv [value]="cart">-->
-
-<!--  <ng-template let-product pTemplate="listItem">-->
-<!--    <div class="col-12">-->
-<!--      <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">-->
-<!--        <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" [src]="product.img"-->
-<!--             [alt]="product.name"/>-->
-<!--        <div-->
-<!--          class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">-->
-<!--          <div class="flex flex-column align-items-center sm:align-items-start gap-3">-->
-<!--            <div class="text-2xl font-bold text-900">{{ product.name }}</div>-->
-<!--            <div class="flex align-items-center gap-3">-->
-<!--              <div>-->
-<!--                <p-inputNumber [(ngModel)]="product.qtt" [showButtons]="true" [max]="product.quantity" [min]="0"-->
-<!--                               buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"-->
-<!--                               decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"-->
-<!--                               incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">-->
-
-<!--                </p-inputNumber>-->
-<!--              </div>-->
-<!--              <div>-->
-<!--                <button pButton type="button" class="p-button p-button-danger" icon="pi pi-trash"-->
-<!--                        (click)="removeAll(product)"></button>-->
-<!--              </div>-->
-
-
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">-->
-<!--            <span class="text-2xl font-semibold">{{ product.price |currency:'EUR' }}</span>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </ng-template>-->
-<!--</p-dataView>-->
-<!--<div class="flex justify-content-end" *ngIf="cart.length>0">-->
-<!--  <p> TOTAL : {{ total | currency:'EUR' }}</p>-->
-<!--</div>-->
-
-<!--<div class="flex justify-content-end" *ngIf="cart.length>0">-->
-<!--  <button pButton class="p-button-success" (click)="makeOrder()">Payer</button>-->
-<!--</div>-->
-
-<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
-<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
-  <div class="flex flex-column align-content-center -mt-5 p-8 bg-no-repeat bg-center bg-cover" style="background: url('https://img.freepik.com/photos-premium/panier-violet-ai-generative-fond-violet-boutique-minimaliste-ligne_93150-15871.jpg?w=1380');" >
-    <div class="text-white text-4xl mb-2 py-6 font-medium ">Votre panier</div>
+<div class="surface-section px-4 py-6 md:px-6 lg:px-8">
+  <div class="flex flex-column align-content-center -mt-5 p-3 bg-no-repeat bg-center bg-cover" style="background: url('https://img.freepik.com/photos-premium/panier-violet-ai-generative-fond-violet-boutique-minimaliste-ligne_93150-15871.jpg?w=1380');" >
+    <div class="text-white text-4xl mb-2 ml-8 py-6 font-medium ">Votre panier</div>
   </div>
   <ng-container *ngIf="cart.length>0" >
   <ul class="list-none p-0 m-0" *ngFor="let product of cart" >
     <li class="flex flex-column md:flex-row py-6 border-top-1 border-bottom-1 surface-border md:align-items-center">
-      <img src="{{product.pictures[0].url}}"
+      <img src="{{product.pictures[1].url}}"
            class="w-12rem flex-shrink-0 mx-auto md:mx-0">
       <div class="flex-auto py-5 md:pl-5">
         <div
@@ -85,7 +40,7 @@
             <span class="text-600 mr-2">Livré le <span class="font-bold">{{delivery| date : 'MMM d'}}</span>
             </span>
           </span>
-          <span class="flex align-items-center">
+          <span class="flex align-items-center" *ngIf="product.stock<10">
             <i class="pi pi-exclamation-triangle text-600 mr-2"></i>
             <span class="text-600">Plus que {{product.stock}} disponible.
             </span>
@@ -110,7 +65,7 @@
       <li class="flex justify-content-end">
         <button pButton pRipple label="Commandez"
                 class="p-element p-ripple p-button p-component bg-black-alpha-90"
-                routerLink="/shopping/checkout" *ngIf="total>0">
+                (click)="CheckLogin()" *ngIf="total>0">
         </button>
       </li>
     </ul>

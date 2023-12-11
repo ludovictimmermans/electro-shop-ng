@@ -11,11 +11,16 @@ import {Stat} from "../../shared/models/stat.model";
 })
 export class StatisticsComponent {
   statsCount$:Observable<StatsCount>;
-  stat$:Observable<Stat[]>;
+  statOrder$:Observable<Stat[]>;
+  statCategory$:Observable<Stat[]>;
+  statProduct$:Observable<Stat[]>;
 
 
   constructor(private readonly $statsServ:StatsService ) {
     this.statsCount$ = $statsServ.getCount();
-    this.stat$ =$statsServ.getCountOrdersByYear();
+    this.statOrder$ =$statsServ.getCountOrdersByYear();
+    this.statCategory$ =$statsServ.getSalesCountByCategory();
+    this.statProduct$ =$statsServ.getProductsBestSales();
+
   }
 }

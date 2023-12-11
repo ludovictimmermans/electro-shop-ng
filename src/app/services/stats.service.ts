@@ -19,4 +19,11 @@ export class StatsService {
   getCountOrdersByYear():Observable<Stat[]>{
     return this.client.get<Stat[]>(this.BASE_URL+"/orders/year");
   }
+  getSalesCountByCategory(){
+    return this.client.get<Stat[]>(this.BASE_URL+"/category/year");
+  }
+
+  getProductsBestSales(){
+    return this.client.get<Stat[]>(this.BASE_URL+"/product/best");
+  }
 }

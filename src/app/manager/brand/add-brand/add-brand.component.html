@@ -7,6 +7,7 @@
           <label >Nom</label>
           <input type="text"
                  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 pTooltip="Entrez le nom " [showDelay]="500" tooltipEvent="focus"
                  formControlName="name"
           >
         </div>
@@ -14,10 +15,11 @@
           <label >Url image</label>
           <input type="text"
                  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                 pTooltip="Entrez l'url de l'image" [showDelay]="500" tooltipEvent="focus"
                  aria-describedby="image-help"
                  formControlName="img" (change)="imageChange()"
           >
-          <small id="image-help">extension autorisé: jpg,jpeg,png</small>
+          <small id="image-help">Extension autorisé: jpg,jpeg,png</small>
         </div>
         <div class="field" *ngIf="preview">
           <label >Apercu</label>

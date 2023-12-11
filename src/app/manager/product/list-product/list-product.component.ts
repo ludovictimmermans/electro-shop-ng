@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {Product} from "../../../shared/models/product.model";
 import {ProductService} from "../../../services/product.service";
-import {AddBrandComponent} from "../../brand/add-brand/add-brand.component";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {ConfirmationService, ConfirmEventType, MessageService} from "primeng/api";
 import {AddProductComponent} from "../add-product/add-product.component";
 import {UpdateProductComponent} from "../update-product/update-product.component";
+import {Table} from "primeng/table";
 
 @Component({
   selector: 'app-list-product',
@@ -17,6 +17,8 @@ import {UpdateProductComponent} from "../update-product/update-product.component
 export class ListProductComponent {
   products$: Observable<Product[]>;
   ref: DynamicDialogRef | undefined;
+  search: string="";
+
 
   constructor(private readonly $productServ: ProductService,
               public dialogService: DialogService,
@@ -91,4 +93,9 @@ export class ListProductComponent {
       }
     });
   }
+
+  clear(table: Table) {
+    table.clear()
+  }
+
 }

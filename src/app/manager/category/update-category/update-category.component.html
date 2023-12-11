@@ -12,10 +12,11 @@
         </div>
         <div class="field">
           <label >Description</label>
-          <input type="text"
-                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                 formControlName="description"
-          >
+          <textarea
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            rows="5" cols="80" pInputTextarea pTooltip="Ajoutez une description" [showDelay]="500" tooltipEvent="focus" formControlName="description">
+
+          </textarea>
         </div>
         <p-messages [(value)]="messages" [enableService]="false" [closable]="true" *ngIf="messages"></p-messages>
         <div class="flex justify-content-end">

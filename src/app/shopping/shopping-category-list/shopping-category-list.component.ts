@@ -19,12 +19,12 @@ export class ShoppingCategoryListComponent implements OnInit {
   overlayVisible: boolean = false;
   selectedBrands?: string[];
   brands!: Brand[];
-  category$:Observable<Category>;
-  products$: Observable<Product[]>;
+  category$!:Observable<Category>;
+  products$!: Observable<Product[]>;
   available: boolean = false;
   min?: number;
   max?: number;
-  name:string;
+  name!:string;
 
 
   constructor(private readonly brandServ:BrandService,
@@ -33,10 +33,15 @@ export class ShoppingCategoryListComponent implements OnInit {
               private readonly $cartServ:CartService,
               private route: ActivatedRoute,
               private router:Router) {
-    this.name=this.route.snapshot.params["name"].replace("-"," ");
+    this.loadProducts(route.snapshot.params)
+    this.route.params.subscribe((params) => this.loadProducts(params))
+   }
+
+  loadProducts(params: any){
+    this.name=params["name"].replace("-"," ");
     this.category$ = this.$categoryServ.getOneByName(this.name).pipe(
       tap(
-    this.products$ = this.$productServ.getAllFiltered(this.name,undefined,undefined,undefined,false,"name","ASC")))
+        this.products$ = this.$productServ.getAllFiltered(this.name,undefined,undefined,undefined,false,"name","ASC")))
   }
 
   ngOnInit(): void {

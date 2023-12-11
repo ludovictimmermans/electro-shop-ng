@@ -14,7 +14,7 @@
             <ng-container *ngIf="user | async as customer">
             <div class="grid flex-column lg:flex-row" >
               <div class="col p-3 " *ngFor="let address of customer.deliveryAddresses">
-                <a (click)="changeAddress(address.name)">
+                <a (click)="changeAddress(address)">
                 <div
                   class="flex flex-column border-round border-1 surface-border p-4 cursor-pointer hover:border-primary transition-duration-150  border-primary">
                   <div class="flex justify-content-between mb-3 "><span
@@ -27,7 +27,7 @@
                   class="inline-block text-600 "><i
                   class="pi pi-mobile mr-2 "></i>{{address.contact}}</span>
 
-                    <i class="pi pi-check text-green-500"  *ngIf="selectedAddress==address.name"></i>
+                    <i class="pi pi-check text-green-500"  *ngIf="selectedAddress==address"></i>
                   </div>
                 </div>
                 </a>
@@ -59,7 +59,7 @@
             <div class="mb-3 "><span class="text-900 text-xl block ml-2 ">Panier</span></div>
             <ng-container *ngIf="cart.length>0">
             <div class="p-2 flex flex-column lg:flex-row flex-wrap lg:align-items-center " *ngFor="let product of cart"><img
-              src="{{product.pictures[0].url}}" alt="product"
+              src="{{product.pictures[1].url}}" alt="product"
               style="width:30%">
               <div class="flex-auto lg:ml-3 ">
                 <div class="flex align-items-center justify-content-between mb-3 "><span
@@ -141,7 +141,7 @@
         </div>
         <button pButton="" pRipple="" label="Payer"
                 class="p-element p-ripple bg-black-alpha-90 border-none  w-full mt-3 p-button p-component"
-                >
+                (click)="makeOrder()">
         </button>
       </div>
     </div>

@@ -7,7 +7,7 @@ import {Component, Input} from '@angular/core';
 })
 export class BasicChartComponent {
   @Input()
-  year:any;
+  value:any;
 
 
   basicData: any;
@@ -24,13 +24,12 @@ export class BasicChartComponent {
 
 
     this.basicData = {
-      labels: this.year.ref,
+      labels: this.value.ref,
       datasets: [
         {
-          label: 'Commande',
-          data: this.year.value,
-          backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)'],
-          borderColor: ['rgb(255, 159, 64)', 'rgb(255,115,64)', 'rgb(75,192,192)', 'rgb(102,150,255)'],
+          label: 'Ventes',
+          data: this.value.value,
+          backgroundColor: ['#00589C', '#016FC4', '#1891C3', '#3AC0DA','#3DC6C3','#50E3C2'],
           borderWidth: 1
         }
       ]

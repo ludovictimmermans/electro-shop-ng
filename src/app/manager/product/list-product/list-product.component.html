@@ -19,36 +19,43 @@
 
 
 <ng-container *ngIf="products$ | async as products;else loading">
-  <p-table [value]="products">
+  <p-table [value]="products" #dt1 [globalFilterFields]="['name','category.name','brand.name']">
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-end flex-wrap">
+        <button pButton label="Reset" class="p-button-outlined text-black-alpha-90 " icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+        <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [(ngModel)]="search" (input)="dt1.filterGlobal(search, 'contains')" placeholder="Filtrez" />
+                </span>
+      </div>
+    </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th>#</th>
         <th>Name</th>
         <th>Marque</th>
         <th>Catégorie</th>
         <th>Description</th>
-        <th>price</th>
-        <th>Stock</th>
+        <th pSortableColumn="price">price <p-sortIcon field="price"></p-sortIcon></th>
+        <th pSortableColumn="stock">Stock <p-sortIcon field="stock"></p-sortIcon></th>
         <th>Modifier</th>
         <th>Supprimer</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
       <tr>
-        <td>{{product.id}}</td>
-        <td>{{product.name}}</td>
-        <td><p-image src="{{product.brand.img}}" alt="Image" width="70" [preview]="false"></p-image></td>
-        <td>{{product.category.name}}</td>
-        <td>{{product.description}}</td>
-        <td>{{product.price | currency:'EUR'}}</td>
-        <td>{{product.stock}}</td>
+        <td class="col-1">{{product.name}}</td>
+        <td class="col-1"><p-image src="{{product.brand.img}}" alt="Image" width="70" [preview]="false"></p-image></td>
+        <td class="col-1">{{product.category.name}}</td>
+        <td class="col-5">{{product.description}}</td>
+        <td class="col-1">{{product.price | currency:'EUR'}}</td>
+        <td class="col-1">{{product.stock}}</td>
 
 
-        <td>
+        <td class="col-1">
           <button pButton type="button" icon="pi pi-pencil"
                   (click)="showUpdate(product)"></button>
         </td>
-        <td>
+        <td class="col-1">
           <p-toast></p-toast>
           <p-confirmDialog #cd [style]="{width: '50vw'}">
             <ng-template pTemplate="header">

@@ -1,5 +1,6 @@
 import {OrderItem} from "./orderItem.model";
 import {Customer} from "./customer.model";
+import {DeliveryAddress} from "./DeliveryAddress.model";
 
 export interface Order{
   id:number
@@ -9,4 +10,5 @@ export interface Order{
   amount: number
   products? : OrderItem[]
   customer? : Customer
+  address? : DeliveryAddress
 }

@@ -36,6 +36,8 @@ import {TieredMenuModule} from "primeng/tieredmenu";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
 import {MessageModule} from "primeng/message";
 import {AvailableDirective} from "./shopping/directives/available.directive";
+import { ShoppingPayementComponent } from './shopping/shopping-payement/shopping-payement.component';
+import {DialogModule} from "primeng/dialog";
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import {AvailableDirective} from "./shopping/directives/available.directive";
     FooterComponent,
     Page404Component,
     LoginComponent,
-    SidebarComponent
+    SidebarComponent,
+    ShoppingPayementComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,8 @@ import {AvailableDirective} from "./shopping/directives/available.directive";
     StyleClassModule,
     TieredMenuModule,
     ProgressSpinnerModule,
-    MessageModule
+    MessageModule,
+    DialogModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

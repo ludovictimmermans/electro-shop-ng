@@ -6,6 +6,7 @@ import {ShoppingDetailComponent} from "./shopping-list/shopping-detail/shopping-
 import {ShoppingCategoryListComponent} from "./shopping-category-list/shopping-category-list.component";
 import {BrandResolver} from "../core/brand.resolver";
 import {ShoppingCheckoutComponent} from "./shopping-checkout/shopping-checkout.component";
+import {ShoppingPayementComponent} from "./shopping-payement/shopping-payement.component";
 
 const routes : Routes = [
     {
@@ -15,7 +16,9 @@ const routes : Routes = [
          {path:'cart',component:ShoppingCartComponent},
          {path:'checkout',component:ShoppingCheckoutComponent},
          {path:'product/:id',component:ShoppingDetailComponent},
-         {path:':name',component:ShoppingCategoryListComponent,resolve:{brands : BrandResolver}},
+        {path:'payement',component:ShoppingPayementComponent},
+         {path:':name',component:ShoppingCategoryListComponent,resolve:{brands : BrandResolver}}
+
 
 
 
